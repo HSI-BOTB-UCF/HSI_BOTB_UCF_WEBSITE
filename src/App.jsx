@@ -20,14 +20,14 @@ const photos = [
 ]
 
 const appIcons = [
-  { name: 'GitHub', src: 'https://api.iconify.design/logos:github-icon.svg' },
-  { name: 'Slack', src: 'https://api.iconify.design/logos:slack-icon.svg' },
-  { name: 'Notion', src: 'https://api.iconify.design/logos:notion-icon.svg' },
-  { name: 'Figma', src: 'https://api.iconify.design/logos:figma.svg' },
-  { name: 'Spotify', src: 'https://api.iconify.design/logos:spotify-icon.svg' },
-  { name: 'Discord', src: 'https://api.iconify.design/logos:discord-icon.svg' },
-  { name: 'YouTube', src: 'https://api.iconify.design/logos:youtube-icon.svg' },
-  { name: 'Google Drive', src: 'https://api.iconify.design/logos:google-drive.svg' },
+  { name: 'GitHub', src: '' },
+  { name: 'Slack', src: '' },
+  { name: 'Notion', src: '' },
+  { name: 'Figma', src: '' },
+  { name: 'Spotify', src: '' },
+  { name: 'Discord', src: '' },
+  { name: 'YouTube', src: '' },
+  { name: 'Google Drive', src: '' },
 ]
 
 function ReelColumn({ icons, direction }) {
@@ -94,7 +94,6 @@ export const metadata = {
 export default function Page() {
   const [filter, setFilter] = useState('all')
   const [heroFade, setHeroFade] = useState(0)
-  const [openFaq, setOpenFaq] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => setHeroFade(Math.min(window.scrollY / 420, 1))
@@ -120,7 +119,6 @@ export default function Page() {
           <div className="hero-copy" style={{ opacity: 1 - heroFade, transform: `translateY(${heroFade * -24}px)` }}>
             <p className="eyebrow"><span className="status-dot" />UCF · HSI · 2026</p>
             <h1>UCF<br /><em>HSI BATTLE OF BRAINS TEAM.</em></h1>
-            <div className="hero-bottom"><p>Where curiosity becomes competition—and every discipline brings a new edge.</p><a className="round-arrow" href="#project" aria-label="View projects">↓</a></div>
             <a className="hero-project-button" href="#project">View Solutions <span>↗</span></a>
           </div>
         </section>
@@ -147,7 +145,7 @@ export default function Page() {
 
         <section className="photo-section section-pad"><div className="section-label">03 / GALERIA</div><div className="photo-grid">{photos.map((photo) => <div className={`photo-card ${photo.size}`} key={photo.src}><img src={photo.src} alt={photo.alt} /></div>)}</div></section>
 
-        <footer id="footer"><div className="footer-kicker"></div><h2>UCF<br /><em>BATTLE OF BRAINS TEAM.</em></h2><a className="footer-link" href="mailto:team@hsibob.edu">team@hsibob.edu <span>↗</span></a><div className="footer-bottom"><span>2026 HSI BATTLE OF BRAINS</span><span>© 2025 · Miguel Angel Hurtado Gomez</span><a href="#home">Volver arriba ↑</a></div></footer>
+        <footer id="footer"><div className="footer-kicker"></div><h2>UCF<br /><em>BATTLE OF BRAINS TEAM.</em></h2><div className="footer-bottom"><span>2026 HSI BATTLE OF BRAINS</span><span>© 2025 · Miguel Angel Hurtado Gomez</span><a href="#home">Volver arriba ↑</a></div></footer>
       </main>
   )
 }
