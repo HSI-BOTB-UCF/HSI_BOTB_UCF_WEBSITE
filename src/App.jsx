@@ -87,9 +87,6 @@ const reelColumns = [
   { icons: appIcons, direction: 'down' },
   { icons: appIcons.slice(4), direction: 'up' },
 ]
-export const metadata = {
-  title: "My Custom Tab Name",
-};
 
 export default function Page() {
   const [filter, setFilter] = useState('all')
@@ -118,7 +115,7 @@ export default function Page() {
           </div>
           <div className="hero-copy" style={{ opacity: 1 - heroFade, transform: `translateY(${heroFade * -24}px)` }}>
             <p className="eyebrow"><span className="status-dot" />UCF · HSI · 2026</p>
-            <h1>UCF<br /><em>HSI BATTLE OF BRAINS TEAM.</em></h1>
+            <h1>UCF<br /><em>HSI BATTLE OF THE BRAINS TEAM.</em></h1>
             <a className="hero-project-button" href="#project">View Solutions <span>↗</span></a>
           </div>
         </section>
@@ -127,7 +124,7 @@ export default function Page() {
           <div className="section-label">01 / LA IDEA</div>
           <div className='section-project'>
             <div>
-              <p className="display-copy">Current <span className="gold-text">Project</span></p>
+              <p className="display-copy">Current <span className="gold-text">Solution</span></p>
               <p className="body-copy">HSI Battle of Brains portfolio—where knowledge meets competition.</p>
             </div>
             <img className="section-app-icon" src={appIcons[Math.floor(Math.random() * appIcons.length)].src} alt="Project icon" draggable={false} />
@@ -138,14 +135,14 @@ export default function Page() {
         <section className="stats-band"><div><strong>08</strong><span>TEAM MEMBERS</span></div><div><strong>04</strong><span>DISCIPLINES</span></div><div><strong>##</strong><span>COMPLETED PROJECTS</span></div></section>
 
         <section className="section-pad team-section" id="equipo">
-          <div className="section-heading"><div><div className="section-label">02 / EL EQUIPO</div><h2>Meet <em>the Team.</em></h2></div></div>
+          <div className="section-heading"><div><div className="section-label">02 / EL EQUIPO</div><h2>Meet <em>the Current Team.</em></h2></div></div>
           <div className="filter-row" role="group" aria-label="Filtrar equipo">{filterOptions.map(([value, label], index) => <button key={`${value}-${index}`} className={filter === value ? 'active' : ''} onClick={() => setFilter(value)}>{label}</button>)}</div>
           <div className="members-grid">{filtered.map((member, index) => <article className="member-card" key={member.name}><div className="member-number">0{index + 1}</div><div className="avatar">{member.initials}</div><div className="member-info"><h3>{member.name}</h3><p className="member-role">{member.role}</p><p className="member-bio">{member.bio}</p></div><span className="card-arrow">↗</span></article>)}</div>
         </section>
 
         <section className="photo-section section-pad"><div className="section-label">03 / GALERIA</div><div className="photo-grid">{photos.map((photo) => <div className={`photo-card ${photo.size}`} key={photo.src}><img src={photo.src} alt={photo.alt} /></div>)}</div></section>
 
-        <footer id="footer"><div className="footer-kicker"></div><h2>UCF<br /><em>BATTLE OF BRAINS TEAM.</em></h2><div className="footer-bottom"><span>2026 HSI BATTLE OF BRAINS</span><span>© 2025 · Miguel Angel Hurtado Gomez</span><a href="#home">Volver arriba ↑</a></div></footer>
+        <footer id="footer"><div className="footer-kicker"></div><h2>UCF<br /><em>BATTLE OF THE BRAINS TEAM.</em></h2><div className="footer-bottom"><span>UCF HSI BATTLE OF THE BRAINS TEAM</span><a href="#home">Volver arriba ↑</a></div></footer>
       </main>
   )
 }
