@@ -7,10 +7,10 @@ const members = [
   { name: 'Javier A. Cuevas Chabrier', role: 'Programmer/Engineer · Mechanical Engineering & Computer Science', initials: 'JC', track: 'Programmer/Engineer', bio: 'Short Description.' },
   { name: 'Alejandro Valdez', role: 'Programmer/Engineer · Aerospace Engineering', initials: 'AV', track: 'Programmer/Engineer', bio: 'Short Description.' },
   { name: 'David Navarrete', role: 'Programmer/Engineer · Computer Science ', initials: 'DN', track: 'Programmer/Engineer', bio: 'Short Description.' },
-  { name: 'Natalia Del Vecchio Coronado', role: 'Role · Integrated Business', initials: 'NV', track: 'value', bio: 'Short Description.' },
-  { name: 'Anjanette Diaz', role: 'Role · Integrated Business', initials: 'AD', track: 'value', bio: 'Short Description.' },
-  { name: 'Sebastian Cardenas', role: 'Role · Emerging Media', initials: 'SC', track: 'value', bio: 'Short Description.' },
-  { name: 'Diogo Ortiz', role: 'Role · Integrated Business', initials: 'DO', track: 'value', bio: 'Short Description.' },
+  { name: 'Natalia Del Vecchio Coronado', role: 'Role · Integrated Business', initials: 'NV', track: 'Marketing', bio: 'Short Description.' },
+  { name: 'Anjanette Diaz', role: 'Role · Integrated Business', initials: 'AD', track: 'Marketing', bio: 'Short Description.' },
+  { name: 'Sebastian Cardenas', role: 'Role · Emerging Media', initials: 'SC', track: 'Videographer', bio: 'Short Description.' },
+  { name: 'Diogo Ortiz', role: 'Role · Integrated Business', initials: 'DO', track: 'Finance', bio: 'Short Description.' },
   { name: 'Benjamin Challco', role: 'Graduate Advisor · Major', initials: 'BC', track: 'value', bio: 'Short Description.' },
   { name: 'Adrianna Marquez', role: 'Graduate Advisor · Major', initials: 'AM', track: 'value', bio: 'Short Description.' },
   { name: 'David Penn', role: 'Faculty Advisor · Major', initials: 'AM', track: 'value', bio: 'Short Description.' },
@@ -27,14 +27,9 @@ const photos = [
 ]
 
 const appIcons = [
-  { name: 'GitHub', src: '' },
-  { name: 'Slack', src: '' },
-  { name: 'Notion', src: '' },
-  { name: 'Figma', src: '' },
-  { name: 'Spotify', src: '' },
-  { name: 'Discord', src: '' },
-  { name: 'YouTube', src: '' },
-  { name: 'Google Drive', src: '' },
+  { name: 'UCF LOGO', src: '' },
+  { name: 'HSI LOGO', src: '' },
+  { name: 'Maybe Solution LOGO?', src: '' },
 ]
 
 function ReelColumn({ icons, direction }) {
