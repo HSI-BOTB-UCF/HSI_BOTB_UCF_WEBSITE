@@ -3,12 +3,19 @@
 import { useEffect, useRef, useState } from 'react'
 
 const members = [
-  { name: 'Team Member', role: 'Role · Major', initials: 'N/A', track: 'value', bio: 'Short Description.' },
-  { name: 'Team Member', role: 'Role · Major', initials: 'N/A', track: 'value', bio: 'Short Description.' },
-  { name: 'Team Member', role: 'Role · Major', initials: 'N/A', track: 'value', bio: 'Short Description.' },
-  { name: 'Team Member', role: 'Role · Major', initials: 'N/A', track: 'value', bio: 'Short Description.' },
-  { name: 'Team Member', role: 'Role · Major', initials: 'N/A', track: 'value', bio: 'Short Description.' },
-  { name: 'Team Member', role: 'Role · Major', initials: 'N/A', track: 'value', bio: 'Short Description.' },
+  { name: 'Miguel Angel Hurtado Gomez', role: 'Programmer/Engineer · Aerospace Engineering', initials: 'MH', track: 'value', bio: 'Short Description.' },
+  { name: 'Javier A. Cuevas Chabrier', role: 'Programmer/Engineer · Mechanical Engineering & Computer Science', initials: 'JC', track: 'value', bio: 'Short Description.' },
+  { name: 'Alejandro Valdez', role: 'Programmer/Engineer · Aerospace Engineering', initials: 'AV', track: 'value', bio: 'Short Description.' },
+  { name: 'David Navarrete', role: 'Role · Major', initials: 'N/A', track: 'value', bio: 'Short Description.' },
+  { name: 'Natalia Del Vecchio Coronado', role: 'Role · Major', initials: 'N/A', track: 'value', bio: 'Short Description.' },
+  { name: 'Anjanette Diaz', role: 'Role · Major', initials: 'N/A', track: 'value', bio: 'Short Description.' },
+  { name: 'Sebastian Cardenas', role: 'Role · Major', initials: 'N/A', track: 'value', bio: 'Short Description.' },
+  { name: 'Diogo Ortiz', role: 'Role · Major', initials: 'N/A', track: 'value', bio: 'Short Description.' },
+  { name: 'Benjamin Challco', role: 'Graduate Advisor · Major', initials: 'BC', track: 'value', bio: 'Short Description.' },
+  { name: 'Adrianna Marquez', role: 'Graduate Advisor · Major', initials: 'AM', track: 'value', bio: 'Short Description.' },
+  { name: 'David Penn', role: 'Faculty Advisor · Major', initials: 'AM', track: 'value', bio: 'Short Description.' },
+
+
 ]
 
 const photos = [
@@ -125,7 +132,7 @@ export default function Page() {
           <div className='section-project'>
             <div>
               <p className="display-copy">Current <span className="gold-text">Solution</span></p>
-              <p className="body-copy">HSI Battle of Brains portfolio—where knowledge meets competition.</p>
+              <p className="body-copy">HSI Battle of Brains portfolio where knowledge meets competition.</p>
             </div>
             <img className="section-app-icon" src={appIcons[Math.floor(Math.random() * appIcons.length)].src} alt="Project icon" draggable={false} />
           </div>
