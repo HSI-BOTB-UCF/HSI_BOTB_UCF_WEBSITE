@@ -122,7 +122,7 @@ export default function Page() {
           </div>
           <div className="hero-copy" style={{ opacity: 1 - heroFade, transform: `translateY(${heroFade * -24}px)` }}>
             <p className="eyebrow"><span className="status-dot" />UCF · HSI · 2026</p>
-            <h1>UCF<br /><em>HSI BATTLE OF THE BRAINS TEAM.</em></h1>
+            <h1>UCF<br /><em>HSI BATTLE OF THE BRAINS TEAM</em></h1>
             <a className="hero-project-button" href="#project">View Solutions <span>↗</span></a>
             <a className="hero-project-button" href="#project">View Team <span>↗</span></a>
 
