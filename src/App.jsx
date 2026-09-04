@@ -3,14 +3,14 @@
 import { useEffect, useRef, useState } from 'react'
 
 const members = [
-  { name: 'Miguel Angel Hurtado Gomez', role: 'Programmer/Engineer · Aerospace Engineering', initials: 'MH', track: 'value', bio: 'Short Description.' },
-  { name: 'Javier A. Cuevas Chabrier', role: 'Programmer/Engineer · Mechanical Engineering & Computer Science', initials: 'JC', track: 'value', bio: 'Short Description.' },
-  { name: 'Alejandro Valdez', role: 'Programmer/Engineer · Aerospace Engineering', initials: 'AV', track: 'value', bio: 'Short Description.' },
-  { name: 'David Navarrete', role: 'Role · Major', initials: 'N/A', track: 'value', bio: 'Short Description.' },
-  { name: 'Natalia Del Vecchio Coronado', role: 'Role · Major', initials: 'N/A', track: 'value', bio: 'Short Description.' },
-  { name: 'Anjanette Diaz', role: 'Role · Major', initials: 'N/A', track: 'value', bio: 'Short Description.' },
-  { name: 'Sebastian Cardenas', role: 'Role · Major', initials: 'N/A', track: 'value', bio: 'Short Description.' },
-  { name: 'Diogo Ortiz', role: 'Role · Major', initials: 'N/A', track: 'value', bio: 'Short Description.' },
+  { name: 'Miguel Angel Hurtado Gomez', role: 'Programmer/Engineer · Aerospace Engineering', initials: 'MH', track: 'Programmer/Engineer', bio: 'Short Description.' },
+  { name: 'Javier A. Cuevas Chabrier', role: 'Programmer/Engineer · Mechanical Engineering & Computer Science', initials: 'JC', track: 'Programmer/Engineer', bio: 'Short Description.' },
+  { name: 'Alejandro Valdez', role: 'Programmer/Engineer · Aerospace Engineering', initials: 'AV', track: 'Programmer/Engineer', bio: 'Short Description.' },
+  { name: 'David Navarrete', role: 'Programmer/Engineer · Computer Science ', initials: 'DN', track: 'Programmer/Engineer', bio: 'Short Description.' },
+  { name: 'Natalia Del Vecchio Coronado', role: 'Role · Integrated Business', initials: 'NV', track: 'value', bio: 'Short Description.' },
+  { name: 'Anjanette Diaz', role: 'Role · Integrated Business', initials: 'AD', track: 'value', bio: 'Short Description.' },
+  { name: 'Sebastian Cardenas', role: 'Role · Emerging Media', initials: 'SC', track: 'value', bio: 'Short Description.' },
+  { name: 'Diogo Ortiz', role: 'Role · Integrated Business', initials: 'DO', track: 'value', bio: 'Short Description.' },
   { name: 'Benjamin Challco', role: 'Graduate Advisor · Major', initials: 'BC', track: 'value', bio: 'Short Description.' },
   { name: 'Adrianna Marquez', role: 'Graduate Advisor · Major', initials: 'AM', track: 'value', bio: 'Short Description.' },
   { name: 'David Penn', role: 'Faculty Advisor · Major', initials: 'AM', track: 'value', bio: 'Short Description.' },
@@ -124,6 +124,8 @@ export default function Page() {
             <p className="eyebrow"><span className="status-dot" />UCF · HSI · 2026</p>
             <h1>UCF<br /><em>HSI BATTLE OF THE BRAINS TEAM.</em></h1>
             <a className="hero-project-button" href="#project">View Solutions <span>↗</span></a>
+            <a className="hero-project-button" href="#project">View Team <span>↗</span></a>
+
           </div>
         </section>
 
