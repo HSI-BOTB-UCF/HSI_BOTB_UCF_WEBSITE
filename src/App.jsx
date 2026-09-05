@@ -136,17 +136,57 @@ export default function Page() {
 
         </section>
 
-        <section className="stats-band"><div><strong>08</strong><span>TEAM MEMBERS</span></div><div><strong>04</strong><span>DISCIPLINES</span></div><div><strong>##</strong><span>COMPLETED PROJECTS</span></div></section>
+        <section className="stats-band">
+          <div>
+            <strong>08</strong>
+            <span>TEAM MEMBERS</span>
+          </div>
+          <div>
+            <strong>04</strong>
+            <span>DISCIPLINES</span>
+          </div>
+          <div>
+            <strong>##</strong>
+            <span>COMPLETED PROJECTS</span>
+          </div>
+        </section>
 
         <section className="section-pad team-section" id="equipo">
           <div className="section-heading"><div><div className="section-label">02 / EL EQUIPO</div><h2>Meet <em>the Current Team.</em></h2></div></div>
           <div className="filter-row" role="group" aria-label="Filtrar equipo">{filterOptions.map(([value, label], index) => <button key={`${value}-${index}`} className={filter === value ? 'active' : ''} onClick={() => setFilter(value)}>{label}</button>)}</div>
-          <div className="members-grid">{filtered.map((member, index) => <article className="member-card" key={member.name}><div className="member-number">0{index + 1}</div><div className="avatar">{member.initials}</div><div className="member-info"><h3>{member.name}</h3><p className="member-role">{member.role}</p><p className="member-bio">{member.bio}</p></div><span className="card-arrow">↗</span></article>)}</div>
+          <div className="members-grid">
+            {filtered.map((member, index) =>
+              <article className="member-card" key={member.name}>
+                <div className="member-number">0{index + 1}</div>
+                <div className="avatar">{member.initials}</div>
+                <div className="member-info">
+                  <h3>{member.name}</h3>
+                  <p className="member-role">{member.role}</p>
+                  <p className="member-bio">{member.bio}</p>
+                </div>
+                <span className="card-arrow">↗</span>
+              </article>)}</div>
         </section>
 
-        <section className="photo-section section-pad"><div className="section-label">03 / GALERIA</div><div className="photo-grid">{photos.map((photo) => <div className={`photo-card ${photo.size}`} key={photo.src}><img src={photo.src} alt={photo.alt} /></div>)}</div></section>
+        <section className="photo-section section-pad">
+          <div className="section-label">03 / GALERIA</div>
+          <div className="photo-grid">
+            {photos.map((photo) =>
+                <div className={`photo-card ${photo.size}`} key={photo.src}>
+                  <img src={photo.src} alt={photo.alt} />
+                </div>)}
+          </div>
+        </section>
 
-        <footer id="footer"><div className="footer-kicker"></div><h2>UCF<br /><em>BATTLE OF THE BRAINS TEAM.</em></h2><div className="footer-bottom"><span>UCF HSI BATTLE OF THE BRAINS TEAM</span><a href="#home">Volver arriba ↑</a></div></footer>
+        <footer id="footer">
+          <div className="footer-kicker"></div>
+          <h2>UCF<br /><em>BATTLE OF THE BRAINS TEAM.</em></h2>
+          <div className="footer-bottom">
+            <span>UCF HSI BATTLE OF THE BRAINS TEAM</span>
+            <a href="#home">Volver arriba ↑</a>
+          </div>
+        </footer>
+
       </main>
   )
 }
