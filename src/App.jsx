@@ -4,15 +4,15 @@ import { useEffect, useRef, useState } from 'react'
 
 const members = [
   { name: 'Miguel Angel Hurtado Gomez', role: 'Programmer/Engineer · Aerospace Engineering', initials: 'MH', track: 'Programmer/Engineer', bio: 'Short Description.' },
-  { name: 'Javier A. Cuevas Chabrier', role: 'Programmer/Engineer · Mechanical Engineering & Computer Science', initials: 'JC', track: 'Programmer/Engineer', bio: 'Short Description.' },
-  { name: 'Alejandro Valdez', role: 'Programmer/Engineer · Aerospace Engineering', initials: 'AV', track: 'Programmer/Engineer', bio: 'Short Description.' },
+  { name: 'Javier A. Cuevas Chabrier', role: 'Programmer/Engineer · Mechanical Engineering & Computer Science', initials: 'JC', track: 'Programmer/Engineer', bio: 'Hello everyone! I am excited to compete at HSI Battle of the Brains for the 2026 academic year! I currently work with propulsion systems and the Propulsion and Energy Research Lab under the Axial Stage Combustion Chamber project. I like to code in python and do projects with friends. My most recent projects are a solid propellant rocket motor where I use sorbitol and potassium nitrate to make rocket fuel and a BAJA buggy made from a go-kart frame and engine. I hope to speak to you soon!' },
+  { name: 'Alejandro Valdez', role: 'Programmer/Engineer · Aerospace Engineering', initials: 'AV', track: 'Programmer/Engineer', bio: 'Hello folks, my name is Alejandro Valdez and I\'m a second year Aerospace Engineering student from Mexico. In my free time you\'ll find me outdoors, playing lacrosse, or building engineering projects like rockets. I\'m working toward a career as an engineer in the space industry, and I also hope to be an activist for environmental conservation along the way. Thanks!' },
   { name: 'David Navarrete', role: 'Programmer/Engineer · Computer Science ', initials: 'DN', track: 'Programmer/Engineer', bio: 'Short Description.' },
   { name: 'Natalia Del Vecchio Coronado', role: 'Role · Integrated Business', initials: 'NV', track: 'Marketing', bio: 'Short Description.' },
   { name: 'Anjanette Diaz', role: 'Role · Integrated Business', initials: 'AD', track: 'Marketing', bio: 'Short Description.' },
   { name: 'Sebastian Cardenas', role: 'Role · Emerging Media', initials: 'SC', track: 'Videographer', bio: 'Short Description.' },
   { name: 'Diogo Ortiz', role: 'Role · Integrated Business', initials: 'DO', track: 'Finance', bio: 'Short Description.' },
-  { name: 'Benjamin Challco', role: 'Graduate Advisor · Major', initials: 'BC', track: 'value', bio: 'Short Description.' },
-  { name: 'Adrianna Marquez', role: 'Graduate Advisor · Major', initials: 'AM', track: 'value', bio: 'Short Description.' },
+  { name: 'Benjamin C. Challco Acosta', role: 'Graduate Advisor · Major', initials: 'BC', track: 'value', bio: 'Short Description.' },
+  { name: 'Adrianna N. Marquez', role: 'Graduate Advisor · Major', initials: 'AM', track: 'value', bio: 'Hello! I’m Adrianna. I come from a military background so my family heritage is pretty scattered, but my latin side is Colombian and Argentinian. Aside from being a student, I am an ambassador of the UCF Office of Military and Veteran Student Success at the downtown campus where I support the hundreds of student veterans and family members through counseling and career readiness resources. I was inspired to join the UCF HSI battle of the brains team by all of the support that I’ve seen poured into it. The faculty and staff at UCF do so much for every community, so I hope we can reap the benefits of that support by going far in a meaningful competition. I earned my undergraduate degree in Information Technology, so I’m hoping to pair that with my business graduate degree and become an IT project manager. Go Knights!' },
   { name: 'David Penn', role: 'Faculty Advisor · Major', initials: 'AM', track: 'value', bio: 'Short Description.' },
 
 
