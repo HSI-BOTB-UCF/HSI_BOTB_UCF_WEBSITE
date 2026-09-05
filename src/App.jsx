@@ -77,10 +77,10 @@ function ReelColumn({ icons, direction }) {
 
 const filterOptions = [
   ['all', 'All'],
-  ['value', 'Label'],
-  ['value', 'Label'],
-  ['value', 'Label'],
-  ['value', 'Label'],
+  ['Programmer/Engineer', 'Programmer/Engineer'],
+  ['Marketing', 'Marketing'],
+  ['Videographer', 'Videographer'],
+  ['Finance', 'Finance'],
 ]
 
 const reelColumns = [
