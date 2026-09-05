@@ -106,7 +106,7 @@ export default function Page() {
       <main>
         <nav className="site-nav">
           <a className="brand" href="#home"><span className="brand-mark">H</span><span>UCF HSI BOB</span></a>
-          <div className="nav-links"><a href="#solution">Solutions</a><a href="#team">Team</a></div>
+          <div className="nav-links"><a href="#project">Solutions</a><a href="#equipo">Team</a></div>
         </nav>
 
         <section className="hero" id="home">
@@ -116,10 +116,12 @@ export default function Page() {
             </section>
           </div>
           <div className="hero-copy" style={{ opacity: 1 - heroFade, transform: `translateY(${heroFade * -24}px)` }}>
-            <p className="eyebrow"><span className="status-dot" />UCF · HSI · 2026</p>
-            <h1>UCF<br /><em>HSI BATTLE OF THE BRAINS TEAM</em></h1>
+            <h1>
+              UCF<br />
+              <em>HSI BATTLE OF THE BRAINS TEAM</em>
+            </h1>
             <a className="hero-project-button" href="#project">View Solutions <span>↗</span></a>
-            <a className="hero-project-button" href="#project">View Team <span>↗</span></a>
+            <a className="hero-project-button" href="#equipo">View Team <span>↗</span></a>
 
           </div>
         </section>
@@ -130,26 +132,28 @@ export default function Page() {
             <div>
               <p className="display-copy">Current <span className="gold-text">Solution</span></p>
               <p className="body-copy">HSI Battle of Brains portfolio where knowledge meets competition.</p>
+              <a className="hero-project-button" href="#projects">More Solutions <span>↗</span></a>
             </div>
             <img className="section-app-icon" src={appIcons[Math.floor(Math.random() * appIcons.length)].src} alt="Project icon" draggable={false} />
           </div>
 
         </section>
 
-        <section className="stats-band">
-          <div>
-            <strong>08</strong>
-            <span>TEAM MEMBERS</span>
-          </div>
-          <div>
-            <strong>04</strong>
-            <span>DISCIPLINES</span>
-          </div>
-          <div>
-            <strong>##</strong>
-            <span>COMPLETED PROJECTS</span>
-          </div>
-        </section>
+        {/*Old section that might look cool with some changes.*/}
+        {/*<section className="stats-band">*/}
+        {/*  <div>*/}
+        {/*    <strong>08</strong>*/}
+        {/*    <span>TEAM MEMBERS</span>*/}
+        {/*  </div>*/}
+        {/*  <div>*/}
+        {/*    <strong>04</strong>*/}
+        {/*    <span>DISCIPLINES</span>*/}
+        {/*  </div>*/}
+        {/*  <div>*/}
+        {/*    <strong>##</strong>*/}
+        {/*    <span>COMPLETED PROJECTS</span>*/}
+        {/*  </div>*/}
+        {/*/!*</section>*!/*/}
 
         <section className="section-pad team-section" id="equipo">
           <div className="section-heading"><div><div className="section-label">02 / EL EQUIPO</div><h2>Meet <em>the Current Team.</em></h2></div></div>
