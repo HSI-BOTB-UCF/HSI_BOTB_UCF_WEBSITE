@@ -1,89 +1,179 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import adriannaPhoto from '../adriana pic.JPEG'
+import benjaminPhoto from '../Ben_Headshot_2026.JPEG'
 
-const members = [
-  { 
+const currentSeason = 2026
+
+const teamMembers = [
+  {
+    slug: 'miguel-angel-hurtado-gomez',
+    year: 2026,
     name: 'Miguel Angel Hurtado Gomez',
-    role: 'Programmer/Engineer · Aerospace Engineering',
+    role: 'Programmer/Engineer',
+    major: 'Aerospace Engineering',
     initials: 'MH',
     track: 'Programmer/Engineer',
-    bio: 'Short Description.'
+    bio: 'Miguel helps turn team concepts into working technical prototypes, with a focus on engineering systems and disciplined build execution.',
+    hometown: 'Orlando, FL',
+    focus: 'Rapid prototyping, systems thinking, and technical research',
+    interests: ['Aerospace design', 'Simulation', 'Hardware builds'],
+    socials: { linkedin: '', github: '', website: '' }
   },
-  { 
+  {
+    slug: 'javier-a-cuevas-chabrier',
+    year: 2026,
     name: 'Javier A. Cuevas Chabrier',
-    role: 'Programmer/Engineer · Mechanical Engineering & Computer Science',
+    role: 'Programmer/Engineer',
+    major: 'Mechanical Engineering & Computer Science',
     initials: 'JC',
     track: 'Programmer/Engineer',
-    bio: 'Hello everyone! I am excited to compete at HSI Battle of the Brains for the 2026 academic year! I currently work with propulsion systems and the Propulsion and Energy Research Lab under the Axial Stage Combustion Chamber project. I like to code in python and do projects with friends. My most recent projects are a solid propellant rocket motor where I use sorbitol and potassium nitrate to make rocket fuel and a BAJA buggy made from a go-kart frame and engine. I hope to speak to you soon!' },
-  { 
+    bio: 'Hello everyone! I am excited to compete at HSI Battle of the Brains for the 2026 academic year! I currently work with propulsion systems and the Propulsion and Energy Research Lab under the Axial Stage Combustion Chamber project. I like to code in python and do projects with friends. My most recent projects are a solid propellant rocket motor where I use sorbitol and potassium nitrate to make rocket fuel and a BAJA buggy made from a go-kart frame and engine. I hope to speak to you soon!',
+    hometown: 'Orlando, FL',
+    focus: 'Propulsion systems, Python tools, and mechanical product design',
+    interests: ['Rocket motors', 'BAJA builds', 'Python projects'],
+    socials: { linkedin: '', github: '', website: '' }
+  },
+  {
+    slug: 'alejandro-valdez',
+    year: 2026,
     name: 'Alejandro Valdez',
-    role: 'Programmer/Engineer · Aerospace Engineering',
+    role: 'Programmer/Engineer',
+    major: 'Aerospace Engineering',
     initials: 'AV',
     track: 'Programmer/Engineer',
-    bio: 'Hello folks, my name is Alejandro Valdez and I\'m a second year Aerospace Engineering student from Mexico. In my free time you\'ll find me outdoors, playing lacrosse, or building engineering projects like rockets. I\'m working toward a career as an engineer in the space industry, and I also hope to be an activist for environmental conservation along the way. Thanks!' },
-  { 
+    bio: 'Hello folks, my name is Alejandro Valdez and I\'m a second year Aerospace Engineering student from Mexico. In my free time you\'ll find me outdoors, playing lacrosse, or building engineering projects like rockets. I\'m working toward a career as an engineer in the space industry, and I also hope to be an activist for environmental conservation along the way. Thanks!',
+    hometown: 'Mexico',
+    focus: 'Space systems, sustainability, and engineering project execution',
+    interests: ['Rocketry', 'Lacrosse', 'Environmental conservation'],
+    socials: { linkedin: '', github: '', website: '' }
+  },
+  {
+    slug: 'david-navarrete',
+    year: 2026,
     name: 'David Navarrete',
-    role: 'Programmer/Engineer · Computer Science ',
+    role: 'Programmer/Engineer',
+    major: 'Computer Science',
     initials: 'DN',
     track: 'Programmer/Engineer',
-    bio: 'Short Description.'
+    bio: 'David supports the software side of the team, helping translate challenge requirements into practical web, data, and product workflows.',
+    hometown: 'Orlando, FL',
+    focus: 'Software architecture, implementation, and debugging',
+    interests: ['Full-stack development', 'Automation', 'Product thinking'],
+    socials: { linkedin: '', github: '', website: '' }
   },
-  { 
+  {
+    slug: 'anjanette-diaz',
+    year: 2026,
     name: 'Anjanette Diaz',
-    role: 'Role · Integrated Business',
+    role: 'Marketing Lead',
+    major: 'Integrated Business',
     initials: 'AD',
     track: 'Marketing',
-    bio: 'Short Description.'
+    bio: 'Anjanette shapes how the team communicates its solution, audience, story, and impact during the competition season.',
+    hometown: 'Orlando, FL',
+    focus: 'Brand strategy, messaging, and audience research',
+    interests: ['Campaign planning', 'Consumer insight', 'Pitch storytelling'],
+    socials: { linkedin: '', github: '', website: '' }
   },
-  { 
+  {
+    slug: 'sebastian-cardenas',
+    year: 2026,
     name: 'Sebastian Cardenas',
-    role: 'Role · Emerging Media',
+    role: 'Videographer',
+    major: 'Emerging Media',
     initials: 'SC',
     track: 'Videographer',
-    bio: 'Short Description.'
+    bio: 'Sebastian captures the team process and creates visual material that makes the work easier to understand, remember, and share.',
+    hometown: 'Orlando, FL',
+    focus: 'Video production, motion, and visual storytelling',
+    interests: ['Cinematography', 'Editing', 'Digital media'],
+    socials: { linkedin: '', github: '', website: '' }
   },
-  { 
+  {
+    slug: 'diogo-ortiz',
+    year: 2026,
     name: 'Diogo Ortiz',
-    role: 'Role · Integrated Business',
+    role: 'Finance Lead',
+    major: 'Integrated Business',
     initials: 'DO',
     track: 'Finance',
-    bio: 'Short Description.'
+    bio: 'Diogo keeps the solution grounded in business reality, supporting financial modeling, feasibility, and market planning.',
+    hometown: 'Orlando, FL',
+    focus: 'Financial planning, market validation, and venture feasibility',
+    interests: ['Startup finance', 'Business modeling', 'Operations'],
+    socials: { linkedin: '', github: '', website: '' }
   },
-  { 
+  {
+    slug: 'benjamin-c-challco-acosta',
+    year: 2026,
     name: 'Benjamin C. Challco Acosta',
-    role: 'Graduate Advisor · Master of Science in Business Analytics',
+    role: 'Graduate Advisor',
+    major: 'Master of Science in Business Analytics',
     initials: 'BC',
-    track: 'value',
-    bio: 'Hey everyone! I\'m grateful for the opportunity to serve as a Graduate Advisor for such a talented HSI Battle of the Brains team. One of my biggest passions is developing others, giving back to my community, and helping the people around me grow. I have a strong background in marketing & sales and have developed much of my professional experience in the insurance industry, where I\'ve learned the importance of relationship-building, resilience, and understanding clients\' needs. My long-term goal is to become an agency owner, build and develop a high-performing team, and create a lasting impact on the clients and communities I serve.' },
-  { 
-    name: 'Adrianna N. Marquez',
-    role: 'Graduate Advisor · Master of Science in Management - Integrated Business Track',
-    initials: 'AM',
-    track: 'value',
-    bio: 'Hello! I\'m Adrianna. I come from a military background so my family heritage is pretty scattered, but my latin side is Colombian and Argentinian. Aside from being a student, I am an ambassador of the UCF Office of Military and Veteran Student Success at the downtown campus where I support the hundreds of student veterans and family members through counseling and career readiness resources. I was inspired to join the UCF HSI battle of the brains team by all of the support that I\'ve seen poured into it. The faculty and staff at UCF do so much for every community, so I hope we can reap the benefits of that support by going far in a meaningful competition. I earned my undergraduate degree in Information Technology, so I\'m hoping to pair that with my business graduate degree and become an IT project manager. Go Knights!'
+    track: 'Advisor',
+    photo: benjaminPhoto,
+    bio: 'Hey everyone! I\'m grateful for the opportunity to serve as a Graduate Advisor for such a talented HSI Battle of the Brains team. One of my biggest passions is developing others, giving back to my community, and helping the people around me grow. I have a strong background in marketing & sales and have developed much of my professional experience in the insurance industry, where I\'ve learned the importance of relationship-building, resilience, and understanding clients\' needs. My long-term goal is to become an agency owner, build and develop a high-performing team, and create a lasting impact on the clients and communities I serve.',
+    hometown: 'Orlando, FL',
+    focus: 'Business analytics, sales strategy, and team development',
+    interests: ['Mentorship', 'Marketing and sales', 'Community impact'],
+    socials: { linkedin: '', github: '', website: '' }
   },
-  { 
+  {
+    slug: 'adrianna-n-marquez',
+    year: 2026,
+    name: 'Adrianna N. Marquez',
+    role: 'Graduate Advisor',
+    major: 'Master of Science in Management - Integrated Business Track',
+    initials: 'AM',
+    track: 'Advisor',
+    photo: adriannaPhoto,
+    bio: 'Hello! I\'m Adrianna. I come from a military background so my family heritage is pretty scattered, but my latin side is Colombian and Argentinian. Aside from being a student, I am an ambassador of the UCF Office of Military and Veteran Student Success at the downtown campus where I support the hundreds of student veterans and family members through counseling and career readiness resources. I was inspired to join the UCF HSI battle of the brains team by all of the support that I\'ve seen poured into it. The faculty and staff at UCF do so much for every community, so I hope we can reap the benefits of that support by going far in a meaningful competition. I earned my undergraduate degree in Information Technology, so I\'m hoping to pair that with my business graduate degree and become an IT project manager. Go Knights!',
+    hometown: 'Colombian and Argentinian heritage',
+    focus: 'IT project management, student support, and integrated business',
+    interests: ['Veteran student success', 'Project management', 'Community support'],
+    socials: { linkedin: '', github: '', website: '' }
+  },
+  {
+    slug: 'david-penn',
+    year: 2026,
     name: 'David Penn',
-    role: 'Faculty Advisor · Major',
+    role: 'Faculty Advisor',
+    major: 'UCF Faculty',
     initials: 'DP',
-    track: 'value',
-    bio: 'Short Description.'
+    track: 'Advisor',
+    bio: 'David supports the team with faculty guidance, strategic direction, and institutional knowledge throughout the competition cycle.',
+    hometown: 'Orlando, FL',
+    focus: 'Faculty mentorship, solution strategy, and team development',
+    interests: ['Student success', 'Applied innovation', 'Competition strategy'],
+    socials: { linkedin: '', github: '', website: '' }
+  }
+]
+
+const solutions = [
+  {
+    year: 2026,
+    title: '2026 HSI Battle of the Brains Solution',
+    status: 'In progress',
+    summary: 'The team is preparing for this year\'s challenge. This page is ready for the final problem statement, product demo, pitch materials, and outcomes once the solution is released.',
+    highlights: ['Challenge placeholder', 'Solution deck coming soon', 'Demo media coming soon'],
+    link: ''
   }
 ]
 
 const photos = [
-  { src: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=85', alt: 'Equipo colaborando alrededor de una mesa', size: 'large' },
-  { src: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=85', alt: 'Estudiante tomando notas', size: 'tall' },
-  { src: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=85', alt: 'Estudiantes conversando', size: 'wide' },
-  { src: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=85', alt: 'Estudiantes en un aula', size: 'square' },
-  { src: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=85', alt: 'Estudiante tomando notas', size: 'tall' },
+  { src: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=85', alt: 'Team collaborating around a table', size: 'large' },
+  { src: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=85', alt: 'Student taking notes', size: 'tall' },
+  { src: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=85', alt: 'Students talking', size: 'wide' },
+  { src: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=85', alt: 'Students in a classroom', size: 'square' },
+  { src: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=85', alt: 'Student writing notes', size: 'tall' },
 ]
 
 const appIcons = [
-  { name: 'UCF LOGO', src: '' },
-  { name: 'HSI LOGO', src: '' },
-  { name: 'Maybe Solution LOGO?', src: '' },
+  { name: 'UCF LOGO', src: '/favicon.svg' },
+  { name: 'HSI LOGO', src: '/icons.svg' },
+  { name: 'Solution Placeholder', src: '/favicon.svg' },
 ]
 
 function ReelColumn({ icons, direction }) {
@@ -135,17 +225,175 @@ const filterOptions = [
   ['Marketing', 'Marketing'],
   ['Videographer', 'Videographer'],
   ['Finance', 'Finance'],
+  ['Advisor', 'Advisor'],
 ]
 
 const reelColumns = [
   { icons: appIcons, direction: 'down' },
-  { icons: appIcons.slice(4), direction: 'up' },
+  { icons: appIcons, direction: 'up' },
   { icons: appIcons, direction: 'down' },
-  { icons: appIcons.slice(4), direction: 'up' },
+  { icons: appIcons, direction: 'up' },
 ]
 
-export default function Page() {
+function sortByMostRecent(items) {
+  return [...items].sort((first, second) => second.year - first.year || first.name?.localeCompare(second.name) || first.title?.localeCompare(second.title))
+}
+
+function getRoute() {
+  const hash = window.location.hash.replace(/^#\/?/, '')
+
+  if (!hash || hash === 'home') return { page: 'home' }
+  if (hash === 'team') return { page: 'team' }
+  if (hash === 'solutions') return { page: 'solutions' }
+  if (hash.startsWith('team/')) return { page: 'member', slug: hash.split('/')[1] }
+
+  return { page: 'home' }
+}
+
+function useHashRoute() {
+  const [route, setRoute] = useState(getRoute)
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setRoute(getRoute())
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+
+    window.addEventListener('hashchange', handleHashChange)
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [])
+
+  return route
+}
+
+function SiteNav() {
+  return (
+    <nav className="site-nav">
+      <a className="brand" href="#home"><span className="brand-mark">H</span><span>UCF HSI BOB</span></a>
+      <div className="nav-links"><a href="#solutions">Solutions</a><a href="#team">Team</a></div>
+    </nav>
+  )
+}
+
+function MemberAvatar({ member, large = false }) {
+  if (member.photo) {
+    return <img className={`avatar member-photo${large ? ' large' : ''}`} src={member.photo} alt={member.name} />
+  }
+
+  return <div className={`avatar${large ? ' large' : ''}`}>{member.initials}</div>
+}
+
+function TeamGrid({ members }) {
+  return (
+    <div className="members-grid">
+      {members.map((member, index) =>
+        <a className="member-card" href={`#team/${member.slug}`} key={member.slug}>
+          <div className="member-number">{String(index + 1).padStart(2, '0')}</div>
+          <MemberAvatar member={member} />
+          <div className="member-info">
+            <h3>{member.name}</h3>
+            <p className="member-role">{member.role} · {member.major}</p>
+            <p className="member-bio">{member.bio}</p>
+          </div>
+          <span className="card-arrow">↗</span>
+        </a>)}
+    </div>
+  )
+}
+
+function TeamPage() {
   const [filter, setFilter] = useState('all')
+
+  const membersByYear = sortByMostRecent(teamMembers).filter((member) => member.year >= currentSeason)
+  const filtered = filter === 'all' ? membersByYear : membersByYear.filter((member) => member.track === filter)
+
+  return (
+    <section className="section-pad page-shell team-section" id="team">
+      <div className="section-heading"><div><div className="section-label">Team / {currentSeason} and beyond</div><h2>Meet <em>the team.</em></h2></div></div>
+      <p className="page-lede">Browse every HSI Battle of the Brains team member from {currentSeason} onward. The newest class stays at the top as future years are added.</p>
+      <div className="filter-row" role="group" aria-label="Filter team members">{filterOptions.map(([value, label], index) => <button key={`${value}-${index}`} className={filter === value ? 'active' : ''} onClick={() => setFilter(value)}>{label}</button>)}</div>
+      <TeamGrid members={filtered} />
+    </section>
+  )
+}
+
+function MemberPage({ slug }) {
+  const member = teamMembers.find((item) => item.slug === slug)
+
+  if (!member) {
+    return (
+      <section className="section-pad page-shell">
+        <div className="section-label">Team member</div>
+        <h2 className="detail-heading">Member not found.</h2>
+        <a className="hero-project-button" href="#team">Back to Team <span>↗</span></a>
+      </section>
+    )
+  }
+
+  return (
+    <section className="section-pad page-shell member-detail">
+      <a className="back-link" href="#team">← Back to team</a>
+      <div className="member-detail-hero">
+        <MemberAvatar member={member} large />
+        <div>
+          <div className="section-label">{member.year} / {member.track}</div>
+          <h1>{member.name}</h1>
+          <p className="detail-role">{member.role} · {member.major}</p>
+        </div>
+      </div>
+
+      <div className="detail-grid">
+        <article className="detail-panel wide">
+          <span>Bio</span>
+          <p>{member.bio}</p>
+        </article>
+        <article className="detail-panel">
+          <span>Focus</span>
+          <p>{member.focus}</p>
+        </article>
+        <article className="detail-panel">
+          <span>Background</span>
+          <p>{member.hometown}</p>
+        </article>
+        <article className="detail-panel">
+          <span>Interests</span>
+          <div className="tag-list">{member.interests.map((interest) => <b key={interest}>{interest}</b>)}</div>
+        </article>
+        <article className="detail-panel social-panel">
+          <span>Social Links</span>
+          <a className={!member.socials.linkedin ? 'disabled' : ''} href={member.socials.linkedin || undefined}>LinkedIn</a>
+          <a className={!member.socials.github ? 'disabled' : ''} href={member.socials.github || undefined}>GitHub</a>
+          <a className={!member.socials.website ? 'disabled' : ''} href={member.socials.website || undefined}>Website</a>
+        </article>
+      </div>
+    </section>
+  )
+}
+
+function SolutionsPage() {
+  const sortedSolutions = sortByMostRecent(solutions).filter((solution) => solution.year >= currentSeason)
+
+  return (
+    <section className="section-pad page-shell solutions-page" id="solutions">
+      <div className="section-heading"><div><div className="section-label">Solutions / {currentSeason} and beyond</div><h2>Competition <em>solutions.</em></h2></div></div>
+      <p className="page-lede">This archive will hold every solution from {currentSeason} onward, with the most recent season pinned first.</p>
+      <div className="solution-list">
+        {sortedSolutions.map((solution) =>
+          <article className="solution-card" key={solution.year}>
+            <div className="solution-year">{solution.year}</div>
+            <div>
+              <div className="status-pill">{solution.status}</div>
+              <h3>{solution.title}</h3>
+              <p>{solution.summary}</p>
+              <div className="tag-list">{solution.highlights.map((highlight) => <b key={highlight}>{highlight}</b>)}</div>
+            </div>
+          </article>)}
+      </div>
+    </section>
+  )
+}
+
+function HomePage() {
   const [heroFade, setHeroFade] = useState(0)
 
   useEffect(() => {
@@ -154,15 +402,11 @@ export default function Page() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const filtered = filter === 'all' ? members : members.filter((member) => member.track === filter)
+  const featuredMembers = sortByMostRecent(teamMembers).filter((member) => member.year >= currentSeason).slice(0, 6)
+  const currentSolution = sortByMostRecent(solutions)[0]
 
   return (
-      <main>
-        <nav className="site-nav">
-          <a className="brand" href="#home"><span className="brand-mark">H</span><span>UCF HSI BOB</span></a>
-          <div className="nav-links"><a href="#project">Solutions</a><a href="#equipo">Team</a></div>
-        </nav>
-
+      <>
         <section className="hero" id="home">
           <div className="hero-reel-wrap">
             <section className="icon-marquee" aria-label="Team Projects">
@@ -174,21 +418,21 @@ export default function Page() {
               UCF<br />
               <em>HSI BATTLE OF THE BRAINS TEAM</em>
             </h1>
-            <a className="hero-project-button" href="#project">View Solutions <span>↗</span></a>
-            <a className="hero-project-button" href="#equipo">View Team <span>↗</span></a>
+            <a className="hero-project-button" href="#solutions">View Solutions <span>↗</span></a>
+            <a className="hero-project-button" href="#team">View Team <span>↗</span></a>
 
           </div>
         </section>
 
         <section className="intro-grid section-pad" id="project">
-          <div className="section-label">01 / LA IDEA</div>
+          <div className="section-label">01 / The Solution</div>
           <div className='section-project'>
             <div>
-              <p className="display-copy">Current <span className="gold-text">Solution</span></p>
-              <p className="body-copy">HSI Battle of Brains portfolio where knowledge meets competition.</p>
-              <a className="hero-project-button" href="#projects">More Solutions <span>↗</span></a>
+              <p className="display-copy">{currentSolution.title}</p>
+              <p className="body-copy">{currentSolution.summary}</p>
+              <a className="hero-project-button" href="#solutions">More Solutions <span>↗</span></a>
             </div>
-            <img className="section-app-icon" src={appIcons[Math.floor(Math.random() * appIcons.length)].src} alt="Project icon" draggable={false} />
+            <img className="section-app-icon" src={appIcons[0].src} alt="Project icon" draggable={false} />
           </div>
 
         </section>
@@ -210,24 +454,13 @@ export default function Page() {
         {/*/!*</section>*!/*/}
 
         <section className="section-pad team-section" id="equipo">
-          <div className="section-heading"><div><div className="section-label">02 / EL EQUIPO</div><h2>Meet <em>the Current Team.</em></h2></div></div>
-          <div className="filter-row" role="group" aria-label="Filtrar equipo">{filterOptions.map(([value, label], index) => <button key={`${value}-${index}`} className={filter === value ? 'active' : ''} onClick={() => setFilter(value)}>{label}</button>)}</div>
-          <div className="members-grid">
-            {filtered.map((member, index) =>
-              <article className="member-card" key={member.name}>
-                <div className="member-number">0{index + 1}</div>
-                <div className="avatar">{member.initials}</div>
-                <div className="member-info">
-                  <h3>{member.name}</h3>
-                  <p className="member-role">{member.role}</p>
-                  <p className="member-bio">{member.bio}</p>
-                </div>
-                <span className="card-arrow">↗</span>
-              </article>)}</div>
+          <div className="section-heading"><div><div className="section-label">02 / The Team</div><h2>Meet <em>the Current Team.</em></h2></div></div>
+          <TeamGrid members={featuredMembers} />
+          <a className="hero-project-button section-link" href="#team">All Team Members <span>↗</span></a>
         </section>
 
         <section className="photo-section section-pad">
-          <div className="section-label">03 / GALERIA</div>
+          <div className="section-label">03 / Gallery</div>
           <div className="photo-grid">
             {photos.map((photo) =>
                 <div className={`photo-card ${photo.size}`} key={photo.src}>
@@ -241,10 +474,24 @@ export default function Page() {
           <h2>UCF<br /><em>BATTLE OF THE BRAINS TEAM.</em></h2>
           <div className="footer-bottom">
             <span>UCF HSI BATTLE OF THE BRAINS TEAM</span>
-            <a href="#home">Volver arriba ↑</a>
+            <a href="#home">Back to top ↑</a>
           </div>
         </footer>
 
-      </main>
+      </>
+  )
+}
+
+export default function Page() {
+  const route = useHashRoute()
+
+  return (
+    <main>
+      <SiteNav />
+      {route.page === 'home' && <HomePage />}
+      {route.page === 'team' && <TeamPage />}
+      {route.page === 'member' && <MemberPage slug={route.slug} />}
+      {route.page === 'solutions' && <SolutionsPage />}
+    </main>
   )
 }
