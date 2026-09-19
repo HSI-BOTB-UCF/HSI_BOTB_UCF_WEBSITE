@@ -86,7 +86,7 @@ const teamMembers = [
     initials: 'AD',
     track: 'Marketing',
     memberGroup: 'member',
-    photo: '/prof_pics/anjanette-diaz',
+    photo: '/prof_pics/anjanette-diaz.png',
     bio: 'Anjanette shapes how the team communicates its solution, audience, story, and impact during the competition season.',
     hometown: 'Orlando, FL',
     focus: 'Brand strategy, messaging, and audience research',
