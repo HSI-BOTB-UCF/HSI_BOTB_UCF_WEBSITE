@@ -22,12 +22,12 @@ const teamMembers = [
     initials: 'MH',
     track: 'Programmer/Engineer',
     memberGroup: 'member',
-    photo: placeholderPhoto,
+    photo: '/prof_pics/miguel-angel.png',
     bio: 'Miguel helps turn team concepts into working technical prototypes, with a focus on engineering systems and disciplined build execution.',
     hometown: 'Orlando, FL',
     focus: 'Rapid prototyping, systems thinking, and technical research',
     interests: ['Aerospace design', 'Simulation', 'Hardware builds'],
-    socials: { linkedin: '', github: '', website: '' }
+    socials: { linkedin: 'https://www.linkedin.com/in/miguelangelhurtadogomez/', github: 'https://github.com/mmm1602' }
   },
   {
     slug: 'javier-a-cuevas-chabrier',
@@ -38,12 +38,12 @@ const teamMembers = [
     initials: 'JC',
     track: 'Programmer/Engineer',
     memberGroup: 'teamCaptain',
-    photo: placeholderPhoto,
+    photo: '/prof_pics/javier-cuevas.jpeg',
     bio: 'Hello everyone! I am excited to compete at HSI Battle of the Brains for the 2026 academic year! I currently work with propulsion systems and the Propulsion and Energy Research Lab under the Axial Stage Combustion Chamber project. I like to code in python and do projects with friends. My most recent projects are a solid propellant rocket motor where I use sorbitol and potassium nitrate to make rocket fuel and a BAJA buggy made from a go-kart frame and engine. I hope to speak to you soon!',
     hometown: 'Orlando, FL',
     focus: 'Propulsion systems, Python tools, and mechanical product design',
     interests: ['Rocket motors', 'BAJA builds', 'Python projects'],
-    socials: { linkedin: '', github: '', website: '' }
+    socials: { linkedin: 'https://www.linkedin.com/in/javier-cuevas-jacc84/', github: 'https://github.com/Javy-Scratchspace' }
   },
   {
     slug: 'alejandro-valdez',
@@ -54,12 +54,12 @@ const teamMembers = [
     initials: 'AV',
     track: 'Programmer/Engineer',
     memberGroup: 'member',
-    photo: placeholderPhoto,
+    photo: '/prof_pics/alex-valdez.png',
     bio: 'Hello folks, my name is Alejandro Valdez and I\'m a second year Aerospace Engineering student from Mexico. In my free time you\'ll find me outdoors, playing lacrosse, or building engineering projects like rockets. I\'m working toward a career as an engineer in the space industry, and I also hope to be an activist for environmental conservation along the way. Thanks!',
     hometown: 'Mexico',
     focus: 'Space systems, sustainability, and engineering project execution',
     interests: ['Rocketry', 'Lacrosse', 'Environmental conservation'],
-    socials: { linkedin: '', github: '', website: '' }
+    socials: { linkedin: 'https://www.linkedin.com/in/alejandro-valdez15/', github: 'https://github.com/alexvaldex' }
   },
   {
     slug: 'david-navarrete',
@@ -70,12 +70,12 @@ const teamMembers = [
     initials: 'DN',
     track: 'Programmer/Engineer',
     memberGroup: 'member',
-    photo: placeholderPhoto,
+    photo: '/prof_pics/david-navarette.png',
     bio: 'David supports the software side of the team, helping translate challenge requirements into practical web, data, and product workflows.',
     hometown: 'Orlando, FL',
     focus: 'Software architecture, implementation, and debugging',
     interests: ['Full-stack development', 'Automation', 'Product thinking'],
-    socials: { linkedin: '', github: '', website: '' }
+    socials: { linkedin: 'https://www.linkedin.com/in/david-navarrete-/', github: 'https://github.com/AlphaKnight1701-A' }
   },
   {
     slug: 'anjanette-diaz',
@@ -86,12 +86,12 @@ const teamMembers = [
     initials: 'AD',
     track: 'Marketing',
     memberGroup: 'member',
-    photo: placeholderPhoto,
+    photo: '/prof_pics/anjanette-diaz',
     bio: 'Anjanette shapes how the team communicates its solution, audience, story, and impact during the competition season.',
     hometown: 'Orlando, FL',
     focus: 'Brand strategy, messaging, and audience research',
     interests: ['Campaign planning', 'Consumer insight', 'Pitch storytelling'],
-    socials: { linkedin: '', github: '', website: '' }
+    socials: { linkedin: 'https://www.linkedin.com/in/diazanjanette/' }
   },
   {
     slug: 'sebastian-cardenas',
@@ -102,12 +102,12 @@ const teamMembers = [
     initials: 'SC',
     track: 'Videographer',
     memberGroup: 'member',
-    photo: placeholderPhoto,
+    photo: '/prof_pics/sebastian-cardenas.jpeg',
     bio: 'Sebastian captures the team process and creates visual material that makes the work easier to understand, remember, and share.',
     hometown: 'Orlando, FL',
     focus: 'Video production, motion, and visual storytelling',
     interests: ['Cinematography', 'Editing', 'Digital media'],
-    socials: { linkedin: '', github: '', website: '' }
+    socials: { linkedin: 'https://www.linkedin.com/in/sebastian-cardenas-62b3b9328/' }
   },
   {
     slug: 'diogo-ortiz',
@@ -118,12 +118,12 @@ const teamMembers = [
     initials: 'DO',
     track: 'Finance',
     memberGroup: 'member',
-    photo: placeholderPhoto,
+    photo: '/prof_pics/diogo-ortiz.png',
     bio: 'Diogo keeps the solution grounded in business reality, supporting financial modeling, feasibility, and market planning.',
     hometown: 'Orlando, FL',
     focus: 'Financial planning, market validation, and venture feasibility',
     interests: ['Startup finance', 'Business modeling', 'Operations'],
-    socials: { linkedin: '', github: '', website: '' }
+    socials: { linkedin: 'https://www.linkedin.com/in/diogo-ortiz/' }
   },
   {
     slug: 'natalia-del-vecchio-coronado',
@@ -134,12 +134,12 @@ const teamMembers = [
     initials: "NDVC",
     track: 'Business',
     memberGroup: 'member',
-    photo: placeholderPhoto,
+    photo: '/prof_pics/natalia-del-vecchio.png',
     bio: '',
     hometown: '',
     focus: '',
-    intersests: [],
-    socials: { linkedin: '', github: '', website: '' }
+    interests: [],
+    socials: { linkedin: 'https://www.linkedin.com/in/natalia-delvecchio/' }
   },
   {
     slug: 'benjamin-c-challco-acosta',
@@ -155,7 +155,7 @@ const teamMembers = [
     hometown: 'Orlando, FL',
     focus: 'Business analytics, sales strategy, and team development',
     interests: ['Mentorship', 'Marketing and sales', 'Community impact'],
-    socials: { linkedin: '', github: '', website: '' }
+    socials: { linkedin: 'https://www.linkedin.com/in/benjaminchallco/' }
   },
   {
     slug: 'adrianna-n-marquez',
@@ -171,7 +171,7 @@ const teamMembers = [
     hometown: 'Colombian and Argentinian heritage',
     focus: 'IT project management, student support, and integrated business',
     interests: ['Veteran student success', 'Project management', 'Community support'],
-    socials: { linkedin: '', github: '', website: '' }
+    socials: { linkedin: 'https://www.linkedin.com/in/adrianna-marquez/' }
   },
   {
     slug: 'david-penn',
@@ -187,7 +187,7 @@ const teamMembers = [
     hometown: 'Orlando, FL',
     focus: 'Faculty mentorship, solution strategy, and team development',
     interests: ['Student success', 'Applied innovation', 'Competition strategy'],
-    socials: { linkedin: '', github: '', website: '' }
+    socials: { linkedin: 'https://www.linkedin.com/in/david-penn-phd-edd-mfa-pmp-58683314/' }
   }
 ]
 
@@ -279,12 +279,16 @@ function sortByMostRecent(items) {
   return [...items].sort((first, second) => second.year - first.year || first.name?.localeCompare(second.name) || first.title?.localeCompare(second.title))
 }
 
+function sortMembersByName(members) {
+  return [...members].sort((first, second) => first.name.localeCompare(second.name))
+}
+
 function getAvailableYears(items) {
   return [...new Set(items.filter((item) => item.year >= currentSeason).map((item) => item.year))].sort((first, second) => second - first)
 }
 
 function getCurrentYearMembers() {
-  return sortByMostRecent(teamMembers).filter((member) => member.year === currentSeason)
+  return sortMembersByName(teamMembers.filter((member) => member.year === currentSeason))
 }
 
 function getRoute() {
@@ -352,9 +356,11 @@ function MemberAvatar({ member, large = false }) {
 }
 
 function TeamGrid({ members }) {
+  const sortedMembers = sortMembersByName(members)
+
   return (
     <div className="members-grid">
-      {members.map((member, index) =>
+      {sortedMembers.map((member, index) =>
         <a className="member-card" href={`#team/${member.slug}`} key={member.slug}>
           <div className="member-number">{String(index + 1).padStart(2, '0')}</div>
           <MemberAvatar member={member} />
@@ -406,7 +412,7 @@ function TeamPage({ year }) {
 
   const years = getAvailableYears(teamMembers)
   const membersByYear = years.map((teamYear) => {
-    const yearMembers = sortByMostRecent(teamMembers).filter((member) => member.year === teamYear)
+    const yearMembers = sortMembersByName(teamMembers.filter((member) => member.year === teamYear))
     return { year: teamYear, members: filter === 'all' ? yearMembers : yearMembers.filter((member) => member.track === filter) }
   })
 
@@ -491,7 +497,7 @@ function SolutionsPage({ year }) {
   return (
     <section className="section-pad page-shell solutions-page" id="solutions">
       <div className="section-heading"><div><div className="section-label">Solutions / {currentSeason} and beyond</div><h2>Competition <em>solutions.</em></h2></div></div>
-      <p className="page-lede">This archive will hold every solution from {currentSeason} onward, with the most recent season pinned first.</p>
+      <p className="page-lede">Thank you for visiting our solutions webpage! Please feel free to check out the other websites we have developed over the years.</p>
       <div className="year-list solution-list">
         {years.map((solutionYear) => {
           const yearSolutions = sortByMostRecent(solutions).filter((solution) => solution.year === solutionYear)
