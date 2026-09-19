@@ -188,6 +188,22 @@ const teamMembers = [
     focus: 'Faculty mentorship, solution strategy, and team development',
     interests: ['Student success', 'Applied innovation', 'Competition strategy'],
     socials: { linkedin: 'https://www.linkedin.com/in/david-penn-phd-edd-mfa-pmp-58683314/' }
+  },
+  {
+    slug: 'jim-gallo',
+    year: 2026,
+    name: 'Jim Gallo',
+    role: 'Faculty Advisor',
+    major: 'Ph.D. Industrial and Organizational Psychology',
+    initials: 'JG',
+    track: 'Advisor',
+    memberGroup: 'professor',
+    photo: '/prof_pics/jim-gallo.png',
+    bio: 'Dr. Gallo helps the members by testing them in difficult areas that make the members think critically.',
+    hometown: 'Orlando, FL',
+    focus: 'Faculty mentorship, solution strategy, and team development',
+    interests: ['Student success', 'Applied innovation', 'Competition strategy'],
+    socials: { linkedin: 'https://www.linkedin.com/in/jimgallo/' }
   }
 ]
 
