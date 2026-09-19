@@ -299,6 +299,19 @@ function sortMembersByName(members) {
   return [...members].sort((first, second) => first.name.localeCompare(second.name))
 }
 
+function formatSocialLabel(name) {
+  return name
+    .replace(/([a-z])([A-Z])/g, '$1 $2')
+    .replace(/[-_]/g, ' ')
+    .replace(/\b\w/g, (letter) => letter.toUpperCase())
+}
+
+function getMemberLinks(member) {
+  return Object.entries(member.socials || {})
+    .filter(([, link]) => Boolean(link))
+    .map(([name, link]) => ({ name: formatSocialLabel(name), link }))
+}
+
 function getAvailableYears(items) {
   return [...new Set(items.filter((item) => item.year >= currentSeason).map((item) => item.year))].sort((first, second) => second - first)
 }
@@ -462,6 +475,8 @@ function MemberPage({ slug }) {
     )
   }
 
+  const memberLinks = getMemberLinks(member)
+
   return (
     <section className="section-pad page-shell member-detail">
       <a className="back-link" href="#team">← Back to team</a>
@@ -493,8 +508,7 @@ function MemberPage({ slug }) {
         </article>
         <article className="detail-panel social-panel">
           <span>Social Links</span>
-          <a className={!member.socials.linkedin ? 'disabled' : ''} href={member.socials.linkedin || undefined}>LinkedIn</a>
-          <a className={!member.socials.github ? 'disabled' : ''} href={member.socials.github || undefined}>GitHub</a>
+          {memberLinks.map((socialLink) => <a href={socialLink.link} key={socialLink.name}>{socialLink.name}</a>)}
         </article>
       </div>
     </section>
