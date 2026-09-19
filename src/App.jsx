@@ -424,7 +424,7 @@ function TeamPage({ year }) {
   return (
     <section className="section-pad page-shell team-section" id="team">
       <div className="section-heading"><div><div className="section-label">Team / {currentSeason} and beyond</div><h2>Meet <em>the team.</em></h2></div></div>
-      <p className="page-lede">Browse every HSI Battle of the Brains team member from {currentSeason} onward. The newest class stays at the top as future years are added.</p>
+      <p className="page-lede">Welcome to our teams page! To learn more about any member, click on the top right arrow of our box. Feel free to browse around, learn more about each individual member, and connect with us via our LinkedIn links displayed on our individual pages!</p>
       <div className="filter-row" role="group" aria-label="Filter team members">{filterOptions.map(([value, label], index) => <button key={`${value}-${index}`} className={filter === value ? 'active' : ''} onClick={() => setFilter(value)}>{label}</button>)}</div>
       <div className="year-list">
         {membersByYear.map((group) => <TeamYearSection key={group.year} {...group} />)}
@@ -479,7 +479,6 @@ function MemberPage({ slug }) {
           <span>Social Links</span>
           <a className={!member.socials.linkedin ? 'disabled' : ''} href={member.socials.linkedin || undefined}>LinkedIn</a>
           <a className={!member.socials.github ? 'disabled' : ''} href={member.socials.github || undefined}>GitHub</a>
-          <a className={!member.socials.website ? 'disabled' : ''} href={member.socials.website || undefined}>Website</a>
         </article>
       </div>
     </section>
