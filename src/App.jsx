@@ -40,7 +40,7 @@ const teamMembers = [
     memberGroup: 'teamCaptain',
     photo: '/prof_pics/javier-cuevas.jpeg',
     bio: 'Hello everyone! I am excited to compete at HSI Battle of the Brains for the 2026 academic year! I currently work with propulsion systems and the Propulsion and Energy Research Lab under the Axial Stage Combustion Chamber project. I like to code in python and do projects with friends. My most recent projects are a solid propellant rocket motor where I use sorbitol and potassium nitrate to make rocket fuel and a BAJA buggy made from a go-kart frame and engine. I hope to speak to you soon!',
-    hometown: 'Orlando, FL',
+    hometown: 'Utuado, PR',
     focus: 'Propulsion systems, Python tools, and mechanical product design',
     interests: ['Rocket motors', 'BAJA builds', 'Python projects'],
     socials: { linkedin: 'https://www.linkedin.com/in/javier-cuevas-jacc84/', github: 'https://github.com/Javy-Scratchspace' }
@@ -103,8 +103,8 @@ const teamMembers = [
     track: 'Videographer',
     memberGroup: 'member',
     photo: '/prof_pics/sebastian-cardenas.jpeg',
-    bio: 'Sebastian captures the team process and creates visual material that makes the work easier to understand, remember, and share.',
-    hometown: 'Orlando, FL',
+    bio: 'Hello! My name is Sebastian Cardenas, half Colombian and half Peruvian! I\'m very excited to be a part of this marvelous experience. I am a transfer student from Polk State College and I can\'t wait to provide my artistic abilities to portray our ideas and solutions!',
+    hometown: 'Lake Alfred, FL',
     focus: 'Video production, motion, and visual storytelling',
     interests: ['Cinematography', 'Editing', 'Digital media'],
     socials: { linkedin: 'https://www.linkedin.com/in/sebastian-cardenas-62b3b9328/' }
