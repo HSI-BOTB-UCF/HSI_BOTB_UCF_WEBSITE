@@ -183,7 +183,7 @@ const teamMembers = [
     track: 'Advisor',
     memberGroup: 'professor',
     photo: '/prof_pics/david-penn.png',
-    bio: 'David supports the team with faculty guidance, strategic direction, and institutional knowledge throughout the competition cycle.',
+    bio: 'Dr. Penn supports the team with faculty guidance, strategic direction, and institutional knowledge throughout the competition cycle.',
     hometown: 'Orlando, FL',
     focus: 'Faculty mentorship, solution strategy, and team development',
     interests: ['Student success', 'Applied innovation', 'Competition strategy'],
