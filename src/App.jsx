@@ -228,8 +228,7 @@ const photos = [
 
 const appIcons = [
   { name: 'UCF LOGO', src: '/ucf-logo.png' },
-  { name: 'HSI LOGO', src: '/botb-logo.png' },
-  { name: 'Solution Placeholder', src: '/favicon.svg' },
+  { name: 'HSI LOGO', src: '/botb-logo.png' }
 ]
 
 function ReelColumn({ icons, direction }) {
