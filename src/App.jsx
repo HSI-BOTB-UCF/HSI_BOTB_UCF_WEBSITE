@@ -228,7 +228,7 @@ const photos = [
 
 const appIcons = [
   { name: 'UCF LOGO', src: '/ucf-logo.png' },
-  { name: 'HSI LOGO', src: '/icons.svg' },
+  { name: 'HSI LOGO', src: '/botb-logo.png' },
   { name: 'Solution Placeholder', src: '/favicon.svg' },
 ]
 
