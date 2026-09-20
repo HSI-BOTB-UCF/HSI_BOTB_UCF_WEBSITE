@@ -587,7 +587,8 @@ function HomePage() {
 
         <section className="description-section section-pad" id="description">
           <div className="section-label">01 / The Description</div>
-          <p className="display-copy">HSI Battle of the Brains is a national competition where university teams solve under pressure, pitch their ideas, and learn alongside industry professionals.</p>
+          <h3>About Hispanic Scholars Institute Battle of the Brains</h3>
+          <p>HSI Battle of the Brains is a national competition where university teams solve under pressure, pitch their ideas, and learn alongside industry professionals.</p>
           <div className="description-grid">
             <article>
               <span>24-Hour Competition</span>
