@@ -585,8 +585,31 @@ function HomePage() {
           </div>
         </section>
 
+        <section className="description-section section-pad" id="description">
+          <div className="section-label">01 / The Description</div>
+          <p className="display-copy">HSI Battle of the Brains is a national competition where university teams solve under pressure, pitch their ideas, and learn alongside industry professionals.</p>
+          <div className="description-grid">
+            <article>
+              <span>24-Hour Competition</span>
+              <p>Student teams compete in a 24-hour, cross-discipline challenge to develop solutions and determine the finalists.</p>
+            </article>
+            <article>
+              <span>Quick Pitch</span>
+              <p>Finalists present comprehensive solutions in a fast-paced pitch for the HSI Battle of the Brains Champion title.</p>
+            </article>
+            <article>
+              <span>Workshops</span>
+              <p>Students join company tours and facilitated workshops that help them grow practical skills in engaging ways.</p>
+            </article>
+            <article>
+              <span>Panel Discussions</span>
+              <p>Professionals and students take part in official panels where they share experience, insight, and expertise.</p>
+            </article>
+          </div>
+        </section>
+
         <section className="intro-grid section-pad" id="project">
-          <div className="section-label">01 / The Solution</div>
+          <div className="section-label">02 / The Latest Solution</div>
           <div className='section-project'>
             <div>
               <p className="display-copy">{currentSolution.title}</p>
@@ -600,13 +623,13 @@ function HomePage() {
 
 
         <section className="section-pad team-section" id="equipo">
-          <div className="section-heading"><div><div className="section-label">02 / The Team</div><h2>Meet <em>the Current Team.</em></h2></div></div>
+          <div className="section-heading"><div><div className="section-label">03 / The Team</div><h2>Meet <em>the Current Team.</em></h2></div></div>
           <HomeTeamGroups members={currentYearMembers} />
           <a className="hero-project-button section-link" href="#team">All Team Members <span>↗</span></a>
         </section>
 
         <section className="photo-section section-pad">
-          <div className="section-label">03 / Gallery</div>
+          <div className="section-label">04 / Gallery</div>
           <div className="photo-grid">
             {photos.map((photo) =>
                 <div className={`photo-card ${photo.size}`} key={photo.src}>

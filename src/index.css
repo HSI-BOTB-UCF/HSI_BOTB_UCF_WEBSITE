@@ -415,6 +415,44 @@ em {
   border-top: 1px solid var(--line);
 }
 
+.description-section {
+  border-top: 1px solid var(--line);
+}
+
+.description-section .display-copy {
+  margin-top: 34px;
+  max-width: 1120px;
+}
+
+.description-grid {
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin-top: 64px;
+  background: var(--line);
+}
+
+.description-grid article {
+  background: var(--black);
+  padding: 30px;
+}
+
+.description-grid span {
+  color: var(--gold);
+  display: block;
+  font: 11px 'Courier New', monospace;
+  letter-spacing: .12em;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+
+.description-grid p {
+  color: var(--light-gray);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
 .section-project {
   display: flex;
   align-items: center;
@@ -981,6 +1019,7 @@ footer {
   .hero-reel-wrap .icon-marquee { height: 100%; }
   .hero-reel-wrap .marquee-column { padding: 76px 6px 18px; gap: 10px; }
   .hero-reel-wrap .app-icon { width: 100px; height: 100px; padding: 18px; border-radius: 16px; }
+  .description-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 700px) {
@@ -1043,6 +1082,7 @@ footer {
   }
 
   .intro-grid,
+  .description-grid,
   .faq-layout {
     grid-template-columns: 1fr;
     gap: 35px;
