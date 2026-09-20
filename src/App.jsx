@@ -227,7 +227,7 @@ const photos = [
 ]
 
 const appIcons = [
-  { name: 'UCF LOGO', src: '/favicon.svg' },
+  { name: 'UCF LOGO', src: '/ucf-logo.png' },
   { name: 'HSI LOGO', src: '/icons.svg' },
   { name: 'Solution Placeholder', src: '/favicon.svg' },
 ]
@@ -599,21 +599,6 @@ function HomePage() {
 
         </section>
 
-        {/*Old section that might look cool with some changes.*/}
-        {/*<section className="stats-band">*/}
-        {/*  <div>*/}
-        {/*    <strong>08</strong>*/}
-        {/*    <span>TEAM MEMBERS</span>*/}
-        {/*  </div>*/}
-        {/*  <div>*/}
-        {/*    <strong>04</strong>*/}
-        {/*    <span>DISCIPLINES</span>*/}
-        {/*  </div>*/}
-        {/*  <div>*/}
-        {/*    <strong>##</strong>*/}
-        {/*    <span>COMPLETED PROJECTS</span>*/}
-        {/*  </div>*/}
-        {/*/!*</section>*!/*/}
 
         <section className="section-pad team-section" id="equipo">
           <div className="section-heading"><div><div className="section-label">02 / The Team</div><h2>Meet <em>the Current Team.</em></h2></div></div>
