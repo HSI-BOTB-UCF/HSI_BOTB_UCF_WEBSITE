@@ -24,7 +24,7 @@ const teamMembers = [
     memberGroup: 'member',
     photo: '/prof_pics/miguel-angel.png',
     bio: 'Miguel helps turn team concepts into working technical prototypes, with a focus on engineering systems and disciplined build execution.',
-    hometown: 'Orlando, FL',
+    hometown: 'Medellin, COL',
     focus: 'Rapid prototyping, systems thinking, and technical research',
     interests: ['Aerospace design', 'Simulation', 'Hardware builds'],
     socials: { linkedin: 'https://www.linkedin.com/in/miguelangelhurtadogomez/', github: 'https://github.com/mmm1602' }
@@ -56,7 +56,7 @@ const teamMembers = [
     memberGroup: 'member',
     photo: '/prof_pics/alex-valdez.png',
     bio: 'Hello folks, my name is Alejandro Valdez and I\'m a second year Aerospace Engineering student from Mexico. In my free time you\'ll find me outdoors, playing lacrosse, or building engineering projects like rockets. I\'m working toward a career as an engineer in the space industry, and I also hope to be an activist for environmental conservation along the way. Thanks!',
-    hometown: 'Mexico',
+    hometown: 'Orlando, FL',
     focus: 'Space systems, sustainability, and engineering project execution',
     interests: ['Rocketry', 'Lacrosse', 'Environmental conservation'],
     socials: { linkedin: 'https://www.linkedin.com/in/alejandro-valdez15/', github: 'https://github.com/alexvaldex' }
@@ -72,7 +72,7 @@ const teamMembers = [
     memberGroup: 'member',
     photo: '/prof_pics/david-navarette.png',
     bio: 'David supports the software side of the team, helping translate challenge requirements into practical web, data, and product workflows.',
-    hometown: 'Orlando, FL',
+    hometown: 'Parkland, FL',
     focus: 'Software architecture, implementation, and debugging',
     interests: ['Full-stack development', 'Automation', 'Product thinking'],
     socials: { linkedin: 'https://www.linkedin.com/in/david-navarrete-/', github: 'https://github.com/AlphaKnight1701-A' }
@@ -88,7 +88,7 @@ const teamMembers = [
     memberGroup: 'member',
     photo: '/prof_pics/anjanette-diaz.png',
     bio: 'Anjanette shapes how the team communicates its solution, audience, story, and impact during the competition season.',
-    hometown: 'Orlando, FL',
+    hometown: 'Miami, FL',
     focus: 'Brand strategy, messaging, and audience research',
     interests: ['Campaign planning', 'Consumer insight', 'Pitch storytelling'],
     socials: { linkedin: 'https://www.linkedin.com/in/diazanjanette/' }
@@ -97,7 +97,7 @@ const teamMembers = [
     slug: 'sebastian-cardenas',
     year: 2026,
     name: 'Sebastian Cardenas',
-    role: 'Videographer',
+    role: 'Video Production Leader',
     major: 'B.S. Emerging Media',
     initials: 'SC',
     track: 'Videographer',
@@ -120,7 +120,7 @@ const teamMembers = [
     memberGroup: 'member',
     photo: '/prof_pics/diogo-ortiz.png',
     bio: 'Diogo keeps the solution grounded in business reality, supporting financial modeling, feasibility, and market planning.',
-    hometown: 'Orlando, FL',
+    hometown: 'Parkland, FL',
     focus: 'Financial planning, market validation, and venture feasibility',
     interests: ['Startup finance', 'Business modeling', 'Operations'],
     socials: { linkedin: 'https://www.linkedin.com/in/diogo-ortiz/' }
@@ -135,10 +135,10 @@ const teamMembers = [
     track: 'Business',
     memberGroup: 'member',
     photo: '/prof_pics/natalia-del-vecchio.png',
-    bio: '',
-    hometown: '',
-    focus: '',
-    interests: [],
+    bio: 'Natalia focuses on making sure the solution is marketable. She plays a crucial role in figuring out what needs to be done to get the solution profitable as soon as possible.',
+    hometown: 'Coconut Creek, FL',
+    focus: 'Marketing strategies, business implementation, and community involvement',
+    interests: ['Startup marketing', 'Business modeling', 'Consumer experience'],
     socials: { linkedin: 'https://www.linkedin.com/in/natalia-delvecchio/' }
   },
   {
@@ -298,6 +298,20 @@ function sortMembersByName(members) {
   return [...members].sort((first, second) => first.name.localeCompare(second.name))
 }
 
+const memberGroupOrder = {
+  professor: 0,
+  gradAdvisor: 1,
+  teamCaptain: 2,
+  member: 3,
+}
+
+function sortMembersByGroupAndName(members) {
+  return [...members].sort((first, second) => {
+    const groupDifference = (memberGroupOrder[first.memberGroup] ?? 99) - (memberGroupOrder[second.memberGroup] ?? 99)
+    return groupDifference || first.name.localeCompare(second.name)
+  })
+}
+
 function formatSocialLabel(name) {
   return name
     .replace(/([a-z])([A-Z])/g, '$1 $2')
@@ -384,17 +398,21 @@ function MemberAvatar({ member, large = false }) {
 }
 
 function TeamGrid({ members }) {
-  const sortedMembers = sortMembersByName(members)
+  const sortedMembers = sortMembersByGroupAndName(members)
 
   return (
     <div className="members-grid">
       {sortedMembers.map((member, index) =>
         <a className="member-card" href={`#team/${member.slug}`} key={member.slug}>
           <div className="member-number">{String(index + 1).padStart(2, '0')}</div>
-          <MemberAvatar member={member} />
           <div className="member-info">
-            <h3>{member.name}</h3>
-            <p className="member-role">{member.role} · {member.major}</p>
+            <div className="member-card-header">
+              <MemberAvatar member={member} />
+              <div>
+                <h3>{member.name}</h3>
+                <p className="member-role">{member.role} · {member.major}</p>
+              </div>
+            </div>
             <p className="member-bio">{member.bio}</p>
           </div>
           <span className="card-arrow">↗</span>
@@ -488,11 +506,12 @@ function MemberPage({ slug }) {
         </div>
       </div>
 
+      <article className="member-description">
+        <span>Description</span>
+        <p>{member.bio}</p>
+      </article>
+
       <div className="detail-grid">
-        <article className="detail-panel wide">
-          <span>Bio</span>
-          <p>{member.bio}</p>
-        </article>
         <article className="detail-panel">
           <span>Focus</span>
           <p>{member.focus}</p>

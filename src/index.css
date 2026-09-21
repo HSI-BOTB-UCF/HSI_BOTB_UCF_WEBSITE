@@ -664,6 +664,12 @@ footer h2 {
   min-width: 0;
 }
 
+.member-card-header {
+  align-items: center;
+  display: flex;
+  gap: 22px;
+}
+
 .member-role {
   color: var(--gold);
   font: 11px 'Courier New', monospace;
@@ -763,6 +769,27 @@ footer h2 {
   font: 13px 'Courier New', monospace;
   margin-top: 22px;
   text-transform: uppercase;
+}
+
+.member-description {
+  border-bottom: 1px solid var(--line);
+  padding: 34px 0 42px;
+}
+
+.member-description span {
+  color: var(--gold);
+  display: inline-block;
+  font: 11px 'Courier New', monospace;
+  letter-spacing: .12em;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+
+.member-description p {
+  color: var(--light-gray);
+  font-size: clamp(17px, 2vw, 26px);
+  line-height: 1.5;
+  max-width: 980px;
 }
 
 .detail-grid {
@@ -1112,6 +1139,26 @@ footer {
     border-left: 0;
   }
 
+  .member-card {
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .member-info {
+    display: grid;
+    gap: 18px;
+  }
+
+  .member-card-header {
+    align-items: center;
+    gap: 16px;
+  }
+
+  .member-bio {
+    margin-top: 0;
+    max-width: none;
+  }
+
   .photo-grid {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 240px 180px 180px;
@@ -1125,10 +1172,36 @@ footer {
     margin-top: -15px;
   }
 
-  .member-detail-hero,
   .detail-grid,
   .solution-card {
     grid-template-columns: 1fr;
+  }
+
+  .member-detail-hero {
+    align-items: center;
+    gap: 18px;
+    grid-template-columns: minmax(96px, 132px) minmax(0, 1fr);
+    padding-bottom: 32px;
+  }
+
+  .member-detail-hero h1 {
+    font-size: clamp(2.4rem, 11vw, 4rem);
+    letter-spacing: -.07em;
+  }
+
+  .detail-role {
+    font-size: 10px;
+    line-height: 1.45;
+  }
+
+  .member-description {
+    padding: 26px 0 32px;
+  }
+
+  .member-description p {
+    font-size: 17px;
+    line-height: 1.6;
+    max-width: none;
   }
 
   .detail-panel.wide {
