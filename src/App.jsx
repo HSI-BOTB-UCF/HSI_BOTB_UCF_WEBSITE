@@ -1,9 +1,8 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const currentSeason = 2026
-const placeholderPhoto = '/prof_pics/placeholder.svg'
 
 const homeTeamGroups = [
   { key: 'professor', label: 'Professor' },
@@ -232,46 +231,13 @@ const appIcons = [
 ]
 
 function ReelColumn({ icons, direction }) {
-  const reelRef = useRef(null)
-  const startY = useRef(0)
-  const [isDragging, setIsDragging] = useState(false)
-
-  const handlePointerDown = (event) => {
-    reelRef.current?.setPointerCapture(event.pointerId)
-    startY.current = event.clientY
-    setIsDragging(true)
-  }
-
-  const handlePointerMove = (event) => {
-    if (!isDragging || !reelRef.current) return
-    reelRef.current.style.setProperty('--flick-offset', `${event.clientY - startY.current}px`)
-  }
-
-  const stopDragging = () => {
-    if (!reelRef.current) return
-    setIsDragging(false)
-    reelRef.current.style.setProperty('--flick-offset', '0px')
-  }
-
-  const reelIcons = [...icons, ...icons, ...icons]
-  const className = `marquee-column marquee-${direction}${isDragging ? ' is-dragging' : ''}`
-
-  return (
-      <div
-          ref={reelRef}
-          className={className}
-          onPointerDown={handlePointerDown}
-          onPointerMove={handlePointerMove}
-          onPointerUp={stopDragging}
-          onPointerCancel={stopDragging}
-      >
-        {reelIcons.map((icon, index) => (
-            <div className="app-tile" key={`${direction}-${icon.name}-${index}`}>
-              <img className="app-icon" src={icon.src} alt={`${icon.name} icon`} draggable={false} onDragStart={(event) => event.preventDefault()} />
-            </div>
-        ))}
+  return <div className={`marquee-column marquee-${direction}`}>
+    {[...icons, ...icons, ...icons].map((icon, index) => (
+      <div className="app-tile" key={index}>
+        <img className="app-icon" src={icon.src} alt="" draggable={false} />
       </div>
-  )
+    ))}
+  </div>
 }
 
 const filterOptions = [
@@ -345,7 +311,7 @@ function getMemberLinks(member) {
 }
 
 function getAvailableYears(items) {
-  return [...new Set(items.filter((item) => item.year >= currentSeason).map((item) => item.year))].sort((first, second) => second - first)
+  return [...new Set(items.map((item) => item.year))].sort((first, second) => second - first)
 }
 
 function getCurrentYearMembers() {
@@ -372,6 +338,7 @@ function useHashRoute() {
 
   useEffect(() => {
     const handleHashChange = () => {
+      window.scrollTo({ top: 0, behavior: 'instant' })
       setRoute(getRoute())
     }
 
@@ -382,11 +349,11 @@ function useHashRoute() {
   return route
 }
 
-function SiteNav() {
+function SiteNav({ page }) {
   return (
     <nav className="site-nav" aria-label="Main navigation">
-      <a className="brand" href="#home"><span className="brand-mark">H</span><span>UCF HSI Battle of the Brains</span></a>
-      <div className="nav-links"><a href="#solutions"><em>Solutions</em></a><a href="#team"><em>Teams</em></a></div>
+      <a className="brand" href="#home" aria-label="UCF HSI Battle of the Brains home"><img src="/ucf-logo.png" alt="UCF" /><span className="brand-divider" aria-hidden="true" /><img src="/botb-logo.png" alt="HSI Battle of the Brains" /></a>
+      <div className="nav-links"><a href="#solutions" aria-current={page === 'solutions' ? 'page' : undefined}>Solutions</a><a href="#team" aria-current={page === 'team' || page === 'member' ? 'page' : undefined}>Teams</a></div>
     </nav>
   )
 }
@@ -443,39 +410,28 @@ function HomeTeamGroups({ members }) {
   )
 }
 
-function TeamYearSection({ year, members }) {
-  return (
-    <section className="year-section" id={`team-${year}`}>
-      <div className="year-heading">
-        <span>{year}</span>
-        <b>{members.length} members</b>
-      </div>
-      <TeamGrid members={members} />
-    </section>
-  )
-}
-
 function TeamPage({ year }) {
-  const [filter, setFilter] = useState('all')
-
   const years = getAvailableYears(teamMembers)
-  const membersByYear = years.map((teamYear) => {
-    const yearMembers = sortMembersByName(teamMembers.filter((member) => member.year === teamYear))
-    return { year: teamYear, members: filter === 'all' ? yearMembers : yearMembers.filter((member) => memberHasTrack(member, filter)) }
-  })
-
-  useEffect(() => {
-    if (!year) return
-    document.getElementById(`team-${year}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }, [year, filter])
+  const selectedYear = year ?? years[0]
+  const members = teamMembers.filter((member) => member.year === selectedYear)
 
   return (
     <section className="section-pad page-shell team-section" id="team">
-      <div className="section-heading"><div><div className="section-label">Team / {currentSeason} and beyond</div><h2>Meet <em>the team.</em></h2></div></div>
-      <p className="page-lede">Welcome to our teams page! To learn more about any member, click on the top right arrow of our box. Feel free to browse around, learn more about each individual member, and connect with us via our LinkedIn links displayed on our individual pages!</p>
-      <div className="filter-row" role="group" aria-label="Filter team members">{filterOptions.map(([value, label], index) => <button key={`${value}-${index}`} className={filter === value ? 'active' : ''} onClick={() => setFilter(value)}>{label}</button>)}</div>
-      <div className="year-list">
-        {membersByYear.map((group) => <TeamYearSection key={group.year} {...group} />)}
+      <div className="section-heading"><div><div className="section-label">The people behind the ideas</div><h1 className="page-title">Meet <em>the team.</em></h1></div></div>
+      <p className="page-lede">Explore each season and the disciplines that bring our team together. Select a member to learn more and connect.</p>
+      <nav className="year-tabs" aria-label="Team seasons">{years.map((teamYear) => <a key={teamYear} href={`#team/${teamYear}`} aria-current={selectedYear === teamYear ? 'page' : undefined}>{teamYear}<span>Team ↗</span></a>)}</nav>
+      <div className="year-heading"><span>{selectedYear}</span><b>{members.length} people</b></div>
+      <p className="category-note">Members with multiple disciplines appear in each relevant category.</p>
+      <div className="team-categories">
+        {filterOptions.filter(([track]) => track !== 'all').map(([track, label]) => {
+          const categoryMembers = members.filter((member) => memberHasTrack(member, track))
+          if (!categoryMembers.length) return null
+          return <section className="team-category" key={track}>
+            <h2 className="category-heading">{label}<span>{String(categoryMembers.length).padStart(2, '0')}</span></h2>
+            <TeamGrid members={categoryMembers} />
+          </section>
+        })}
+        {!members.length && <p className="empty-group-note">No team has been published for this season yet.</p>}
       </div>
     </section>
   )
@@ -540,33 +496,35 @@ function SolutionsPage({ year }) {
 
   useEffect(() => {
     if (!year) return
-    document.getElementById(`solutions-${year}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    document.getElementById(`solutions-${year}`)?.scrollIntoView({ behavior: 'instant', block: 'start' })
   }, [year])
 
   return (
     <section className="section-pad page-shell solutions-page" id="solutions">
-      <div className="section-heading"><div><div className="section-label">Solutions</div><h2>Competition <em>solutions.</em></h2></div></div>
-      <p className="page-lede">Thank you for visiting our solutions webpage! Please feel free to check out the other websites we have developed over the years.</p>
-      <div className="year-list solution-list">
+      <div className="section-heading"><div><div className="section-label">Solutions</div><h1 className="page-title">Competition <em>solutions.</em></h1></div></div>
+      <p className="page-lede">A season-by-season record of our ideas, prototypes, and competition work. Explore the journey and the materials behind each solution.</p>
+      <div className="solution-timeline">
         {years.map((solutionYear) => {
           const yearSolutions = sortByMostRecent(solutions).filter((solution) => solution.year === solutionYear)
 
           return (
-            <section className="year-section" id={`solutions-${solutionYear}`} key={solutionYear}>
-              <div className="year-heading">
-                <span>{solutionYear}</span>
-                <b>{yearSolutions.length} solution</b>
-              </div>
+            <section className="timeline-entry year-section" id={`solutions-${solutionYear}`} key={solutionYear}>
+              <div className="timeline-date"><span className="timeline-dot" aria-hidden="true" /><h2>{solutionYear}</h2><span>Competition season</span></div>
+              <div className="timeline-content">
               {yearSolutions.map((solution) =>
                 <article className="solution-card" key={solution.title}>
-                  <div className="solution-year">{solution.year}</div>
+                  <div className="section-label">Solution</div>
                   <div>
                     <div className="status-pill">{solution.status}</div>
                     <h3>{solution.title}</h3>
                     <p>{solution.summary}</p>
-                    <div className="tag-list">{solution.highlights.map((highlight) => <b key={highlight}>{highlight}</b>)}</div>
+                    <div className="solution-files" aria-label="Solution materials">
+                      {['Problem statement', 'Presentation deck', 'Demo & project files'].map((file) => <div className="file-placeholder" key={file}><span className="file-icon" aria-hidden="true">↳</span><div><strong>{file}</strong><span>Coming soon</span></div></div>)}
+                    </div>
+                    {solution.link && <a className="hero-project-button" href={solution.link}>Explore solution <span>↗</span></a>}
                   </div>
                 </article>)}
+              </div>
             </section>
           )
         })}
@@ -576,32 +534,22 @@ function SolutionsPage({ year }) {
 }
 
 function HomePage() {
-  const [heroFade, setHeroFade] = useState(0)
-
-  useEffect(() => {
-    const handleScroll = () => setHeroFade(Math.min(window.scrollY / 420, 1))
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
   const currentYearMembers = getCurrentYearMembers()
   const currentSolution = sortByMostRecent(solutions)[0]
 
   return (
       <>
         <section className="hero" id="home">
-          <div className="hero-reel-wrap">
+          <div className="hero-reel-wrap" aria-hidden="true">
             <section className="icon-marquee" aria-label="Team Projects">
               {reelColumns.map((column, index) => <ReelColumn key={`reel-${index}`} {...column} />)}
             </section>
           </div>
-          <div className="hero-copy" style={{ opacity: 1 - heroFade, transform: `translateY(${heroFade * -24}px)` }}>
-            <h1>
-              UCF<br />
-              <em>HSI BATTLE OF THE BRAINS TEAM</em>
-            </h1>
-            <a className="hero-project-button" href="#solutions">View Solutions <span>↗</span></a>
-            <a className="hero-project-button" href="#team">View Team <span>↗</span></a>
+          <div className="hero-copy">
+            <div className="section-label">University of Central Florida / {currentSeason}</div>
+            <h1 className="hero-title"><span className="hero-ucf">UCF</span><em className="hero-team-name">HSI BATTLE OF<br />THE BRAINS TEAM</em></h1>
+            <div className="hero-actions"><a className="hero-project-button" href="#solutions">View Solutions <span>↗</span></a>
+            <a className="hero-project-button secondary-button" href="#team">View Team <span>↗</span></a></div>
 
           </div>
         </section>
@@ -663,35 +611,40 @@ function HomePage() {
           <div className="section-label">04 / Gallery</div>
           <div className="photo-grid">
             {photos.map((photo) =>
-                <div className={`photo-card ${photo.size}`} key={photo.src}>
+                <div className={`photo-card ${photo.size}`} key={`${photo.src}-${photo.alt}`}>
                   <img src={photo.src} alt={photo.alt} />
                 </div>)}
           </div>
         </section>
 
-        <footer id="footer">
-          <div className="footer-kicker"></div>
-          <h2>UCF<br /><em>BATTLE OF THE BRAINS TEAM.</em></h2>
-          <div className="footer-bottom">
-            <span>UCF HSI BATTLE OF THE BRAINS TEAM</span>
-            <a href="#home">Back to top ↑</a>
-          </div>
-        </footer>
+
 
       </>
   )
 }
 
+function SiteFooter() {
+  return <footer id="footer" className="site-footer">
+    <div className="footer-top">
+      <div><div className="section-label">Stay connected</div><h2>Great ideas.<br /><em>Shared ambition.</em></h2><p>UCF HSI Battle of the Brains Team</p></div>
+      <div className="footer-contact"><h3>Contact</h3><p>Team inquiries & collaboration</p><span>Contact details coming soon.</span></div>
+      <nav className="footer-nav" aria-label="Footer navigation"><h3>Explore</h3><a href="#home">Home ↗</a><a href="#team">Teams ↗</a><a href="#solutions">Solutions ↗</a></nav>
+    </div>
+    <div className="footer-bottom"><span>University of Central Florida · HSI Battle of the Brains</span><span>{currentSeason} season</span></div>
+  </footer>
+}
+
 export default function Page() {
   const route = useHashRoute()
-
-  return (
-    <main>
-      <SiteNav />
+  const routeKey = [route.page, route.year, route.slug].filter(Boolean).join('-')
+  return <>
+    <SiteNav page={route.page} />
+    <main className="page-transition" key={routeKey}>
       {route.page === 'home' && <HomePage />}
       {route.page === 'team' && <TeamPage year={route.year} />}
       {route.page === 'member' && <MemberPage slug={route.slug} />}
       {route.page === 'solutions' && <SolutionsPage year={route.year} />}
     </main>
-  )
+    <SiteFooter />
+  </>
 }
