@@ -71,28 +71,30 @@ All routing and page components live in src/App.jsx. URLs use hash fragments:
 
 | Route | Behavior |
 | --- | --- |
-| #home (or empty) | Home: split UCF/title hero, logo backdrop, about panels, latest solution, current team, and gallery. |
+| #home (or empty) | Home: split UCF/title hero, logo backdrop, progressive about panels, reversed light solution section, team conveyor, and gallery. |
 | #team | Opens the newest available team season. |
 | #team/2026 | Selects that season and displays members grouped by discipline. |
 | #team/david-navarrete | Opens the profile with that unique slug. |
 | #solutions | Vertical solution timeline, newest season first. |
 | #solutions/2026 | Opens the timeline and scrolls to that season. |
 
-Unknown routes fall back to home. Missing member slugs show a not-found page; an unpublished team year shows an empty state. SiteNav and SiteFooter are shared across pages. The two navigation logos form one accessible home link. Navigation remains visible on phones.
+Unknown routes fall back to home. Missing member slugs show a not-found page; an unpublished team year shows an empty state. SiteNav and SiteFooter are shared across pages. The two navigation logos form one accessible home link. Navigation remains visible on phones and includes external HSI BOTB and UCF links. Hover changes text color and scale without a button background.
 
 ### Home
 
 - Large UCF wordmark beside the HSI Battle of the Brains Team title, with a short wipe entrance.
 - Decorative moving logo columns. Logos do not grow, highlight, pause on hover, or capture drag/touch input.
 - Team and Solutions buttons with subtle rounded corners and hover/focus feedback.
-- About panels, the latest solution, and current-season members grouped by faculty, graduate advisors, captain, and members.
+- Four about panels progress from charcoal to warm gold, with subtle hover feedback.
+- The latest solution uses a contrasting light background, with the UCF icon on the left and left-aligned copy on the right.
+- A live current-team card conveyor includes portraits, roles, majors, biographies, profile links, and social links. It reverses at the ends; hover/focus pauses movement, while touch, wheel, and arrow controls pause automatic movement until Play is selected. Reduced motion disables autoplay. Cards remain keyboard accessible.
 - A gallery using remote Unsplash placeholder imagery.
 
 ### Teams
 
-Clickable year links select one season. Highlighted headings group members into Faculty Advisor, Graduate Advisor, Business, Engineer, Marketing, Videographer, and Finance, based on their track values. Members with multiple tracks appear in each matching category. Counts beside headings count that category; the season count counts unique member records. Empty categories are omitted.
+A horizontal timeline with clickable year nodes selects one season. Category jump buttons scroll to and focus the chosen section. Highlighted headings group members into Faculty Advisor, Graduate Advisor, Business, Engineer, Marketing, Videographer, and Finance, based on their track values. Faculty advisors appear only under Faculty Advisor, and graduate advisors only under Graduate Advisor, based on memberGroup. Other members can appear under multiple disciplines. Member numbering and padded category counts are removed. The season count counts unique member records. Empty categories are omitted.
 
-Every member card opens a profile with portrait, role, major, biography, focus, hometown, interests, and social links. The home page keeps its separate role-based grouping.
+Every member card opens a profile with portrait, role, major, biography, focus, hometown, interests, and social links. The home conveyor displays each current-season member once.
 
 ### Solutions
 
@@ -110,13 +112,15 @@ Edit the following values in src/App.jsx:
 | --- | --- |
 | currentSeason | Current team on home, hero season, and footer season. |
 | teamMembers | All member records and profile content. |
-| homeTeamGroups / memberGroupOrder | Home grouping and card ordering. |
+| memberGroupOrder | Directory card ordering. |
 | filterOptions | Discipline headings and order on Teams (the legacy all entry is skipped). |
 | solutions | Timeline records and latest solution on home. |
 | photos | Gallery sources, alternative text, and size classes. |
 | appIcons / reelColumns | Hero logos and movement directions. |
 
-To add a member, copy a record and fill in slug, year, name, role, major, initials, track, memberGroup, photo, bio, hometown, focus, interests, and socials. Use a unique slug across all seasons; four-digit slugs are interpreted as years. Track values must match category values exactly. Home group keys are professor, gradAdvisor, teamCaptain, and member.
+To add a member, copy a record and fill in slug, year, name, role, major, initials, track, memberGroup, photo, bio, hometown, focus, interests, and socials. Use a unique slug across all seasons; four-digit slugs are interpreted as years. Track values must match category values exactly. Member group keys are professor, gradAdvisor, teamCaptain, and member. The first two determine exclusive advisor grouping.
+
+Everyone currently displays a user-requested US flag placeholder; this does not establish nationality. MemberFlags uses an inline SVG for reliable US flag rendering on Windows. Replace the default by adding a nationalities array with code and label fields to confirmed member records (two-letter country codes).
 
 Place portraits in public/prof_pics/ and reference /prof_pics/filename.ext. Missing photo values display initials; broken image URLs do not automatically fall back. Empty social URLs are omitted. Match asset filename capitalization exactly.
 
@@ -126,7 +130,7 @@ Solution records use year, title, status, summary, and link. The legacy highligh
 
 ## Adjusting the design
 
-The active stylesheet is src/index.css. Its final Shared visual language section contains the refresh rules and responsive overrides; check later declarations when adjusting older rules.
+The active stylesheet is src/index.css. Its Shared visual language and Final polish sections contain the refresh rules and responsive overrides; check later declarations when adjusting older rules.
 
 | Setting / selector | Purpose |
 | --- | --- |
@@ -136,8 +140,10 @@ The active stylesheet is src/index.css. Its final Shared visual language section
 | .body-copy, .description-grid p, .member-bio | Main supporting text, 17px with generous line-height. |
 | .member-role, .detail-role, .section-label | Supporting labels, generally 14px. |
 | .hero-ucf / .hero-team-name | Separate responsive sizes for the two hero title parts. |
-| .hero-project-button / .nav-links a | Larger controls, 5px corner radius, hover and focus states. |
-| .category-heading / .home-team-group-heading | Gold-accented section headers. |
+| .hero-project-button / .nav-links a | Rounded action buttons; navigation uses text-only hover/focus feedback. |
+| .category-heading / .category-jumps | Gold-accented category headers and section jump buttons. |
+| .conveyor-rail / .conveyor-card | Scrollable home team cards and hover states. |
+| .team-timeline / .season-node | Horizontal season timeline. |
 | .timeline-entry / .timeline-content / .timeline-dot | Timeline layout and nodes. |
 | .site-footer / .footer-top | Shared contact footer layout. |
 
@@ -149,7 +155,7 @@ For a consistent custom font across operating systems, self-host a properly lice
 
 The main page uses the page-enter animation on reload or route changes. The hero heading uses title-reveal. The React main element is keyed by page/year/slug, so navigating to another season or profile replays its entrance. Clicking a link to the already-current route does not remount it.
 
-The previous scroll-driven hero fade was removed so the heading remains readable while scrolling. All entry animations and decorative reels stop under prefers-reduced-motion. Hash-page navigation resets scroll position; solution-year navigation scrolls directly to its timeline entry.
+The previous scroll-driven hero fade was removed so the heading remains readable while scrolling. All entry animations, decorative reels, and conveyor autoplay stop under prefers-reduced-motion. Hash-page navigation resets scroll position; solution-year navigation scrolls directly to its timeline entry.
 
 ## Verification and remaining content work
 

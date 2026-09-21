@@ -1306,8 +1306,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
   border-radius: 5px; font: 600 16px/1.4 var(--font-body); letter-spacing: .01em;
   text-transform: none; transition: background .2s, border-color .2s, color .2s, box-shadow .2s;
 }
-.nav-links a { padding: 11px 18px; border: 1px solid transparent; color: var(--light-gray); }
-.nav-links a:hover, .nav-links a[aria-current] { color: var(--gold); border-color: #54481d; background: #242014; }
+.nav-links a { padding: 11px 12px; color: var(--light-gray); border: 0; background: none; transition: color .2s, transform .2s; }
+.nav-links a:hover, .nav-links a[aria-current] { color: var(--gold); background: none; }
+.nav-links a:hover { transform: scale(1.04); }
 .hero-project-button { min-height: 48px; justify-content: center; padding: 13px 22px; }
 .hero-project-button:hover { box-shadow: 0 5px 24px #ffd70018; background: #ffe773; border-color: #ffe773; }
 .secondary-button { background: #111; color: var(--white); border-color: #555; }
@@ -1433,4 +1434,75 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media (prefers-reduced-motion: reduce) {
   .page-transition, .hero-title, .marquee-column { animation: none; }
   .hero-title { clip-path: none; }
+}
+
+/* Final polish: editorial navigation, alternating sections, and team exploration. */
+.nav-links { flex-wrap: wrap; justify-content: flex-end; }
+.nav-links a { white-space: nowrap; }
+.nav-links a span { font-size: 12px; opacity: .7; }
+.description-grid article { transition: background .25s, box-shadow .25s, transform .25s; }
+.description-grid article:nth-child(1) { background: #171714; }
+.description-grid article:nth-child(2) { background: #242319; }
+.description-grid article:nth-child(3) { background: #333020; }
+.description-grid article:nth-child(4) { background: #45402a; }
+.description-grid article:hover { background: #51482a; box-shadow: inset 0 3px 0 #dfc361; transform: translateY(-3px); }
+.description-grid article p { color: #d4d2c9; }
+#project { background: linear-gradient(120deg, #e8dfbe, #faf7ee); color: #171713; }
+#project > .section-label, .project-copy .section-label { color: #69551f; }
+.section-project { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: clamp(32px,6vw,100px); border-top-color: #c8bd99; }
+.project-art { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; min-height: 350px; background: radial-gradient(ellipse, #d9cca7, transparent 68%); }
+.project-art .section-app-icon { width: min(300px,90%); height: auto; aspect-ratio: 1; background: #151511; box-shadow: 0 18px 40px #52421a22; }
+.project-art > span { color: #69551f; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; }
+.project-copy h2 { font-size: clamp(40px,5vw,76px); line-height: 1.05; letter-spacing: -.05em; margin-top: 20px; }
+.project-copy h2 em { color: #756020; }
+.project-copy .body-copy { color: #504c3e; }
+.project-copy .hero-project-button { background: #191914; color: #fff1bb; border-color: #191914; }
+.project-copy .hero-project-button:hover { background: #3a3320; border-color: #3a3320; }
+.conveyor-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 24px; }
+.conveyor-toolbar p { color: var(--gray); max-width: 560px; }
+.conveyor-controls { display: flex; gap: 8px; flex-shrink: 0; }
+.conveyor-controls button, .category-jumps button { border: 1px solid #4c4735; border-radius: 5px; background: #171610; color: var(--light-gray); padding: 11px 16px; min-height: 44px; font: 500 15px/1.4 var(--font-body); cursor: pointer; transition: color .2s, background .2s, border-color .2s; }
+.conveyor-controls button:hover, .category-jumps button:hover { background: #302a18; border-color: var(--gold-dark); color: var(--gold); }
+.conveyor-rail { display: flex; gap: 22px; overflow-x: auto; padding: 8px 2px 24px; scrollbar-width: thin; scrollbar-color: #8a7634 #171713; overscroll-behavior-x: contain; }
+.conveyor-card { flex: 0 0 320px; min-width: 0; padding: 28px; display: flex; flex-direction: column; border: 1px solid #353328; border-radius: 8px; background: linear-gradient(150deg,#1d1c16,#0c0c0c); transition: border-color .2s, transform .2s, background .2s; }
+.conveyor-card:hover, .conveyor-card:focus-within { border-color: #9c8436; transform: translateY(-4px); background: linear-gradient(150deg,#292516,#10100e); }
+.conveyor-person { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.conveyor-card h3 { font-size: 24px; line-height: 1.2; letter-spacing: -.03em; }
+.conveyor-card .member-role { margin-top: 12px; }
+.conveyor-major { font-size: 14px; color: var(--gray); margin-top: 8px; }
+.conveyor-card .member-bio { font-size: 15px; margin-bottom: 28px; }
+.conveyor-links { display: flex; flex-wrap: wrap; gap: 12px 18px; margin-top: auto; padding-top: 20px; border-top: 1px solid #393526; }
+.conveyor-links a { color: #dfc76b; font-size: 14px; padding-block: 6px; }
+.conveyor-links a:hover { color: white; }
+.member-flags { display: inline-flex; gap: 6px; vertical-align: middle; }
+.country-flag { font-size: 22px; line-height: 1.3; letter-spacing: 0; }
+.team-timeline { position: relative; flex-wrap: nowrap; overflow-x: auto; padding: 4px 0 18px; gap: 0; background: linear-gradient(#66572c,#66572c) left 24px / 100% 1px no-repeat; }
+.team-timeline a { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; flex: 0 0 180px; border: none; background: none; padding: 12px 30px 16px 8px; }
+.team-timeline a:hover, .team-timeline a[aria-current] { background: none; color: var(--gold); }
+.season-node { display: block; width: 14px; height: 14px; border: 2px solid #968344; border-radius: 50%; background: #111; box-shadow: 0 0 0 6px #0c0c0c; margin-bottom: 14px; }
+.team-timeline a[aria-current] .season-node, .team-timeline a:hover .season-node { background: var(--gold); border-color: var(--gold); }
+.team-timeline a strong { font-size: 32px; line-height: 1; letter-spacing: -.04em; }
+.category-jumps { display: flex; gap: 10px; flex-wrap: wrap; margin: 0 0 40px; }
+.category-jumps button span { margin-left: 8px; color: var(--gold-dark); }
+.team-category { scroll-margin-top: 24px; }
+.team-category:focus { outline: none; }
+.team-category:focus-visible { outline: 2px solid var(--gold); outline-offset: 6px; }
+.year-heading { flex-wrap: wrap; gap: 18px; }
+.year-heading > span { font-size: clamp(32px,5vw,58px); line-height: 1.1; }
+.member-card { padding-inline: 16px; }
+@media (max-width: 700px) {
+  .site-nav { flex-wrap: wrap; }
+  .nav-links { gap: 0 16px; justify-content: flex-start; width: 100%; margin: 0; }
+  .nav-links a { padding: 8px 0; font-size: 14px; }
+  .hero { padding-top: 166px; }
+  .page-shell { padding-top: 164px; }
+  .section-project { grid-template-columns: minmax(0,1fr); }
+  .project-art { min-height: 240px; }
+  .project-art .section-app-icon { width: 200px; }
+  .conveyor-toolbar { align-items: flex-start; flex-direction: column; gap: 16px; }
+  .conveyor-card { flex-basis: min(300px, 85vw); padding: 22px; }
+  .team-timeline a { flex-basis: 145px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-links a:hover, .description-grid article:hover, .conveyor-card:hover, .conveyor-card:focus-within { transform: none; }
 }

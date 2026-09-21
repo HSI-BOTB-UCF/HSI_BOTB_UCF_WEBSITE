@@ -1,15 +1,8 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const currentSeason = 2026
-
-const homeTeamGroups = [
-  { key: 'professor', label: 'Professor' },
-  { key: 'gradAdvisor', label: 'Graduate Advisors' },
-  { key: 'teamCaptain', label: 'Team Captain' },
-  { key: 'member', label: 'Team Members' },
-]
 
 const teamMembers = [
   {
@@ -294,7 +287,31 @@ function formatMemberRoleLine(member) {
 }
 
 function memberHasTrack(member, track) {
+  if (member.memberGroup === 'professor') return track === 'Faculty Advisor'
+  if (member.memberGroup === 'gradAdvisor') return track === 'Graduate Advisor'
   return getMemberTracks(member).includes(track)
+}
+
+function categoryId(track) { return 'category-' + track.toLowerCase().replaceAll(' ', '-') }
+
+function scrollToSection(id) {
+  const target = document.getElementById(id)
+  target?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' })
+  target?.focus({ preventScroll: true })
+}
+
+function MemberFlags({ member }) {
+  // US placeholders requested for all members; replace with confirmed nationalities later.
+  const flags = member.nationalities?.length ? member.nationalities : [{ code: 'US', label: 'United States (placeholder)' }]
+  return <span className="member-flags">{flags.map(({ code, label }) =>
+    <span className="country-flag" key={code} role="img" aria-label={label} title={label}>
+      {code === 'US' ? <svg viewBox="0 0 190 100" width="29" height="16" aria-hidden="true">
+        <rect width="190" height="100" fill="#fff" />
+        {Array.from({length:7}, (_,i) => <rect key={i} y={i * 200 / 13} width="190" height={100 / 13} fill="#b22234" />)}
+        <rect width="76" height={700 / 13} fill="#3c3b6e" />
+        {Array.from({length:9}, (_,row) => Array.from({length:row % 2 ? 5 : 6}, (_,col) => <path key={row + '-' + col} d="M0,-2.1 .5,-.65 2,-.65 .8,.25 1.2,1.8 0,.9 -1.2,1.8 -.8,.25 -2,-.65 -.5,-.65Z" fill="#fff" transform={`translate(${(col + (row % 2 ? 1 : .5)) * 12.67},${(row + 1) * 5.38})`} />))}
+      </svg> : String.fromCodePoint(...code.toUpperCase().split('').map((letter) => 127397 + letter.charCodeAt(0)))}
+    </span>)}</span>
 }
 
 function formatSocialLabel(name) {
@@ -353,7 +370,7 @@ function SiteNav({ page }) {
   return (
     <nav className="site-nav" aria-label="Main navigation">
       <a className="brand" href="#home" aria-label="UCF HSI Battle of the Brains home"><img src="/ucf-logo.png" alt="UCF" /><span className="brand-divider" aria-hidden="true" /><img src="/botb-logo.png" alt="HSI Battle of the Brains" /></a>
-      <div className="nav-links"><a href="#solutions" aria-current={page === 'solutions' ? 'page' : undefined}>Solutions</a><a href="#team" aria-current={page === 'team' || page === 'member' ? 'page' : undefined}>Teams</a></div>
+      <div className="nav-links"><a href="#solutions" aria-current={page === 'solutions' ? 'page' : undefined}>Solutions</a><a href="#team" aria-current={page === 'team' || page === 'member' ? 'page' : undefined}>Teams</a><a href="https://hsibattleofthebrains.com/" target="_blank" rel="noreferrer">HSI BOTB <span aria-hidden="true">↗</span></a><a href="https://www.ucf.edu/" target="_blank" rel="noreferrer">UCF <span aria-hidden="true">↗</span></a></div>
     </nav>
   )
 }
@@ -371,14 +388,13 @@ function TeamGrid({ members }) {
 
   return (
     <div className="members-grid">
-      {sortedMembers.map((member, index) =>
+      {sortedMembers.map((member) =>
         <a className="member-card" href={`#team/${member.slug}`} key={member.slug}>
-          <div className="member-number">{String(index + 1).padStart(2, '0')}</div>
           <div className="member-info">
             <div className="member-card-header">
               <MemberAvatar member={member} />
               <div>
-                <h3>{member.name}</h3>
+                <h3>{member.name} <MemberFlags member={member} /></h3>
                 <p className="member-role">{formatMemberRoleLine(member)}</p>
               </div>
             </div>
@@ -390,24 +406,60 @@ function TeamGrid({ members }) {
   )
 }
 
-function HomeTeamGroups({ members }) {
-  return (
-    <div className="home-team-groups">
-      {homeTeamGroups.map((group) => {
-        const groupMembers = members.filter((member) => member.memberGroup === group.key)
-
-        return (
-          <section className="home-team-group" key={group.key}>
-            <div className="home-team-group-heading">
-              <span>{group.label}</span>
-              <b>{String(groupMembers.length).padStart(2, '0')}</b>
-            </div>
-            {groupMembers.length > 0 ? <TeamGrid members={groupMembers} /> : <p className="empty-group-note">Team captain to be announced.</p>}
-          </section>
-        )
-      })}
+function TeamConveyor({ members }) {
+  const rail = useRef(null)
+  const [paused, setPaused] = useState(false)
+  const [hovered, setHovered] = useState(false)
+  const [focused, setFocused] = useState(false)
+  const [reduced, setReduced] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const update = () => setReduced(media.matches)
+    media.addEventListener('change', update)
+    return () => media.removeEventListener('change', update)
+  }, [])
+  useEffect(() => {
+    if (paused || hovered || focused || reduced) return
+    const element = rail.current
+    let frame, previous, direction = 1, position = element.scrollLeft
+    const move = (time) => {
+      if (previous !== undefined && !document.hidden) {
+        const max = element.scrollWidth - element.clientWidth
+        position = Math.max(0, Math.min(max, position + direction * Math.min(time - previous, 50) * .025))
+        element.scrollLeft = position
+        if (position >= max) direction = -1
+        if (position <= 0) direction = 1
+      }
+      previous = time
+      frame = requestAnimationFrame(move)
+    }
+    frame = requestAnimationFrame(move)
+    return () => cancelAnimationFrame(frame)
+  }, [paused, hovered, focused, reduced])
+  const step = (direction) => {
+    setPaused(true)
+    rail.current?.scrollBy({ left: direction * rail.current.clientWidth * .8, behavior: reduced ? 'instant' : 'smooth' })
+  }
+  return <div className="team-conveyor">
+    <div className="conveyor-toolbar"><p>Meet the minds behind the team. Hover to pause, or scroll to explore.</p><div className="conveyor-controls">
+      <button onClick={() => step(-1)} aria-label="Previous team members">←</button>
+      {!reduced && <button onClick={() => setPaused(!paused)} aria-pressed={paused}>{paused ? 'Play' : 'Pause'}</button>}
+      <button onClick={() => step(1)} aria-label="Next team members">→</button>
+    </div></div>
+    <div className="conveyor-rail" ref={rail} tabIndex={0} role="region" aria-label="Current team cards"
+      onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+      onFocus={() => setFocused(true)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false) }}
+      onPointerDown={() => setPaused(true)} onWheel={() => setPaused(true)}>
+      {members.map((member) => <article className="conveyor-card" key={member.slug}>
+        <div className="conveyor-person"><MemberAvatar member={member} /><MemberFlags member={member} /></div>
+        <h3>{member.name}</h3><p className="member-role">{member.role}</p><p className="conveyor-major">{member.major}</p>
+        <p className="member-bio">{member.bio}</p>
+        <div className="conveyor-links"><a href={`#team/${member.slug}`} aria-label={`View ${member.name}'s profile`}>Profile <span aria-hidden="true">↗</span></a>
+          {getMemberLinks(member).map(({name, link}) => <a key={name} href={link} target="_blank" rel="noreferrer" aria-label={`${member.name} on ${name}`}>{name} <span aria-hidden="true">↗</span></a>)}
+        </div>
+      </article>)}
     </div>
-  )
+  </div>
 }
 
 function TeamPage({ year }) {
@@ -419,15 +471,16 @@ function TeamPage({ year }) {
     <section className="section-pad page-shell team-section" id="team">
       <div className="section-heading"><div><div className="section-label">The people behind the ideas</div><h1 className="page-title">Meet <em>our teams!</em></h1></div></div>
       <p className="page-lede">Explore each season and the disciplines that bring our team together. Select a member to learn more and connect.</p>
-      <nav className="year-tabs" aria-label="Team seasons">{years.map((teamYear) => <a key={teamYear} href={`#team/${teamYear}`} aria-current={selectedYear === teamYear ? 'page' : undefined}>{teamYear}<span>↗</span></a>)}</nav>
-      <div className="year-heading"><span>{selectedYear}</span><b>{members.length} people</b></div>
-      <p className="category-note">Members with multiple disciplines appear in each relevant category.</p>
+      <nav className="year-tabs team-timeline" aria-label="Team seasons">{years.map((teamYear) => <a key={teamYear} href={`#team/${teamYear}`} aria-current={selectedYear === teamYear ? 'page' : undefined}><span className="season-node" aria-hidden="true" /><strong>{teamYear}</strong><span>Team season</span></a>)}</nav>
+      <div className="year-heading"><span>The {selectedYear} Team!</span><b>{members.length} people</b></div>
+      <p className="category-note">Faculty and graduate advisors lead their own sections. Team members appear under their areas of expertise.</p>
+      <nav className="category-jumps" aria-label="Jump to team category">{filterOptions.filter(([track]) => track !== 'all' && members.some((member) => memberHasTrack(member, track))).map(([track,label]) => <button key={track} onClick={() => scrollToSection(categoryId(track))}>{label} <span aria-hidden="true">↓</span></button>)}</nav>
       <div className="team-categories">
         {filterOptions.filter(([track]) => track !== 'all').map(([track, label]) => {
           const categoryMembers = members.filter((member) => memberHasTrack(member, track))
           if (!categoryMembers.length) return null
-          return <section className="team-category" key={track}>
-            <h2 className="category-heading">{label}<span>{String(categoryMembers.length).padStart(2, '0')}</span></h2>
+          return <section className="team-category" key={track} id={categoryId(track)} tabIndex={-1}>
+            <h2 className="category-heading">{label}</h2>
             <TeamGrid members={categoryMembers} />
           </section>
         })}
@@ -459,7 +512,7 @@ function MemberPage({ slug }) {
         <MemberAvatar member={member} large />
         <div>
           <div className="section-label">{member.year} / {formatMemberTracks(member)}</div>
-          <h1>{member.name}</h1>
+          <h1>{member.name}</h1><MemberFlags member={member} />
           <p className="detail-role">{member.role} | {member.major}</p>
         </div>
       </div>
@@ -584,12 +637,14 @@ function HomePage() {
 
         <section className="intro-grid section-pad" id="project">
           <div className="section-label">The Latest Solution</div>
-          <div className='section-project'>
-            <div>
-              <h2>Our {currentSeason} <em>Solution</em></h2>
-              <a className="hero-project-button" href="#solutions">More Solutions <span>↗</span></a>
+          <div className="section-project">
+            <div className="project-art"><img className="section-app-icon" src={appIcons[0].src} alt="UCF" draggable={false} /><span>Ideas into impact.</span></div>
+            <div className="project-copy">
+              <div className="section-label">{currentSolution.status} / {currentSolution.year}</div>
+              <h2>Our {currentSolution.year} <em>Solution</em></h2>
+              <p className="body-copy">{currentSolution.summary}</p>
+              <a className="hero-project-button" href="#solutions">Explore Solutions <span>↗</span></a>
             </div>
-            <img className="section-app-icon" src={appIcons[0].src} alt="Project icon" draggable={false} />
           </div>
 
         </section>
@@ -602,7 +657,7 @@ function HomePage() {
               <h2>Nuestro <em>Equipo!</em></h2>
             </div>
           </div>
-          <HomeTeamGroups members={currentYearMembers} />
+          <TeamConveyor members={currentYearMembers} />
           <a className="hero-project-button section-link" href="#team">All Team Members <span>↗</span></a>
         </section>
 
