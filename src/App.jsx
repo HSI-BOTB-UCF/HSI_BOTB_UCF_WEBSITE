@@ -385,7 +385,7 @@ function useHashRoute() {
 function SiteNav() {
   return (
     <nav className="site-nav" aria-label="Main navigation">
-      <a className="brand" href="#home"><span className="brand-mark">H</span><span>UCF HSI BOTB</span></a>
+      <a className="brand" href="#home"><span className="brand-mark">H</span><span>UCF HSI Battle of the Brains</span></a>
       <div className="nav-links"><a href="#solutions"><em>Solutions</em></a><a href="#team"><em>Teams</em></a></div>
     </nav>
   )
