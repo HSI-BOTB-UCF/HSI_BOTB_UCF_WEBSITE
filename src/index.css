@@ -1507,3 +1507,91 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media (prefers-reduced-motion: reduce) {
   .nav-links a:hover, .description-grid article:hover, .conveyor-card:hover, .conveyor-card:focus-within { transform: none; }
 }
+
+/* ==================================================
+   FULL WIDTH RESPONSIVE FIX
+   ================================================== */
+
+:root {
+  --content-max: 1600px;
+  --page-padding: clamp(18px, 3vw, 64px);
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+html,
+body {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+
+html {
+  background: var(--black);
+}
+
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+
+#root {
+  width: 100%;
+  min-width: 0;
+  min-height: 100vh;
+}
+
+
+/* Make major page sections fill the display */
+
+.site-nav,
+.hero,
+.icon-marquee,
+.section-pad,
+.stats-band,
+footer {
+  width: 100%;
+  max-width: none;
+}
+
+
+/* Responsive horizontal spacing */
+
+.site-nav,
+.hero,
+.section-pad,
+footer {
+  padding-left: var(--page-padding);
+  padding-right: var(--page-padding);
+}
+
+
+/* Prevent large content from forcing horizontal overflow */
+
+img,
+video,
+svg {
+  max-width: 100%;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+}
