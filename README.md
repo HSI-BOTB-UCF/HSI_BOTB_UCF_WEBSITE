@@ -71,7 +71,7 @@ All routing and page components live in src/App.jsx. URLs use hash fragments:
 
 | Route | Behavior |
 | --- | --- |
-| #home (or empty) | Home: split UCF/title hero, logo backdrop, progressive about panels, reversed light solution section, team conveyor, and gallery. |
+| #home (or empty) | Home: split UCF/title hero, logo backdrop, progressive about panels, reversed gold solution section, team conveyor, and gallery. |
 | #team | Opens the newest available team season. |
 | #team/2026 | Selects that season and displays members grouped by discipline. |
 | #team/david-navarrete | Opens the profile with that unique slug. |
@@ -86,7 +86,7 @@ Unknown routes fall back to home. Missing member slugs show a not-found page; an
 - Decorative moving logo columns. Logos do not grow, highlight, pause on hover, or capture drag/touch input.
 - Team and Solutions buttons with subtle rounded corners and hover/focus feedback.
 - Four about panels progress from charcoal to warm gold, with subtle hover feedback.
-- The latest solution uses a contrasting light background, with the UCF icon on the left and left-aligned copy on the right.
+- The latest solution uses a warm gold gradient background with dark, contrasting text, with the UCF icon on the left and left-aligned copy on the right.
 - A live current-team card conveyor includes portraits, roles, majors, biographies, profile links, and social links. It reverses at the ends; hover/focus pauses movement, while touch, wheel, and arrow controls pause automatic movement until Play is selected. Reduced motion disables autoplay. Cards remain keyboard accessible.
 - A gallery using remote Unsplash placeholder imagery.
 
