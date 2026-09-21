@@ -369,22 +369,8 @@ function SiteNav() {
 
   return (
     <nav className="site-nav" aria-label="Main navigation">
-      <details className="nav-menu">
-        <summary aria-label="Open site navigation">Menu</summary>
-        <div className="nav-menu-panel">
-          <a href="#home">Home</a>
-          <div className="nav-menu-group">
-            <span>Teams</span>
-            {teamYears.map((year) => <a href={`#team/${year}`} key={`team-${year}`}>{year} Team</a>)}
-          </div>
-          <div className="nav-menu-group">
-            <span>Solutions</span>
-            {solutionYears.map((year) => <a href={`#solutions/${year}`} key={`solution-${year}`}>{year} Solution</a>)}
-          </div>
-        </div>
-      </details>
       <a className="brand" href="#home"><span className="brand-mark">H</span><span>UCF HSI BOB</span></a>
-      <div className="nav-links"><a href="#solutions">Solutions</a><a href="#team">Team</a></div>
+      <div className="nav-links"><a href="#solutions">Solutions</a><a href="#team">Teams</a></div>
     </nav>
   )
 }
@@ -543,7 +529,7 @@ function SolutionsPage({ year }) {
 
   return (
     <section className="section-pad page-shell solutions-page" id="solutions">
-      <div className="section-heading"><div><div className="section-label">Solutions / {currentSeason} and beyond</div><h2>Competition <em>solutions.</em></h2></div></div>
+      <div className="section-heading"><div><div className="section-label">Solutions</div><h2>Competition <em>solutions.</em></h2></div></div>
       <p className="page-lede">Thank you for visiting our solutions webpage! Please feel free to check out the other websites we have developed over the years.</p>
       <div className="year-list solution-list">
         {years.map((solutionYear) => {
@@ -605,9 +591,13 @@ function HomePage() {
         </section>
 
         <section className="description-section section-pad" id="description">
-          <div className="section-label">01 / The Description</div>
-          <p className="display-copy">About Hispanic Scholars Institute Battle of the Brains</p>
-          <p>HSI Battle of the Brains is a national competition where university teams solve under pressure, pitch their ideas, and learn alongside industry professionals.</p>
+          <div className="section-heading">
+            <div>
+              <div className="section-label">01 / The Description</div>
+              <h2>About <em>HSI BOTB</em></h2>
+              <p className="body-copy">The Hispanic Scholars Institute Battle of the Brains competition is a national competition where university teams solve under pressure, pitch their ideas, and learn alongside industry professionals.</p>
+            </div>
+          </div>
           <div className="description-grid">
             <article>
               <span>24-Hour Competition</span>
@@ -643,7 +633,12 @@ function HomePage() {
 
 
         <section className="section-pad team-section" id="equipo">
-          <div className="section-heading"><div><div className="section-label">03 / The Team</div><h2>Meet <em>the Current Team.</em></h2></div></div>
+          <div className="section-heading">
+            <div>
+              <div className="section-label">03 / The Team</div>
+              <h2>Meet <em>the Current Team.</em></h2>
+            </div>
+          </div>
           <HomeTeamGroups members={currentYearMembers} />
           <a className="hero-project-button section-link" href="#team">All Team Members <span>↗</span></a>
         </section>
