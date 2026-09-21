@@ -17,7 +17,7 @@ const teamMembers = [
     slug: 'miguel-angel-hurtado-gomez',
     year: 2026,
     name: 'Miguel Angel Hurtado Gomez',
-    role: 'Engineer',
+    role: 'Programmer / Engineer',
     major: 'B.S. Aerospace Engineering',
     initials: 'MH',
     track: ['Engineer'],
@@ -33,7 +33,7 @@ const teamMembers = [
     slug: 'javier-a-cuevas-chabrier',
     year: 2026,
     name: 'Javier A. Cuevas Chabrier',
-    role: 'Engineer',
+    role: 'Team Captain / Engineer',
     major: 'B.S. Mechanical Engineering, B.S. Computer Science',
     initials: 'JC',
     track: ['Engineer', 'Finance'],
@@ -49,7 +49,7 @@ const teamMembers = [
     slug: 'alejandro-valdez',
     year: 2026,
     name: 'Alejandro Valdez',
-    role: 'Engineer',
+    role: 'Engineer / Videographer',
     major: 'B.S. Aerospace Engineering',
     initials: 'AV',
     track: ['Engineer', 'Videographer'],
@@ -65,7 +65,7 @@ const teamMembers = [
     slug: 'david-navarrete',
     year: 2026,
     name: 'David Navarrete',
-    role: 'Engineer',
+    role: 'Programmer',
     major: 'B.S. Computer Science',
     initials: 'DN',
     track: ['Engineer'],
@@ -97,7 +97,7 @@ const teamMembers = [
     slug: 'sebastian-cardenas',
     year: 2026,
     name: 'Sebastian Cardenas',
-    role: 'Video Production Leader',
+    role: 'Video Production Lead',
     major: 'B.S. Emerging Media',
     initials: 'SC',
     track: ['Videographer', 'Marketing'],
@@ -129,7 +129,7 @@ const teamMembers = [
     slug: 'natalia-del-vecchio-coronado',
     year: 2026,
     name: 'Natalia Del Vecchio Coronado',
-    role: 'Marketing Analyst',
+    role: 'Business Strategist / Marketing Analyst',
     major: 'B.S. Integrated Business',
     initials: "NDVC",
     track: ['Business', 'Marketing'],
@@ -180,7 +180,7 @@ const teamMembers = [
     role: 'Faculty Advisor',
     major: 'Ph.D. Business Administration',
     initials: 'DP',
-    track: ['Business', 'Advisor'],
+    track: ['Business', 'Faculty Advisor'],
     memberGroup: 'professor',
     photo: '/prof_pics/david-penn.png',
     bio: 'Dr. Penn supports the team with faculty guidance, strategic direction, and institutional knowledge throughout the competition cycle.',
@@ -196,7 +196,7 @@ const teamMembers = [
     role: 'Faculty Advisor',
     major: 'Ph.D. Industrial and Organizational Psychology',
     initials: 'JG',
-    track: ['Finance', 'Business', 'Advisor'],
+    track: ['Finance', 'Business', 'Faculty Advisor'],
     memberGroup: 'professor',
     photo: '/prof_pics/jim-gallo.png',
     bio: 'Dr. Gallo helps the members by testing them in difficult areas that make the members think critically.',
@@ -276,7 +276,7 @@ function ReelColumn({ icons, direction }) {
 
 const filterOptions = [
   ['all', 'All'],
-  ['Advisor', 'Advisor'],
+  ['Faculty Advisor', 'Faculty Advisor'],
   ['Graduate Advisor', 'Graduate Advisor'],
   ['Business', 'Business'],
   ['Engineer', 'Engineer'],
@@ -323,8 +323,7 @@ function formatMemberTracks(member) {
 }
 
 function formatMemberRoleLine(member) {
-  const tracks = formatMemberTracks(member)
-  const roleParts = getMemberTracks(member).includes(member.role) ? [tracks, member.major] : [tracks, member.role, member.major]
+  const roleParts = [member.role, member.major]
   return roleParts.filter(Boolean).join(' · ')
 }
 
