@@ -419,7 +419,7 @@ function TeamPage({ year }) {
     <section className="section-pad page-shell team-section" id="team">
       <div className="section-heading"><div><div className="section-label">The people behind the ideas</div><h1 className="page-title">Meet <em>our teams!</em></h1></div></div>
       <p className="page-lede">Explore each season and the disciplines that bring our team together. Select a member to learn more and connect.</p>
-      <nav className="year-tabs" aria-label="Team seasons">{years.map((teamYear) => <a key={teamYear} href={`#team/${teamYear}`} aria-current={selectedYear === teamYear ? 'page' : undefined}>{teamYear}<span>Team ↗</span></a>)}</nav>
+      <nav className="year-tabs" aria-label="Team seasons">{years.map((teamYear) => <a key={teamYear} href={`#team/${teamYear}`} aria-current={selectedYear === teamYear ? 'page' : undefined}>{teamYear}<span>↗</span></a>)}</nav>
       <div className="year-heading"><span>{selectedYear}</span><b>{members.length} people</b></div>
       <p className="category-note">Members with multiple disciplines appear in each relevant category.</p>
       <div className="team-categories">
@@ -501,7 +501,7 @@ function SolutionsPage({ year }) {
 
   return (
     <section className="section-pad page-shell solutions-page" id="solutions">
-      <div className="section-heading"><div><div className="section-label">Solutions</div><h1 className="page-title">Competition <em>solutions.</em></h1></div></div>
+      <div className="section-heading"><div><div className="section-label">The Ideas!</div><h1 className="page-title">Our Competitive <em>Solutions!</em></h1></div></div>
       <p className="page-lede">A season-by-season record of our ideas, prototypes, and competition work. Explore the journey and the materials behind each solution.</p>
       <div className="solution-timeline">
         {years.map((solutionYear) => {
@@ -583,7 +583,7 @@ function HomePage() {
         </section>
 
         <section className="intro-grid section-pad" id="project">
-          <div className="section-label">Latest Solution</div>
+          <div className="section-label">The Latest Solution</div>
           <div className='section-project'>
             <div>
               <h2>Our {currentSeason} <em>Solution</em></h2>
@@ -598,7 +598,7 @@ function HomePage() {
         <section className="section-pad team-section" id="equipo">
           <div className="section-heading">
             <div>
-              <div className="section-label">03 / The Team</div>
+              <div className="section-label">The Dream Team</div>
               <h2>Nuestro <em>Equipo!</em></h2>
             </div>
           </div>
@@ -607,7 +607,7 @@ function HomePage() {
         </section>
 
         <section className="photo-section section-pad">
-          <div className="section-label">04 / Gallery</div>
+          <div className="section-label">Gallery - Our Team in Action!</div>
           <div className="photo-grid">
             {photos.map((photo) =>
                 <div className={`photo-card ${photo.size}`} key={`${photo.src}-${photo.alt}`}>
