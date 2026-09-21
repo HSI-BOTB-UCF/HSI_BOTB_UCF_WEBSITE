@@ -17,10 +17,10 @@ const teamMembers = [
     slug: 'miguel-angel-hurtado-gomez',
     year: 2026,
     name: 'Miguel Angel Hurtado Gomez',
-    role: 'Programmer/Engineer',
+    role: 'Engineer',
     major: 'B.S. Aerospace Engineering',
     initials: 'MH',
-    track: 'Programmer/Engineer',
+    track: ['Engineer'],
     memberGroup: 'member',
     photo: '/prof_pics/miguel-angel.png',
     bio: 'Miguel helps turn team concepts into working technical prototypes, with a focus on engineering systems and disciplined build execution.',
@@ -33,10 +33,10 @@ const teamMembers = [
     slug: 'javier-a-cuevas-chabrier',
     year: 2026,
     name: 'Javier A. Cuevas Chabrier',
-    role: 'Programmer/Engineer',
+    role: 'Engineer',
     major: 'B.S. Mechanical Engineering, B.S. Computer Science',
     initials: 'JC',
-    track: 'Programmer/Engineer',
+    track: ['Engineer', 'Finance'],
     memberGroup: 'teamCaptain',
     photo: '/prof_pics/javier-cuevas.jpeg',
     bio: 'Hello everyone! I am excited to compete at HSI Battle of the Brains for the 2026 academic year! I currently work with propulsion systems and the Propulsion and Energy Research Lab under the Axial Stage Combustion Chamber project. I like to code in python and do projects with friends. My most recent projects are a solid propellant rocket motor where I use sorbitol and potassium nitrate to make rocket fuel and a BAJA buggy made from a go-kart frame and engine. I hope to speak to you soon!',
@@ -49,10 +49,10 @@ const teamMembers = [
     slug: 'alejandro-valdez',
     year: 2026,
     name: 'Alejandro Valdez',
-    role: 'Programmer/Engineer',
+    role: 'Engineer',
     major: 'B.S. Aerospace Engineering',
     initials: 'AV',
-    track: 'Programmer/Engineer',
+    track: ['Engineer', 'Videographer'],
     memberGroup: 'member',
     photo: '/prof_pics/alex-valdez.png',
     bio: 'Hello folks, my name is Alejandro Valdez and I\'m a second year Aerospace Engineering student from Mexico. In my free time you\'ll find me outdoors, playing lacrosse, or building engineering projects like rockets. I\'m working toward a career as an engineer in the space industry, and I also hope to be an activist for environmental conservation along the way. Thanks!',
@@ -65,10 +65,10 @@ const teamMembers = [
     slug: 'david-navarrete',
     year: 2026,
     name: 'David Navarrete',
-    role: 'Programmer/Engineer',
+    role: 'Engineer',
     major: 'B.S. Computer Science',
     initials: 'DN',
-    track: 'Programmer/Engineer',
+    track: ['Engineer'],
     memberGroup: 'member',
     photo: '/prof_pics/david-navarette.png',
     bio: 'David supports the software side of the team, helping translate challenge requirements into practical web, data, and product workflows.',
@@ -84,7 +84,7 @@ const teamMembers = [
     role: 'Marketing Lead',
     major: 'B.S. Integrated Business',
     initials: 'AD',
-    track: 'Marketing',
+    track: ['Business', 'Marketing'],
     memberGroup: 'member',
     photo: '/prof_pics/anjanette-diaz.png',
     bio: 'Anjanette shapes how the team communicates its solution, audience, story, and impact during the competition season.',
@@ -100,7 +100,7 @@ const teamMembers = [
     role: 'Video Production Leader',
     major: 'B.S. Emerging Media',
     initials: 'SC',
-    track: 'Videographer',
+    track: ['Videographer', 'Marketing'],
     memberGroup: 'member',
     photo: '/prof_pics/sebastian-cardenas.jpeg',
     bio: 'Hello! My name is Sebastian Cardenas, half Colombian and half Peruvian! I\'m very excited to be a part of this marvelous experience. I am a transfer student from Polk State College and I can\'t wait to provide my artistic abilities to portray our ideas and solutions!',
@@ -116,7 +116,7 @@ const teamMembers = [
     role: 'Finance Lead',
     major: 'B.S. Integrated Business',
     initials: 'DO',
-    track: 'Finance',
+    track: ['Business', 'Finance'],
     memberGroup: 'member',
     photo: '/prof_pics/diogo-ortiz.png',
     bio: 'Diogo keeps the solution grounded in business reality, supporting financial modeling, feasibility, and market planning.',
@@ -132,7 +132,7 @@ const teamMembers = [
     role: 'Marketing Analyst',
     major: 'B.S. Integrated Business',
     initials: "NDVC",
-    track: 'Business',
+    track: ['Business', 'Marketing'],
     memberGroup: 'member',
     photo: '/prof_pics/natalia-del-vecchio.png',
     bio: 'Natalia focuses on making sure the solution is marketable. She plays a crucial role in figuring out what needs to be done to get the solution profitable as soon as possible.',
@@ -148,7 +148,7 @@ const teamMembers = [
     role: 'Graduate Advisor',
     major: 'Master of Science in Business Analytics',
     initials: 'BC',
-    track: 'Advisor',
+    track: ['Graduate Advisor', 'Business'],
     memberGroup: 'gradAdvisor',
     photo: '/prof_pics/ben-headshot-2026.JPEG',
     bio: 'Hey everyone! I\'m grateful for the opportunity to serve as a Graduate Advisor for such a talented HSI Battle of the Brains team. One of my biggest passions is developing others, giving back to my community, and helping the people around me grow. I have a strong background in marketing & sales and have developed much of my professional experience in the insurance industry, where I\'ve learned the importance of relationship-building, resilience, and understanding clients\' needs. My long-term goal is to become an agency owner, build and develop a high-performing team, and create a lasting impact on the clients and communities I serve.',
@@ -164,7 +164,7 @@ const teamMembers = [
     role: 'Graduate Advisor',
     major: 'Master of Science in Management - Integrated Business Track',
     initials: 'AM',
-    track: 'Advisor',
+    track: ['Business', 'Engineer', 'Graduate Advisor'],
     memberGroup: 'gradAdvisor',
     photo: '/prof_pics/adriana-pic.JPEG',
     bio: 'Hello! I\'m Adrianna. I come from a military background so my family heritage is pretty scattered, but my latin side is Colombian and Argentinian. Aside from being a student, I am an ambassador of the UCF Office of Military and Veteran Student Success at the downtown campus where I support the hundreds of student veterans and family members through counseling and career readiness resources. I was inspired to join the UCF HSI battle of the brains team by all of the support that I\'ve seen poured into it. The faculty and staff at UCF do so much for every community, so I hope we can reap the benefits of that support by going far in a meaningful competition. I earned my undergraduate degree in Information Technology, so I\'m hoping to pair that with my business graduate degree and become an IT project manager. Go Knights!',
@@ -180,7 +180,7 @@ const teamMembers = [
     role: 'Faculty Advisor',
     major: 'Ph.D. Business Administration',
     initials: 'DP',
-    track: 'Advisor',
+    track: ['Business', 'Advisor'],
     memberGroup: 'professor',
     photo: '/prof_pics/david-penn.png',
     bio: 'Dr. Penn supports the team with faculty guidance, strategic direction, and institutional knowledge throughout the competition cycle.',
@@ -196,7 +196,7 @@ const teamMembers = [
     role: 'Faculty Advisor',
     major: 'Ph.D. Industrial and Organizational Psychology',
     initials: 'JG',
-    track: 'Advisor',
+    track: ['Finance', 'Business', 'Advisor'],
     memberGroup: 'professor',
     photo: '/prof_pics/jim-gallo.png',
     bio: 'Dr. Gallo helps the members by testing them in difficult areas that make the members think critically.',
@@ -276,11 +276,13 @@ function ReelColumn({ icons, direction }) {
 
 const filterOptions = [
   ['all', 'All'],
-  ['Programmer/Engineer', 'Programmer/Engineer'],
+  ['Advisor', 'Advisor'],
+  ['Graduate Advisor', 'Graduate Advisor'],
+  ['Business', 'Business'],
+  ['Engineer', 'Engineer'],
   ['Marketing', 'Marketing'],
   ['Videographer', 'Videographer'],
   ['Finance', 'Finance'],
-  ['Advisor', 'Advisor'],
 ]
 
 const reelColumns = [
@@ -310,6 +312,24 @@ function sortMembersByGroupAndName(members) {
     const groupDifference = (memberGroupOrder[first.memberGroup] ?? 99) - (memberGroupOrder[second.memberGroup] ?? 99)
     return groupDifference || first.name.localeCompare(second.name)
   })
+}
+
+function getMemberTracks(member) {
+  return Array.isArray(member.track) ? member.track : [member.track]
+}
+
+function formatMemberTracks(member) {
+  return getMemberTracks(member).filter(Boolean).join(' / ')
+}
+
+function formatMemberRoleLine(member) {
+  const tracks = formatMemberTracks(member)
+  const roleParts = getMemberTracks(member).includes(member.role) ? [tracks, member.major] : [tracks, member.role, member.major]
+  return roleParts.filter(Boolean).join(' · ')
+}
+
+function memberHasTrack(member, track) {
+  return getMemberTracks(member).includes(track)
 }
 
 function formatSocialLabel(name) {
@@ -396,7 +416,7 @@ function TeamGrid({ members }) {
               <MemberAvatar member={member} />
               <div>
                 <h3>{member.name}</h3>
-                <p className="member-role">{member.role} · {member.major}</p>
+                <p className="member-role">{formatMemberRoleLine(member)}</p>
               </div>
             </div>
             <p className="member-bio">{member.bio}</p>
@@ -445,7 +465,7 @@ function TeamPage({ year }) {
   const years = getAvailableYears(teamMembers)
   const membersByYear = years.map((teamYear) => {
     const yearMembers = sortMembersByName(teamMembers.filter((member) => member.year === teamYear))
-    return { year: teamYear, members: filter === 'all' ? yearMembers : yearMembers.filter((member) => member.track === filter) }
+    return { year: teamYear, members: filter === 'all' ? yearMembers : yearMembers.filter((member) => memberHasTrack(member, filter)) }
   })
 
   useEffect(() => {
@@ -486,7 +506,7 @@ function MemberPage({ slug }) {
       <div className="member-detail-hero">
         <MemberAvatar member={member} large />
         <div>
-          <div className="section-label">{member.year} / {member.track}</div>
+          <div className="section-label">{member.year} / {formatMemberTracks(member)}</div>
           <h1>{member.name}</h1>
           <p className="detail-role">{member.role} · {member.major}</p>
         </div>
