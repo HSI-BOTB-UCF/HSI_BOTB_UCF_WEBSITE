@@ -678,10 +678,28 @@ footer h2 {
 
 .member-bio {
   color: var(--gray);
+  display: -webkit-box;
   font-size: 14px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
   line-height: 1.6;
   max-width: 720px;
   margin-top: 18px;
+  overflow: hidden;
+}
+
+.member-view-more {
+  color: var(--gold);
+  display: inline-flex;
+  font: 11px 'Courier New', monospace;
+  gap: 8px;
+  letter-spacing: .08em;
+  margin-top: 16px;
+  text-transform: uppercase;
+}
+
+.member-view-more span {
+  font-size: 14px;
 }
 
 .card-arrow {
@@ -795,7 +813,7 @@ footer h2 {
 .detail-grid {
   display: grid;
   gap: 1px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   margin-top: 1px;
   background: var(--line);
 }
@@ -807,7 +825,7 @@ footer h2 {
 }
 
 .detail-panel.wide {
-  grid-column: span 3;
+  grid-column: span 4;
 }
 
 .detail-panel span,

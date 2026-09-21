@@ -389,8 +389,8 @@ function SiteNav() {
 
   return (
     <nav className="site-nav" aria-label="Main navigation">
-      <a className="brand" href="#home"><span className="brand-mark">H</span><span>UCF HSI BOB</span></a>
-      <div className="nav-links"><a href="#solutions">Solutions</a><a href="#team">Teams</a></div>
+      <a className="brand" href="#home"><span className="brand-mark">H</span><span>UCF HSI BOTB</span></a>
+      <div className="nav-links"><a href="#solutions"><em>Solutions</em></a><a href="#team"><em>Teams</em></a></div>
     </nav>
   )
 }
@@ -420,8 +420,8 @@ function TeamGrid({ members }) {
               </div>
             </div>
             <p className="member-bio">{member.bio}</p>
+            <span className="member-view-more">View more <span>↗</span></span>
           </div>
-          <span className="card-arrow">↗</span>
         </a>)}
     </div>
   )
@@ -523,7 +523,7 @@ function MemberPage({ slug }) {
           <p>{member.focus}</p>
         </article>
         <article className="detail-panel">
-          <span>Background</span>
+          <span>Hometown</span>
           <p>{member.hometown}</p>
         </article>
         <article className="detail-panel">
