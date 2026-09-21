@@ -417,7 +417,7 @@ function TeamPage({ year }) {
 
   return (
     <section className="section-pad page-shell team-section" id="team">
-      <div className="section-heading"><div><div className="section-label">The people behind the ideas</div><h1 className="page-title">Meet <em>the team.</em></h1></div></div>
+      <div className="section-heading"><div><div className="section-label">The people behind the ideas</div><h1 className="page-title">Meet <em>our teams!</em></h1></div></div>
       <p className="page-lede">Explore each season and the disciplines that bring our team together. Select a member to learn more and connect.</p>
       <nav className="year-tabs" aria-label="Team seasons">{years.map((teamYear) => <a key={teamYear} href={`#team/${teamYear}`} aria-current={selectedYear === teamYear ? 'page' : undefined}>{teamYear}<span>Team ↗</span></a>)}</nav>
       <div className="year-heading"><span>{selectedYear}</span><b>{members.length} people</b></div>
@@ -557,8 +557,8 @@ function HomePage() {
         <section className="description-section section-pad" id="description">
           <div className="section-heading">
             <div>
-              <div className="section-label">01 / The Description</div>
-              <h2>About <em>HSI BOTB</em></h2>
+              <div className="section-label">About HSI Battle of the Brains</div>
+              <h2>What is <em>Battle of the Brains?</em></h2>
               <p className="body-copy">The Hispanic Scholars Institute Battle of the Brains competition is a national competition where university teams solve problems under pressure, pitch their ideas, and learn alongside industry professionals.</p>
             </div>
           </div>
@@ -583,11 +583,10 @@ function HomePage() {
         </section>
 
         <section className="intro-grid section-pad" id="project">
-          <div className="section-label">02 / The Latest Solution</div>
+          <div className="section-label">Latest Solution</div>
           <div className='section-project'>
             <div>
-              <p className="display-copy">{currentSolution.title}</p>
-              <p className="body-copy">{currentSolution.summary}</p>
+              <h2>Our {currentSeason} <em>Solution</em></h2>
               <a className="hero-project-button" href="#solutions">More Solutions <span>↗</span></a>
             </div>
             <img className="section-app-icon" src={appIcons[0].src} alt="Project icon" draggable={false} />
@@ -600,7 +599,7 @@ function HomePage() {
           <div className="section-heading">
             <div>
               <div className="section-label">03 / The Team</div>
-              <h2>Meet <em>the Current Team.</em></h2>
+              <h2>Nuestro <em>Equipo!</em></h2>
             </div>
           </div>
           <HomeTeamGroups members={currentYearMembers} />
@@ -626,7 +625,7 @@ function HomePage() {
 function SiteFooter() {
   return <footer id="footer" className="site-footer">
     <div className="footer-top">
-      <div><div className="section-label">Stay connected</div><h2>Great ideas.<br /><em>Shared ambition.</em></h2><p>UCF HSI Battle of the Brains Team</p></div>
+      <div><div className="section-label">Stay connected</div><h2>Many Ideas<br /><em>Un Equipo!</em></h2><p>UCF HSI Battle of the Brains Team</p></div>
       <div className="footer-contact"><h3>Contact</h3><p>Team inquiries & collaboration</p><span>Contact details coming soon.</span></div>
       <nav className="footer-nav" aria-label="Footer navigation"><h3>Explore</h3><a href="#home">Home ↗</a><a href="#team">Teams ↗</a><a href="#solutions">Solutions ↗</a></nav>
     </div>
