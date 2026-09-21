@@ -17,7 +17,7 @@ const teamMembers = [
     slug: 'miguel-angel-hurtado-gomez',
     year: 2026,
     name: 'Miguel Angel Hurtado Gomez',
-    role: 'Programmer / Engineer',
+    role: 'Programmer/Engineer',
     major: 'B.S. Aerospace Engineering',
     initials: 'MH',
     track: ['Engineer'],
@@ -33,7 +33,7 @@ const teamMembers = [
     slug: 'javier-a-cuevas-chabrier',
     year: 2026,
     name: 'Javier A. Cuevas Chabrier',
-    role: 'Team Captain / Engineer',
+    role: 'Team Captain/Engineer',
     major: 'B.S. Mechanical Engineering, B.S. Computer Science',
     initials: 'JC',
     track: ['Engineer', 'Finance'],
@@ -49,7 +49,7 @@ const teamMembers = [
     slug: 'alejandro-valdez',
     year: 2026,
     name: 'Alejandro Valdez',
-    role: 'Engineer / Videographer',
+    role: 'Engineer/Videographer',
     major: 'B.S. Aerospace Engineering',
     initials: 'AV',
     track: ['Engineer', 'Videographer'],
@@ -81,7 +81,7 @@ const teamMembers = [
     slug: 'anjanette-diaz',
     year: 2026,
     name: 'Anjanette Diaz',
-    role: 'Marketing Lead',
+    role: 'Business Strategist/Marketing Lead',
     major: 'B.S. Integrated Business',
     initials: 'AD',
     track: ['Business', 'Marketing'],
@@ -129,7 +129,7 @@ const teamMembers = [
     slug: 'natalia-del-vecchio-coronado',
     year: 2026,
     name: 'Natalia Del Vecchio Coronado',
-    role: 'Business Strategist / Marketing Analyst',
+    role: 'Feasability Analyst/Marketing Analyst',
     major: 'B.S. Integrated Business',
     initials: "NDVC",
     track: ['Business', 'Marketing'],
@@ -324,7 +324,7 @@ function formatMemberTracks(member) {
 
 function formatMemberRoleLine(member) {
   const roleParts = [member.role, member.major]
-  return roleParts.filter(Boolean).join(' · ')
+  return roleParts.filter(Boolean).join(' | ')
 }
 
 function memberHasTrack(member, track) {
@@ -383,9 +383,6 @@ function useHashRoute() {
 }
 
 function SiteNav() {
-  const teamYears = getAvailableYears(teamMembers)
-  const solutionYears = getAvailableYears(solutions)
-
   return (
     <nav className="site-nav" aria-label="Main navigation">
       <a className="brand" href="#home"><span className="brand-mark">H</span><span>UCF HSI BOTB</span></a>
@@ -507,7 +504,7 @@ function MemberPage({ slug }) {
         <div>
           <div className="section-label">{member.year} / {formatMemberTracks(member)}</div>
           <h1>{member.name}</h1>
-          <p className="detail-role">{member.role} · {member.major}</p>
+          <p className="detail-role">{member.role} | {member.major}</p>
         </div>
       </div>
 
