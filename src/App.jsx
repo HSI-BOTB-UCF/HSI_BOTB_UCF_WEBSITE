@@ -370,7 +370,12 @@ function SiteNav({ page }) {
   return (
     <nav className="site-nav" aria-label="Main navigation">
       <a className="brand" href="#home" aria-label="UCF HSI Battle of the Brains home"><img src="/ucf-botb-logo.png" alt="UCF" /></a>
-      <div className="nav-links"><a href="#solutions" aria-current={page === 'solutions' ? 'page' : undefined}>Solutions</a><a href="#team" aria-current={page === 'team' || page === 'member' ? 'page' : undefined}>Teams</a><a href="https://hsibattleofthebrains.com/" target="_blank" rel="noreferrer">HSI BOTB <span aria-hidden="true">↗</span></a><a href="https://www.ucf.edu/" target="_blank" rel="noreferrer">UCF <span aria-hidden="true">↗</span></a></div>
+      <div className="nav-links">
+        <a href="#home" aria-current={page === 'home' ? 'page' : undefined}>Home</a>
+        <a href="#solutions" aria-current={page === 'solutions' ? 'page' : undefined}>Solutions</a>
+        <a href="#team" aria-current={page === 'team' || page === 'member' ? 'page' : undefined}>Teams</a>
+        <a href="https://hsibattleofthebrains.com/" target="_blank" rel="noreferrer">HSI BOTB <span aria-hidden="true">↗</span></a>
+        <a href="https://www.ucf.edu/" target="_blank" rel="noreferrer">UCF <span aria-hidden="true">↗</span></a></div>
     </nav>
   )
 }
