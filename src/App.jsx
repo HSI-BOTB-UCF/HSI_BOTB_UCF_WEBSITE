@@ -16,7 +16,7 @@ const teamMembers = [
     memberGroup: 'member',
     photo: '/prof_pics/miguel-angel.png',
     bio: 'Miguel helps turn team concepts into working technical prototypes, with a focus on engineering systems and disciplined build execution.',
-    hometown: 'Medellin, COL',
+    heritage: ['Colombia'],
     focus: 'Rapid prototyping, systems thinking, and technical research',
     interests: ['Aerospace design', 'Simulation', 'Hardware builds'],
     socials: { linkedin: 'https://www.linkedin.com/in/miguelangelhurtadogomez/', github: 'https://github.com/mmm1602' }
@@ -32,7 +32,7 @@ const teamMembers = [
     memberGroup: 'teamCaptain',
     photo: '/prof_pics/javier-cuevas.jpeg',
     bio: 'Hello everyone! I am excited to compete at HSI Battle of the Brains for the 2026 academic year! I currently work with propulsion systems and the Propulsion and Energy Research Lab under the Axial Stage Combustion Chamber project. I like to code in python and do projects with friends. My most recent projects are a solid propellant rocket motor where I use sorbitol and potassium nitrate to make rocket fuel and a BAJA buggy made from a go-kart frame and engine. I hope to speak to you soon!',
-    hometown: 'Utuado, PR',
+    heritage: ['Puerto Rico'],
     focus: 'Propulsion systems, Python tools, and mechanical product design',
     interests: ['Rocket motors', 'BAJA builds', 'Python projects'],
     socials: { linkedin: 'https://www.linkedin.com/in/javier-cuevas-jacc84/', github: 'https://github.com/Javy-Scratchspace' }
@@ -48,7 +48,7 @@ const teamMembers = [
     memberGroup: 'member',
     photo: '/prof_pics/alex-valdez.png',
     bio: 'Hello folks, my name is Alejandro Valdez and I\'m a second year Aerospace Engineering student from Mexico. In my free time you\'ll find me outdoors, playing lacrosse, or building engineering projects like rockets. I\'m working toward a career as an engineer in the space industry, and I also hope to be an activist for environmental conservation along the way. Thanks!',
-    hometown: 'Orlando, FL',
+    heritage: ['Mexico'],
     focus: 'Space systems, sustainability, and engineering project execution',
     interests: ['Rocketry', 'Lacrosse', 'Environmental conservation'],
     socials: { linkedin: 'https://www.linkedin.com/in/alejandro-valdez15/', github: 'https://github.com/alexvaldex' }
@@ -62,9 +62,9 @@ const teamMembers = [
     initials: 'DN',
     track: ['Engineer'],
     memberGroup: 'member',
-    photo: '/prof_pics/david-navarette.png',
+    photo: '/prof_pics/david-navarrete.png',
     bio: 'David supports the software side of the team, helping translate challenge requirements into practical web, data, and product workflows.',
-    hometown: 'Parkland, FL',
+    heritage: ['Ecuador'],
     focus: 'Software architecture, implementation, and debugging',
     interests: ['Full-stack development', 'Automation', 'Product thinking'],
     socials: { linkedin: 'https://www.linkedin.com/in/david-navarrete-/', github: 'https://github.com/AlphaKnight1701-A' }
@@ -80,7 +80,7 @@ const teamMembers = [
     memberGroup: 'member',
     photo: '/prof_pics/anjanette-diaz.png',
     bio: 'Anjanette shapes how the team communicates its solution, audience, story, and impact during the competition season.',
-    hometown: 'Miami, FL',
+    heritage: ['Puerto Rico'],
     focus: 'Brand strategy, messaging, and audience research',
     interests: ['Campaign planning', 'Consumer insight', 'Pitch storytelling'],
     socials: { linkedin: 'https://www.linkedin.com/in/diazanjanette/' }
@@ -96,7 +96,7 @@ const teamMembers = [
     memberGroup: 'member',
     photo: '/prof_pics/sebastian-cardenas.jpeg',
     bio: 'Hello! My name is Sebastian Cardenas, half Colombian and half Peruvian! I\'m very excited to be a part of this marvelous experience. I am a transfer student from Polk State College and I can\'t wait to provide my artistic abilities to portray our ideas and solutions!',
-    hometown: 'Lake Alfred, FL',
+    heritage: ['Peru', 'Colombia'],
     focus: 'Video production, motion, and visual storytelling',
     interests: ['Cinematography', 'Editing', 'Digital media'],
     socials: { linkedin: 'https://www.linkedin.com/in/sebastian-cardenas-62b3b9328/' }
@@ -112,7 +112,7 @@ const teamMembers = [
     memberGroup: 'member',
     photo: '/prof_pics/diogo-ortiz.png',
     bio: 'Diogo keeps the solution grounded in business reality, supporting financial modeling, feasibility, and market planning.',
-    hometown: 'Parkland, FL',
+    heritage: ['Mexico', 'Brazil'],
     focus: 'Financial planning, market validation, and venture feasibility',
     interests: ['Startup finance', 'Business modeling', 'Operations'],
     socials: { linkedin: 'https://www.linkedin.com/in/diogo-ortiz/' }
@@ -128,7 +128,7 @@ const teamMembers = [
     memberGroup: 'member',
     photo: '/prof_pics/natalia-del-vecchio.png',
     bio: 'Natalia focuses on making sure the solution is marketable. She plays a crucial role in figuring out what needs to be done to get the solution profitable as soon as possible.',
-    hometown: 'Coconut Creek, FL',
+    heritage: ['Colombia'],
     focus: 'Marketing strategies, business implementation, and community involvement',
     interests: ['Startup marketing', 'Business modeling', 'Consumer experience'],
     socials: { linkedin: 'https://www.linkedin.com/in/natalia-delvecchio/' }
@@ -144,7 +144,7 @@ const teamMembers = [
     memberGroup: 'gradAdvisor',
     photo: '/prof_pics/ben-headshot-2026.JPEG',
     bio: 'Hey everyone! I\'m grateful for the opportunity to serve as a Graduate Advisor for such a talented HSI Battle of the Brains team. One of my biggest passions is developing others, giving back to my community, and helping the people around me grow. I have a strong background in marketing & sales and have developed much of my professional experience in the insurance industry, where I\'ve learned the importance of relationship-building, resilience, and understanding clients\' needs. My long-term goal is to become an agency owner, build and develop a high-performing team, and create a lasting impact on the clients and communities I serve.',
-    hometown: 'Orlando, FL',
+    heritage: ['Peru'],
     focus: 'Business analytics, sales strategy, and team development',
     interests: ['Mentorship', 'Marketing and sales', 'Community impact'],
     socials: { linkedin: 'https://www.linkedin.com/in/benjaminchallco/' }
@@ -160,7 +160,7 @@ const teamMembers = [
     memberGroup: 'gradAdvisor',
     photo: '/prof_pics/adriana-pic.JPEG',
     bio: 'Hello! I\'m Adrianna. I come from a military background so my family heritage is pretty scattered, but my latin side is Colombian and Argentinian. Aside from being a student, I am an ambassador of the UCF Office of Military and Veteran Student Success at the downtown campus where I support the hundreds of student veterans and family members through counseling and career readiness resources. I was inspired to join the UCF HSI battle of the brains team by all of the support that I\'ve seen poured into it. The faculty and staff at UCF do so much for every community, so I hope we can reap the benefits of that support by going far in a meaningful competition. I earned my undergraduate degree in Information Technology, so I\'m hoping to pair that with my business graduate degree and become an IT project manager. Go Knights!',
-    hometown: 'Colombian and Argentinian heritage',
+    heritage: ['Argentina', 'Colombia', 'England'],
     focus: 'IT project management, student support, and integrated business',
     interests: ['Veteran student success', 'Project management', 'Community support'],
     socials: { linkedin: 'https://www.linkedin.com/in/adrianna-marquez/' }
@@ -176,7 +176,7 @@ const teamMembers = [
     memberGroup: 'professor',
     photo: '/prof_pics/david-penn.png',
     bio: 'Dr. Penn supports the team with faculty guidance, strategic direction, and institutional knowledge throughout the competition cycle.',
-    hometown: 'Orlando, FL',
+    heritage: ['Ecuador'],
     focus: 'Faculty mentorship, solution strategy, and team development',
     interests: ['Student success', 'Applied innovation', 'Competition strategy'],
     socials: { linkedin: 'https://www.linkedin.com/in/david-penn-phd-edd-mfa-pmp-58683314/' }
@@ -192,7 +192,7 @@ const teamMembers = [
     memberGroup: 'professor',
     photo: '/prof_pics/jim-gallo.png',
     bio: 'Dr. Gallo helps the members by testing them in difficult areas that make the members think critically.',
-    hometown: 'Orlando, FL',
+    heritage: ['America'],
     focus: 'Faculty mentorship, solution strategy, and team development',
     interests: ['Student success', 'Applied innovation', 'Competition strategy'],
     socials: { linkedin: 'https://www.linkedin.com/in/jimgallo/' }
@@ -251,6 +251,19 @@ const reelColumns = [
   { icons: appIcons, direction: 'up' },
 ]
 
+const heritageFlags = {
+  america: { label: 'United States', src: 'https://flagcdn.com/w40/us.png' },
+  argentina: { label: 'Argentina', src: 'https://flagcdn.com/w40/ar.png' },
+  brazil: { label: 'Brazil', src: 'https://flagcdn.com/w40/br.png' },
+  colombia: { label: 'Colombia', src: 'https://flagcdn.com/w40/co.png' },
+  columbia: { label: 'Colombia', src: 'https://flagcdn.com/w40/co.png' },
+  ecuador: { label: 'Ecuador', src: 'https://flagcdn.com/w40/ec.png' },
+  england: { label: 'England', src: 'https://flagcdn.com/w40/gb-eng.png' },
+  mexico: { label: 'Mexico', src: 'https://flagcdn.com/w40/mx.png' },
+  peru: { label: 'Peru', src: 'https://flagcdn.com/w40/pe.png' },
+  'puerto rico': { label: 'Puerto Rico', src: 'https://flagcdn.com/w40/pr.png' },
+}
+
 function sortByMostRecent(items) {
   return [...items].sort((first, second) => second.year - first.year || first.name?.localeCompare(second.name) || first.title?.localeCompare(second.title))
 }
@@ -286,6 +299,14 @@ function formatMemberRoleLine(member) {
   return roleParts.filter(Boolean).join(' | ')
 }
 
+function formatMemberHeritage(member) {
+  return Array.isArray(member.heritage) ? member.heritage.filter(Boolean).join(' / ') : member.heritage
+}
+
+function getMemberHeritages(member) {
+  return Array.isArray(member.heritage) ? member.heritage.filter(Boolean) : [member.heritage].filter(Boolean)
+}
+
 function memberHasTrack(member, track) {
   if (member.memberGroup === 'professor') return track === 'Faculty Advisor'
   if (member.memberGroup === 'gradAdvisor') return track === 'Graduate Advisor'
@@ -301,16 +322,11 @@ function scrollToSection(id) {
 }
 
 function MemberFlags({ member }) {
-  // US placeholders requested for all members; replace with confirmed nationalities later.
-  const flags = member.nationalities?.length ? member.nationalities : [{ code: 'US', label: 'United States (placeholder)' }]
-  return <span className="member-flags">{flags.map(({ code, label }) =>
-    <span className="country-flag" key={code} role="img" aria-label={label} title={label}>
-      {code === 'US' ? <svg viewBox="0 0 190 100" width="29" height="16" aria-hidden="true">
-        <rect width="190" height="100" fill="#fff" />
-        {Array.from({length:7}, (_,i) => <rect key={i} y={i * 200 / 13} width="190" height={100 / 13} fill="#b22234" />)}
-        <rect width="76" height={700 / 13} fill="#3c3b6e" />
-        {Array.from({length:9}, (_,row) => Array.from({length:row % 2 ? 5 : 6}, (_,col) => <path key={row + '-' + col} d="M0,-2.1 .5,-.65 2,-.65 .8,.25 1.2,1.8 0,.9 -1.2,1.8 -.8,.25 -2,-.65 -.5,-.65Z" fill="#fff" transform={`translate(${(col + (row % 2 ? 1 : .5)) * 12.67},${(row + 1) * 5.38})`} />))}
-      </svg> : String.fromCodePoint(...code.toUpperCase().split('').map((letter) => 127397 + letter.charCodeAt(0)))}
+  const flags = getMemberHeritages(member).map((heritage) => heritageFlags[heritage.toLowerCase()] ?? { label: heritage })
+
+  return <span className="member-flags">{flags.map((flag) =>
+    <span className="country-flag" key={flag.label} title={flag.label}>
+      {flag.src ? <img src={flag.src} alt={`${flag.label} flag`} loading="lazy" /> : flag.label}
     </span>)}</span>
 }
 
@@ -533,8 +549,8 @@ function MemberPage({ slug }) {
           <p>{member.focus}</p>
         </article>
         <article className="detail-panel">
-          <span>Hometown</span>
-          <p>{member.hometown}</p>
+          <span>Heritage</span>
+          <p>{formatMemberHeritage(member)}</p>
         </article>
         <article className="detail-panel">
           <span>Interests</span>
