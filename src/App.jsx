@@ -348,7 +348,7 @@ function getAvailableYears(items) {
 }
 
 function getCurrentYearMembers() {
-  return sortMembersByName(teamMembers.filter((member) => member.year === currentSeason))
+  return sortMembersByGroupAndName(teamMembers.filter((member) => member.year === currentSeason))
 }
 
 function getRoute() {
