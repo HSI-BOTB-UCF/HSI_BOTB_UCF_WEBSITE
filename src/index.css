@@ -1471,7 +1471,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .conveyor-card h3 { font-size: 24px; line-height: 1.2; letter-spacing: -.03em; }
 .conveyor-card .member-role { margin-top: 12px; }
 .conveyor-major { font-size: 14px; color: var(--gray); margin-top: 8px; }
-.conveyor-card .member-bio { font-size: 15px; margin-bottom: 28px; }
+.conveyor-card .member-bio { font-size: 15px; margin-bottom: 0; -webkit-line-clamp: 4; }
+.conveyor-view-more { margin-top: 18px; }
 .conveyor-links { display: flex; flex-wrap: wrap; gap: 12px 18px; margin-top: auto; padding-top: 20px; border-top: 1px solid #393526; }
 .conveyor-links a { color: #dfc76b; font-size: 14px; padding-block: 6px; }
 .conveyor-links a:hover { color: white; }
