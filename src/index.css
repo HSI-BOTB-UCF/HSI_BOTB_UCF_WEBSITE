@@ -1299,7 +1299,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .site-nav { padding-block: 18px; align-items: center; background: rgba(8,8,8,.8); }
 .brand { gap: 16px; flex-shrink: 0; }
 .brand img { width: 70px; height: 60px; object-fit: contain; }
-.brand img:last-child { width: 92px; }
+.brand img:last-child { width: 105px; }
 .brand-divider { height: 34px; width: 1px; background: #454027; }
 .nav-links { display: flex; gap: 10px; }
 .nav-links a, .hero-project-button, .year-tabs a {
@@ -1397,7 +1397,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .site-nav { padding: 14px 18px; gap: 12px; }
   .brand { gap: 9px; }
   .brand img { width: 36px; height: 40px; }
-  .brand img:last-child { width: 62px; }
+  .brand img:last-child { width: 70px; }
   .brand-divider { height: 28px; }
   .nav-links { gap: 2px; }
   .nav-links a { padding: 10px; font-size: 15px; }
