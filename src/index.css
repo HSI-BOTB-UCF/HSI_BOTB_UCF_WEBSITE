@@ -1298,7 +1298,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
 button, a { -webkit-tap-highlight-color: transparent; }
 .site-nav { padding-block: 18px; align-items: center; background: rgba(8,8,8,.8); }
 .brand { gap: 16px; flex-shrink: 0; }
-.brand img { width: 58px; height: 54px; object-fit: contain; }
+.brand img { width: 70px; height: 60px; object-fit: contain; }
 .brand img:last-child { width: 70px; }
 .brand-divider { height: 34px; width: 1px; background: #454027; }
 .nav-links { display: flex; gap: 10px; }
