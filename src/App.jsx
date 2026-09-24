@@ -475,7 +475,7 @@ function TeamConveyor({ members }) {
         <div className="conveyor-person"><MemberAvatar member={member} /><MemberFlags member={member} /></div>
         <h3>{member.name}</h3><p className="member-role">{member.role}</p><p className="conveyor-major">{member.major}</p>
         <p className="member-bio">{member.bio}</p>
-        <div className="conveyor-links"><a href={`#team/${member.slug}`} aria-label={`View ${member.name}'s profile`}>Profile <span aria-hidden="true">↗</span></a>
+        <div className="conveyor-links"><a href={`#team/${member.slug}`} aria-label={`View more about ${member.name}`}>View more <span aria-hidden="true">↗</span></a>
           {getMemberLinks(member).map(({name, link}) => <a key={name} href={link} target="_blank" rel="noreferrer" aria-label={`${member.name} on ${name}`}>{name} <span aria-hidden="true">↗</span></a>)}
         </div>
       </article>)}
