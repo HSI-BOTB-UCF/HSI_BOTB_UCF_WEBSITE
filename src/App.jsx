@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import galleryPhotos from './gallery.json'
 
 const currentSeason = 2026
 
@@ -208,14 +209,6 @@ const solutions = [
     highlights: ['Challenge placeholder', 'Solution deck coming soon', 'Demo media coming soon'],
     link: ''
   }
-]
-
-const photos = [
-  { src: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=85', alt: 'Team collaborating around a table', size: 'large' },
-  { src: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=85', alt: 'Student taking notes', size: 'tall' },
-  { src: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=85', alt: 'Students talking', size: 'wide' },
-  { src: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=85', alt: 'Students in a classroom', size: 'square' },
-  { src: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=85', alt: 'Student writing notes', size: 'tall' },
 ]
 
 const appIcons = [
@@ -608,6 +601,73 @@ function SolutionsPage({ year }) {
   )
 }
 
+const landscapePhotos = galleryPhotos.filter((photo) => photo.orientation === 'landscape')
+const portraitPhotos = galleryPhotos.filter((photo) => photo.orientation === 'portrait')
+
+function GalleryFrame({ photos, index, orientation }) {
+  if (!photos.length) return null
+  return <div className={`gallery-frame gallery-${orientation}`}>
+    {photos.map((photo, position) => <img key={photo.src}
+      src={import.meta.env.BASE_URL + photo.src} alt={photo.alt}
+      width={photo.width} height={photo.height} loading="lazy" decoding="async"
+      className={position === index % photos.length ? 'is-current' : ''}
+      aria-hidden={position !== index % photos.length} />)}
+    <span className="gallery-frame-label" aria-hidden="true">{orientation === 'landscape' ? '' : ''}</span>
+  </div>
+}
+
+function TeamGallery() {
+  const [slide, setSlide] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const [interacting, setInteracting] = useState(false)
+  const [focused, setFocused] = useState(false)
+  const [reduced, setReduced] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+  const count = Math.max(landscapePhotos.length, portraitPhotos.length)
+  useEffect(() => {
+    const preference = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const update = () => setReduced(preference.matches)
+    preference.addEventListener('change', update)
+    return () => preference.removeEventListener('change', update)
+  }, [])
+  useEffect(() => {
+    if (paused || interacting || focused || reduced || count < 2) return
+    const timer = setInterval(() => {
+      if (!document.hidden) setSlide((current) => (current + 1) % count)
+    }, 12000)
+    return () => clearInterval(timer)
+  }, [paused, interacting, focused, reduced, count, slide])
+  const navigate = (next) => { setSlide((next + count) % count); setPaused(true) }
+  if (!count) return null
+  return <section className="photo-section section-pad team-gallery" aria-labelledby="gallery-heading">
+    <div className="section-heading"><div><div className="section-label">Gallery / Our team in action</div><h2 id="gallery-heading">The moments <em>between.</em></h2></div></div>
+    <div className="gallery-toolbar"><p>A glimpse of the people, places, and experiences we share.</p>
+      <div className="conveyor-controls">
+        <button aria-label="Previous gallery photos" onClick={() => navigate(slide - 1)}>←</button>
+        {!reduced && count > 1 && <button aria-pressed={paused} onClick={() => setPaused(!paused)}>{paused ? 'Play slideshow' : 'Pause slideshow'}</button>}
+        <button aria-label="Next gallery photos" onClick={() => navigate(slide + 1)}>→</button>
+      </div>
+    </div>
+    <div className="gallery-stage" onMouseEnter={() => setInteracting(true)} onMouseLeave={() => setInteracting(false)}
+      onFocus={() => setFocused(true)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false) }}>
+      <div className="gallery-featured">
+        <GalleryFrame photos={landscapePhotos} index={slide} orientation="landscape" />
+        <GalleryFrame photos={portraitPhotos} index={slide} orientation="portrait" />
+      </div>
+      <div className="gallery-thumbnails" aria-label="Choose landscape gallery photo">
+        {Array.from({ length: Math.min(3, Math.max(0, landscapePhotos.length - 1)) }, (_, offset) => {
+          const index = (slide + offset + 1) % landscapePhotos.length
+          const photo = landscapePhotos[index]
+          return <button key={offset} onClick={() => navigate(index)} aria-label={`Show photo: ${photo.alt}`}>
+            <img src={import.meta.env.BASE_URL + photo.src} alt="" width={photo.width} height={photo.height} loading="lazy" />
+            <span aria-hidden="true">View photo ↗</span>
+          </button>
+        })}
+      </div>
+    </div>
+    <div className="gallery-meta"><span>{String(slide + 1).padStart(2, '0')} / {String(count).padStart(2, '0')}</span><span>{reduced ? 'Use the arrows to explore' : paused ? 'Slideshow paused · press Play to resume' : 'Photos change together every 12 seconds · hover to pause'}</span></div>
+  </section>
+}
+
 function HomePage() {
   const currentYearMembers = getCurrentYearMembers()
   const currentSolution = sortByMostRecent(solutions)[0]
@@ -683,15 +743,7 @@ function HomePage() {
           <a className="hero-project-button section-link" href="#team">All Team Members <span>↗</span></a>
         </section>
 
-        <section className="photo-section section-pad">
-          <div className="section-label">Gallery - Our Team in Action!</div>
-          <div className="photo-grid">
-            {photos.map((photo) =>
-                <div className={`photo-card ${photo.size}`} key={`${photo.src}-${photo.alt}`}>
-                  <img src={photo.src} alt={photo.alt} />
-                </div>)}
-          </div>
-        </section>
+        <TeamGallery />
 
 
 

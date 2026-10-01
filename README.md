@@ -88,7 +88,7 @@ Unknown routes fall back to home. Missing member slugs show a not-found page; an
 - Four about panels progress from charcoal to warm gold, with subtle hover feedback.
 - The latest solution uses a warm gold gradient background with dark, contrasting text, with the UCF icon on the left and left-aligned copy on the right.
 - A live current-team card conveyor includes portraits, roles, majors, biographies, profile links, and social links. It reverses at the ends; hover/focus pauses movement, while touch, wheel, and arrow controls pause automatic movement until Play is selected. Reduced motion disables autoplay. Cards remain keyboard accessible.
-- A gallery using remote Unsplash placeholder imagery.
+- A synchronized gallery of local team photos: landscape slideshow on the left, portrait slideshow on the right, and three clickable landscape thumbnails below. Both panels crossfade every 12 seconds; controls, hover/focus pause, and reduced-motion support keep the gallery easy to browse.
 
 ### Teams
 
@@ -115,7 +115,7 @@ Edit the following values in src/App.jsx:
 | memberGroupOrder | Directory card ordering. |
 | filterOptions | Discipline headings and order on Teams (the legacy all entry is skipped). |
 | solutions | Timeline records and latest solution on home. |
-| photos | Gallery sources, alternative text, and size classes. |
+| src/gallery.json | Gallery image paths, dimensions, orientation, and descriptive alternative text. |
 | appIcons / reelColumns | Hero logos and movement directions. |
 
 To add a member, copy a record and fill in slug, year, name, role, major, initials, track, memberGroup, photo, bio, hometown, focus, interests, and socials. Use a unique slug across all seasons; four-digit slugs are interpreted as years. Track values must match category values exactly. Member group keys are professor, gradAdvisor, teamCaptain, and member. The first two determine exclusive advisor grouping.
@@ -162,7 +162,19 @@ The previous scroll-driven hero fade was removed so the heading remains readable
 Run npm run lint and npm run build before publishing. Check home, a team season, a long-name profile, and solutions on narrow phones, tablets, and desktop. Exercise keyboard navigation, zoom, and reduced-motion settings. A successful build alone does not verify responsive layout.
 
 - Real contact details and competition files still need to be supplied.
-- Gallery imagery is remote placeholder content; replace it with approved team photos.
+- Gallery originals are stored in public/gallery_images; optimized copies are in its web subfolder.
 - Some older unused CSS for menus, FAQ, statistics, and principles remains in the stylesheet.
 - If a deployment looks stale, rebuild and confirm the latest dist was published; inspect caching and failed asset requests.
 - Review biographies, names, and external links before publishing. Code checks do not validate content accuracy.
+
+## Adding gallery photos
+
+Place JPG, JPEG, or PNG originals directly in `public/gallery_images/`, then run the Windows preparation script from the repository root:
+
+```powershell
+powershell -NoProfile -File scripts/prepare-gallery.ps1
+```
+
+The script preserves originals, reads EXIF orientation, generates JPEG copies capped at 1600px on the longest side in `public/gallery_images/web/`, and updates `src/gallery.json`. Landscape and square photos go into the wide panel; portrait photos go into the tall panel. Existing alternative text is preserved; add descriptive alt text for new entries in the manifest. Commit the originals, web copies, and manifest, then rebuild. The preparation script requires Windows/System.Drawing; normal Vite builds use the generated files and do not require PowerShell.
+
+`TeamGallery` in `src/App.jsx` controls the shared 12-second interval. Previous/next and thumbnail selection pause autoplay until Play is pressed. Hovering or focusing the gallery temporarily pauses it. Reduced-motion preferences disable autoplay and fades while retaining manual controls. Featured images use `object-fit: contain` to avoid cropping people; thumbnails use `cover`. On phones, the main panels stack, with the small thumbnails below.
