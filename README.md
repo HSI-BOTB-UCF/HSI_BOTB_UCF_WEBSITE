@@ -88,7 +88,7 @@ Unknown routes fall back to home. Missing member slugs show a not-found page; an
 - Four about panels progress from charcoal to warm gold, with subtle hover feedback.
 - The latest solution uses a warm gold gradient background with dark, contrasting text, with the UCF icon on the left and left-aligned copy on the right.
 - A live current-team card conveyor includes portraits, roles, majors, biographies, profile links, and social links. It reverses at the ends; hover/focus pauses movement, while touch, wheel, and arrow controls pause automatic movement until Play is selected. Reduced motion disables autoplay. Cards remain keyboard accessible.
-- A synchronized gallery of local team photos: landscape slideshow on the left, portrait slideshow on the right, and three clickable landscape thumbnails below. Both panels crossfade every 12 seconds; controls, hover/focus pause, and reduced-motion support keep the gallery easy to browse.
+- Five independent gallery slideshows: a landscape panel, a height-fitted portrait panel, and three smaller landscape panels. Each rotates every 11–15 seconds with a slow zoom; hover or keyboard focus pauses only that panel. No buttons or click actions. Reduced motion disables rotation and zoom.
 
 ### Teams
 
@@ -177,4 +177,4 @@ powershell -NoProfile -File scripts/prepare-gallery.ps1
 
 The script preserves originals, reads EXIF orientation, generates JPEG copies capped at 1600px on the longest side in `public/gallery_images/web/`, and updates `src/gallery.json`. Landscape and square photos go into the wide panel; portrait photos go into the tall panel. Existing alternative text is preserved; add descriptive alt text for new entries in the manifest. Commit the originals, web copies, and manifest, then rebuild. The preparation script requires Windows/System.Drawing; normal Vite builds use the generated files and do not require PowerShell.
 
-`TeamGallery` in `src/App.jsx` controls the shared 12-second interval. Previous/next and thumbnail selection pause autoplay until Play is pressed. Hovering or focusing the gallery temporarily pauses it. Reduced-motion preferences disable autoplay and fades while retaining manual controls. Featured images use `object-fit: contain` to avoid cropping people; thumbnails use `cover`. On phones, the main panels stack, with the small thumbnails below.
+`GalleryFrame` in `src/App.jsx` gives each panel its own timer (12 and 14.5 seconds for the main panels; 13, 15, and 11 seconds below). Hovering or focusing a panel pauses its rotation and zoom without stopping the others. Reduced-motion preferences disable both effects. Portrait images fill the frame height with centered horizontal cropping when necessary. The main landscape panel uses contain; smaller panels use cover. On phones, the main panels stack.

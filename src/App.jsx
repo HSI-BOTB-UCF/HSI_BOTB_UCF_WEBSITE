@@ -604,25 +604,12 @@ function SolutionsPage({ year }) {
 const landscapePhotos = galleryPhotos.filter((photo) => photo.orientation === 'landscape')
 const portraitPhotos = galleryPhotos.filter((photo) => photo.orientation === 'portrait')
 
-function GalleryFrame({ photos, index, orientation }) {
-  if (!photos.length) return null
-  return <div className={`gallery-frame gallery-${orientation}`}>
-    {photos.map((photo, position) => <img key={photo.src}
-      src={import.meta.env.BASE_URL + photo.src} alt={photo.alt}
-      width={photo.width} height={photo.height} loading="lazy" decoding="async"
-      className={position === index % photos.length ? 'is-current' : ''}
-      aria-hidden={position !== index % photos.length} />)}
-    <span className="gallery-frame-label" aria-hidden="true">{orientation === 'landscape' ? '' : ''}</span>
-  </div>
-}
-
-function TeamGallery() {
-  const [slide, setSlide] = useState(0)
-  const [paused, setPaused] = useState(false)
-  const [interacting, setInteracting] = useState(false)
+function GalleryFrame({ photos, orientation, interval = 12000, initialIndex = 0 }) {
+  const [index, setIndex] = useState(initialIndex)
+  const [hovered, setHovered] = useState(false)
   const [focused, setFocused] = useState(false)
   const [reduced, setReduced] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches)
-  const count = Math.max(landscapePhotos.length, portraitPhotos.length)
+  const paused = hovered || focused || reduced
   useEffect(() => {
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)')
     const update = () => setReduced(preference.matches)
@@ -630,41 +617,40 @@ function TeamGallery() {
     return () => preference.removeEventListener('change', update)
   }, [])
   useEffect(() => {
-    if (paused || interacting || focused || reduced || count < 2) return
+    if (paused || photos.length < 2) return
     const timer = setInterval(() => {
-      if (!document.hidden) setSlide((current) => (current + 1) % count)
-    }, 12000)
+      if (!document.hidden) setIndex((current) => (current + 1) % photos.length)
+    }, interval)
     return () => clearInterval(timer)
-  }, [paused, interacting, focused, reduced, count, slide])
-  const navigate = (next) => { setSlide((next + count) % count); setPaused(true) }
-  if (!count) return null
+  }, [paused, interval, photos.length])
+  if (!photos.length) return null
+  return <div className={`gallery-frame gallery-${orientation}${paused ? ' is-paused' : ''}`}
+    style={{ '--gallery-duration': `${interval}ms` }} tabIndex={0}
+    role="group" aria-label={`${orientation === 'portrait' ? 'Portrait' : 'Landscape'} slideshow; hover or focus to pause`}
+    onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+    onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}>
+    {photos.map((photo, position) => <div key={photo.src}
+      className={`gallery-slide${position === index % photos.length ? ' is-current' : ''}`}
+      aria-hidden={position !== index % photos.length}>
+      <img src={import.meta.env.BASE_URL + photo.src} alt={photo.alt}
+        width={photo.width} height={photo.height} loading="lazy" decoding="async" />
+    </div>)}
+  </div>
+}
+
+function TeamGallery() {
+  if (!galleryPhotos.length) return null
   return <section className="photo-section section-pad team-gallery" aria-labelledby="gallery-heading">
     <div className="section-heading"><div><div className="section-label">Gallery / Our team in action</div><h2 id="gallery-heading">The moments <em>between.</em></h2></div></div>
-    <div className="gallery-toolbar"><p>A glimpse of the people, places, and experiences we share.</p>
-      <div className="conveyor-controls">
-        <button aria-label="Previous gallery photos" onClick={() => navigate(slide - 1)}>←</button>
-        {!reduced && count > 1 && <button aria-pressed={paused} onClick={() => setPaused(!paused)}>{paused ? 'Play slideshow' : 'Pause slideshow'}</button>}
-        <button aria-label="Next gallery photos" onClick={() => navigate(slide + 1)}>→</button>
-      </div>
+    <div className="gallery-toolbar"><p>A glimpse of the people, places, and experiences we share.</p></div>
+    <div className="gallery-featured">
+      <GalleryFrame photos={landscapePhotos} orientation="landscape" interval={12000} />
+      <GalleryFrame photos={portraitPhotos} orientation="portrait" interval={14500} />
     </div>
-    <div className="gallery-stage" onMouseEnter={() => setInteracting(true)} onMouseLeave={() => setInteracting(false)}
-      onFocus={() => setFocused(true)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false) }}>
-      <div className="gallery-featured">
-        <GalleryFrame photos={landscapePhotos} index={slide} orientation="landscape" />
-        <GalleryFrame photos={portraitPhotos} index={slide} orientation="portrait" />
-      </div>
-      <div className="gallery-thumbnails" aria-label="Choose landscape gallery photo">
-        {Array.from({ length: Math.min(3, Math.max(0, landscapePhotos.length - 1)) }, (_, offset) => {
-          const index = (slide + offset + 1) % landscapePhotos.length
-          const photo = landscapePhotos[index]
-          return <button key={offset} onClick={() => navigate(index)} aria-label={`Show photo: ${photo.alt}`}>
-            <img src={import.meta.env.BASE_URL + photo.src} alt="" width={photo.width} height={photo.height} loading="lazy" />
-            <span aria-hidden="true">View photo ↗</span>
-          </button>
-        })}
-      </div>
+    <div className="gallery-thumbnails">
+      {[13000, 15000, 11000].map((interval, offset) => <GalleryFrame key={interval}
+        photos={landscapePhotos} orientation="small" interval={interval} initialIndex={offset + 1} />)}
     </div>
-    <div className="gallery-meta"><span>{String(slide + 1).padStart(2, '0')} / {String(count).padStart(2, '0')}</span><span>{reduced ? 'Use the arrows to explore' : paused ? 'Slideshow paused · press Play to resume' : 'Photos change together every 12 seconds · hover to pause'}</span></div>
   </section>
 }
 
