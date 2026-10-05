@@ -15,7 +15,7 @@ New-Item -ItemType Directory -Force $output | Out-Null
 $encoder = [System.Drawing.Imaging.ImageCodecInfo]::GetImageEncoders() | Where-Object MimeType -eq 'image/jpeg'
 $quality = New-Object System.Drawing.Imaging.EncoderParameters(1)
 $quality.Param[0] = New-Object System.Drawing.Imaging.EncoderParameter([System.Drawing.Imaging.Encoder]::Quality, [long]85)
-$items = @(Get-ChildItem $source -File | Where-Object Extension -Match '^\.(jpg|jpeg|png)$' | Sort-Object Name | ForEach-Object {
+$prepared = @(Get-ChildItem $source -File | Where-Object Extension -Match '^\.(jpg|jpeg|png)$' | Sort-Object Name | ForEach-Object {
     $photo = [System.Drawing.Image]::FromFile($_.FullName)
     try {
         if ($photo.PropertyIdList -contains 274) {
@@ -41,6 +41,20 @@ $items = @(Get-ChildItem $source -File | Where-Object Extension -Match '^\.(jpg|
     } finally { $photo.Dispose() }
 })
 $quality.Dispose()
+$items = @(Get-ChildItem $output -File | Where-Object Extension -Match '^\.(jpg|jpeg|png|webp)$' | Sort-Object Name | ForEach-Object {
+    $photo = [System.Drawing.Image]::FromFile($_.FullName)
+    try {
+        $width = $photo.Width
+        $height = $photo.Height
+        if ($photo.PropertyIdList -contains 274) {
+            $orientation = [BitConverter]::ToUInt16($photo.GetPropertyItem(274).Value, 0)
+            if ($orientation -in 5, 6, 7, 8) { $width = $photo.Height; $height = $photo.Width }
+        }
+        $url = 'gallery_images/web/' + $_.Name
+        $description = if ($descriptions.ContainsKey($url)) { $descriptions[$url] } else { 'UCF HSI Battle of the Brains team gallery photo' }
+        [ordered]@{ src = $url; width = $width; height = $height; orientation = $(if ($width -ge $height) { 'landscape' } else { 'portrait' }); alt = $description }
+    } finally { $photo.Dispose() }
+})
 $json = ConvertTo-Json -InputObject $items -Depth 3
 [System.IO.File]::WriteAllText($manifest, $json)
 Write-Output "Prepared $($items.Count) gallery images."

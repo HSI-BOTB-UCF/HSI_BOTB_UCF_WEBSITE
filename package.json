@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predev": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/prepare-gallery.ps1",
     "dev": "vite",
+    "prebuild": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/prepare-gallery.ps1",
     "build": "vite build",
     "lint": "oxlint",
     "preview": "vite preview"

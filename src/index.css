@@ -1606,14 +1606,14 @@ svg {
 .gallery-portrait { aspect-ratio: auto; }
 .gallery-slide { position: absolute; inset: 0; display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity .85s ease; }
 .gallery-slide.is-current { opacity: 1; }
-.gallery-slide img { display: block; width: 100%; height: 100%; object-fit: contain; transform: scale(1.07); }
+.gallery-slide img { display: block; width: 100%; height: 100%; object-fit: contain; transform: scale(1.10); }
 .gallery-slide.is-current img { animation: gallery-zoom var(--gallery-duration) linear both; }
 .gallery-frame.is-paused img { animation-play-state: paused; }
 .gallery-portrait .gallery-slide img { width: auto; height: 100%; max-width: none; object-fit: fill; flex-shrink: 0; }
 .gallery-thumbnails { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 20px; }
 .gallery-small { aspect-ratio: 16 / 9; }
 .gallery-small img { object-fit: cover; }
-@keyframes gallery-zoom { from { transform: scale(1); } to { transform: scale(1.07); } }
+@keyframes gallery-zoom { from { transform: scale(1.02); } to { transform: scale(1.10); } }
 @media (max-width: 700px) {
   .gallery-featured { grid-template-columns: minmax(0, 1fr); gap: 14px; }
   .gallery-portrait { aspect-ratio: 3 / 4; max-height: 560px; }

@@ -603,6 +603,9 @@ function SolutionsPage({ year }) {
 
 const landscapePhotos = galleryPhotos.filter((photo) => photo.orientation === 'landscape')
 const portraitPhotos = galleryPhotos.filter((photo) => photo.orientation === 'portrait')
+// Each photo belongs to one container, including during crossfades.
+const landscapePools = Array.from({ length: 4 }, (_, slot) =>
+  landscapePhotos.filter((_, index) => index % 4 === slot))
 
 function GalleryFrame({ photos, orientation, interval = 12000, initialIndex = 0 }) {
   const [index, setIndex] = useState(initialIndex)
@@ -641,15 +644,14 @@ function GalleryFrame({ photos, orientation, interval = 12000, initialIndex = 0 
 function TeamGallery() {
   if (!galleryPhotos.length) return null
   return <section className="photo-section section-pad team-gallery" aria-labelledby="gallery-heading">
-    <div className="section-heading"><div><div className="section-label">Gallery / Our team in action</div><h2 id="gallery-heading">The moments <em>between.</em></h2></div></div>
-    <div className="gallery-toolbar"><p>A glimpse of the people, places, and experiences we share.</p></div>
+    <div className="section-heading"><div><div className="section-label">Gallery / Our team in action</div><h2 id="gallery-heading">Nuestras <em>aventuras!</em></h2></div></div>
     <div className="gallery-featured">
-      <GalleryFrame photos={landscapePhotos} orientation="landscape" interval={12000} />
+      <GalleryFrame photos={landscapePools[0]} orientation="landscape" interval={12000} />
       <GalleryFrame photos={portraitPhotos} orientation="portrait" interval={14500} />
     </div>
     <div className="gallery-thumbnails">
       {[13000, 15000, 11000].map((interval, offset) => <GalleryFrame key={interval}
-        photos={landscapePhotos} orientation="small" interval={interval} initialIndex={offset + 1} />)}
+        photos={landscapePools[offset + 1]} orientation="small" interval={interval} />)}
     </div>
   </section>
 }

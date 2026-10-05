@@ -68,5 +68,68 @@
         "height":  1024,
         "orientation":  "portrait",
         "alt":  "Two team members seated in an aircraft cockpit"
+    },
+    {
+        "src":  "gallery_images/web/IMG_2799.jpeg",
+        "width":  4032,
+        "height":  3024,
+        "orientation":  "landscape",
+        "alt":  "UCF HSI Battle of the Brains team gallery photo"
+    },
+    {
+        "src":  "gallery_images/web/IMG_2959.jpeg",
+        "width":  4032,
+        "height":  3024,
+        "orientation":  "landscape",
+        "alt":  "UCF HSI Battle of the Brains team gallery photo"
+    },
+    {
+        "src":  "gallery_images/web/IMG_3895.JPG",
+        "width":  1242,
+        "height":  2208,
+        "orientation":  "portrait",
+        "alt":  "UCF HSI Battle of the Brains team gallery photo"
+    },
+    {
+        "src":  "gallery_images/web/IMG_3903.jpeg",
+        "width":  5712,
+        "height":  4284,
+        "orientation":  "landscape",
+        "alt":  "UCF HSI Battle of the Brains team gallery photo"
+    },
+    {
+        "src":  "gallery_images/web/IMG_3950.JPG",
+        "width":  4032,
+        "height":  3024,
+        "orientation":  "landscape",
+        "alt":  "UCF HSI Battle of the Brains team gallery photo"
+    },
+    {
+        "src":  "gallery_images/web/IMG_3951.JPG",
+        "width":  4032,
+        "height":  3024,
+        "orientation":  "landscape",
+        "alt":  "UCF HSI Battle of the Brains team gallery photo"
+    },
+    {
+        "src":  "gallery_images/web/IMG_7024.jpeg",
+        "width":  4032,
+        "height":  3024,
+        "orientation":  "landscape",
+        "alt":  "UCF HSI Battle of the Brains team gallery photo"
+    },
+    {
+        "src":  "gallery_images/web/IMG_7054.jpeg",
+        "width":  4032,
+        "height":  3024,
+        "orientation":  "landscape",
+        "alt":  "UCF HSI Battle of the Brains team gallery photo"
+    },
+    {
+        "src":  "gallery_images/web/IMG_7349.JPEG",
+        "width":  3024,
+        "height":  4032,
+        "orientation":  "portrait",
+        "alt":  "UCF HSI Battle of the Brains team gallery photo"
     }
 ]
