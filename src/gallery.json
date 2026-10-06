@@ -1,135 +1,128 @@
 [
-    {
-        "src":  "gallery_images/web/20260927_155828943_iOS.jpg",
-        "width":  1600,
-        "height":  1200,
-        "orientation":  "landscape",
-        "alt":  "Team members playing table tennis outdoors"
-    },
-    {
-        "src":  "gallery_images/web/20260927_201116857_iOS.jpg",
-        "width":  1600,
-        "height":  1200,
-        "orientation":  "landscape",
-        "alt":  "Team members sharing a meal at an outdoor table"
-    },
-    {
-        "src":  "gallery_images/web/20260927_222052973_iOS.jpg",
-        "width":  1200,
-        "height":  1600,
-        "orientation":  "portrait",
-        "alt":  "Team selfie beneath an ornate domed ceiling"
-    },
-    {
-        "src":  "gallery_images/web/20260928_144235142_iOS.jpg",
-        "width":  1200,
-        "height":  1600,
-        "orientation":  "portrait",
-        "alt":  "Three team members wearing yellow shirts at an event"
-    },
-    {
-        "src":  "gallery_images/web/20260928_182307392_iOS.jpg",
-        "width":  1200,
-        "height":  1600,
-        "orientation":  "portrait",
-        "alt":  "Three team members posing in front of a Dell Technologies backdrop"
-    },
-    {
-        "src":  "gallery_images/web/20260928_203402996_iOS.jpg",
-        "width":  900,
-        "height":  1600,
-        "orientation":  "portrait",
-        "alt":  "Two attendees posing in front of a Dell Technologies backdrop"
-    },
-    {
-        "src":  "gallery_images/web/20260930_022059098_iOS.jpg",
-        "width":  1600,
-        "height":  1200,
-        "orientation":  "landscape",
-        "alt":  "Team members playing table tennis in a recreation room"
-    },
-    {
-        "src":  "gallery_images/web/Image (1).jpg",
-        "width":  1024,
-        "height":  768,
-        "orientation":  "landscape",
-        "alt":  "Team members in yellow shirts during a group visit"
-    },
-    {
-        "src":  "gallery_images/web/Image (2).jpg",
-        "width":  1024,
-        "height":  768,
-        "orientation":  "landscape",
-        "alt":  "Team group posing together at a venue"
-    },
-    {
-        "src":  "gallery_images/web/Image.jpg",
-        "width":  768,
-        "height":  1024,
-        "orientation":  "portrait",
-        "alt":  "Two team members seated in an aircraft cockpit"
-    },
-    {
-        "src":  "gallery_images/web/IMG_2799.jpeg",
-        "width":  4032,
-        "height":  3024,
-        "orientation":  "landscape",
-        "alt":  "UCF HSI Battle of the Brains team gallery photo"
-    },
-    {
-        "src":  "gallery_images/web/IMG_2959.jpeg",
-        "width":  4032,
-        "height":  3024,
-        "orientation":  "landscape",
-        "alt":  "UCF HSI Battle of the Brains team gallery photo"
-    },
-    {
-        "src":  "gallery_images/web/IMG_3895.JPG",
-        "width":  1242,
-        "height":  2208,
-        "orientation":  "portrait",
-        "alt":  "UCF HSI Battle of the Brains team gallery photo"
-    },
-    {
-        "src":  "gallery_images/web/IMG_3903.jpeg",
-        "width":  5712,
-        "height":  4284,
-        "orientation":  "landscape",
-        "alt":  "UCF HSI Battle of the Brains team gallery photo"
-    },
-    {
-        "src":  "gallery_images/web/IMG_3950.JPG",
-        "width":  4032,
-        "height":  3024,
-        "orientation":  "landscape",
-        "alt":  "UCF HSI Battle of the Brains team gallery photo"
-    },
-    {
-        "src":  "gallery_images/web/IMG_3951.JPG",
-        "width":  4032,
-        "height":  3024,
-        "orientation":  "landscape",
-        "alt":  "UCF HSI Battle of the Brains team gallery photo"
-    },
-    {
-        "src":  "gallery_images/web/IMG_7024.jpeg",
-        "width":  4032,
-        "height":  3024,
-        "orientation":  "landscape",
-        "alt":  "UCF HSI Battle of the Brains team gallery photo"
-    },
-    {
-        "src":  "gallery_images/web/IMG_7054.jpeg",
-        "width":  4032,
-        "height":  3024,
-        "orientation":  "landscape",
-        "alt":  "UCF HSI Battle of the Brains team gallery photo"
-    },
-    {
-        "src":  "gallery_images/web/IMG_7349.JPEG",
-        "width":  3024,
-        "height":  4032,
-        "orientation":  "portrait",
-        "alt":  "UCF HSI Battle of the Brains team gallery photo"
-    }
+  {
+    "src": "gallery_images/web/20260927_155828943_iOS.jpg",
+    "width": 1600,
+    "height": 1200,
+    "orientation": "landscape",
+    "alt": "Team members playing table tennis outdoors"
+  },
+  {
+    "src": "gallery_images/web/20260927_201116857_iOS.jpg",
+    "width": 1600,
+    "height": 1200,
+    "orientation": "landscape",
+    "alt": "Team members sharing a meal at an outdoor table"
+  },
+  {
+    "src": "gallery_images/web/20260927_222052973_iOS.jpg",
+    "width": 1200,
+    "height": 1600,
+    "orientation": "portrait",
+    "alt": "Team selfie beneath an ornate domed ceiling"
+  },
+  {
+    "src": "gallery_images/web/20260928_144235142_iOS.jpg",
+    "width": 1200,
+    "height": 1600,
+    "orientation": "portrait",
+    "alt": "Three team members wearing yellow shirts at an event"
+  },
+  {
+    "src": "gallery_images/web/20260928_182307392_iOS.jpg",
+    "width": 1200,
+    "height": 1600,
+    "orientation": "portrait",
+    "alt": "Three team members posing in front of a Dell Technologies backdrop"
+  },
+  {
+    "src": "gallery_images/web/20260928_203402996_iOS.jpg",
+    "width": 900,
+    "height": 1600,
+    "orientation": "portrait",
+    "alt": "Two attendees posing in front of a Dell Technologies backdrop"
+  },
+  {
+    "src": "gallery_images/web/20260930_022059098_iOS.jpg",
+    "width": 1600,
+    "height": 1200,
+    "orientation": "landscape",
+    "alt": "Team members playing table tennis in a recreation room"
+  },
+  {
+    "src": "gallery_images/web/Image (1).jpg",
+    "width": 1024,
+    "height": 768,
+    "orientation": "landscape",
+    "alt": "Team members in yellow shirts during a group visit"
+  },
+  {
+    "src": "gallery_images/web/Image (2).jpg",
+    "width": 1024,
+    "height": 768,
+    "orientation": "landscape",
+    "alt": "Team group posing together at a venue"
+  },
+  {
+    "src": "gallery_images/web/Image.jpg",
+    "width": 768,
+    "height": 1024,
+    "orientation": "portrait",
+    "alt": "Two team members seated in an aircraft cockpit"
+  },
+  {
+    "src": "gallery_images/web/IMG_2799.jpeg",
+    "width": 4032,
+    "height": 3024,
+    "orientation": "landscape",
+    "alt": "UCF HSI Battle of the Brains team gallery photo"
+  },
+  {
+    "src": "gallery_images/web/IMG_2959.jpeg",
+    "width": 4032,
+    "height": 3024,
+    "orientation": "landscape",
+    "alt": "UCF HSI Battle of the Brains team gallery photo"
+  },
+  {
+    "src": "gallery_images/web/IMG_3903.jpeg",
+    "width": 5712,
+    "height": 4284,
+    "orientation": "landscape",
+    "alt": "UCF HSI Battle of the Brains team gallery photo"
+  },
+  {
+    "src": "gallery_images/web/IMG_3950.JPG",
+    "width": 4032,
+    "height": 3024,
+    "orientation": "landscape",
+    "alt": "UCF HSI Battle of the Brains team gallery photo"
+  },
+  {
+    "src": "gallery_images/web/IMG_3951.JPG",
+    "width": 4032,
+    "height": 3024,
+    "orientation": "landscape",
+    "alt": "UCF HSI Battle of the Brains team gallery photo"
+  },
+  {
+    "src": "gallery_images/web/IMG_7024.jpeg",
+    "width": 4032,
+    "height": 3024,
+    "orientation": "landscape",
+    "alt": "UCF HSI Battle of the Brains team gallery photo"
+  },
+  {
+    "src": "gallery_images/web/IMG_7054.jpeg",
+    "width": 4032,
+    "height": 3024,
+    "orientation": "landscape",
+    "alt": "UCF HSI Battle of the Brains team gallery photo"
+  },
+  {
+    "src": "gallery_images/web/IMG_7349.JPEG",
+    "width": 3024,
+    "height": 4032,
+    "orientation": "portrait",
+    "alt": "UCF HSI Battle of the Brains team gallery photo"
+  }
 ]

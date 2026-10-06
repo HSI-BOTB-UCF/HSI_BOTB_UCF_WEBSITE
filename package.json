@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "predev": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/prepare-gallery.ps1",
+    "predev": "node scripts/prepare-gallery.mjs",
     "dev": "vite",
-    "prebuild": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/prepare-gallery.ps1",
+    "prebuild": "node scripts/prepare-gallery.mjs",
     "build": "vite build",
     "lint": "oxlint",
     "preview": "vite preview"
@@ -22,6 +22,7 @@
     "@types/react-dom": "^19.2.4",
     "@vitejs/plugin-react": "^6.1.0",
     "oxlint": "^1.79.0",
+    "sharp": "^0.35.5",
     "supabase": "^2.117.0",
     "vite": "^8.2.2"
   }
